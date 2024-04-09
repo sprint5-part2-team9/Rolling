@@ -26,8 +26,8 @@ $headerH: 65px;
   font-size: 19.971px;
   line-height: normal;
   &::before {
-    content: '';
-    background-image: url('../assets/Rolling_icon.png');
+    content: "";
+    background-image: url("../assets/Rolling_icon.png");
     display: inline-block;
     width: 27.818px;
     height: 27.658px;
