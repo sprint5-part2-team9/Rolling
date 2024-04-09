@@ -1,10 +1,6 @@
 // Main.jsx
-function Main() {
-  return (
-    <main>
-      <h2>Main</h2>
-    </main>
-  );
+function Main({ children }) {
+  return <main>{children}</main>;
 }
 
 export default Main;
