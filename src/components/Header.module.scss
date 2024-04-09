@@ -1,9 +1,15 @@
 @import url(../global.scss);
 
-$headerH: 64px;
+$headerH: 65px;
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
+  padding: 12px 24px;
+  border-bottom: 1px solid #ededed;
   justify-content: center;
   height: $headerH;
 }
@@ -14,7 +20,6 @@ $headerH: 64px;
   align-items: center;
   max-width: 1248px;
   width: 100%;
-  padding: 0 24px;
 }
 
 .title {
