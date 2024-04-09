@@ -9,8 +9,8 @@
 
 .imgCase {
   display: flex;
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   align-items: center;
   border-radius: 100px;
   border: 1px solid $gray2;
@@ -33,6 +33,10 @@
   font-weight: 700;
   line-height: 24px;
 
+  @media (max-width: 787px) {
+    @include Font16B;
+  }
+
   &::before {
     content: 'From.';
     font-family: $font-family;
@@ -40,6 +44,10 @@
     font-weight: 400;
     line-height: 24px;
     margin-right: 6px;
+
+    @media (max-width: 787px) {
+      @include Font18R;
+    }
   }
 }
 

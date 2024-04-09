@@ -63,7 +63,10 @@
   @media (max-width: 787px) {
     width: 272px;
     height: 56px;
+    margin-bottom: 0;
     -webkit-line-clamp: 2;
+
+    @include Font15R;
   }
 }
 
