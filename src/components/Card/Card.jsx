@@ -25,7 +25,7 @@ const Card = () => {
   return (
     <div className={styles.frame}>
       <div>1</div>
-      <p>2</p>
+      <p className={styles.message}>{data?.content}</p>
       <CreatedDay date={data?.createdAt} />
     </div>
   );

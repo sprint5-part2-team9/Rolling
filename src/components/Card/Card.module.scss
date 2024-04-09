@@ -40,14 +40,35 @@
   cursor: pointer;
 }
 
+.message {
+  color: $gray6;
+  width: 336px;
+  height: 84px;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+  display: -webkit-box;
+  word-wrap: break-word;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @include Font18R;
+
+  @media (max-width: 1199px) {
+    width: 304px;
+    margin-bottom: 26px;
+  }
+
+  @media (max-width: 787px) {
+    width: 272px;
+    height: 56px;
+    -webkit-line-clamp: 2;
+  }
+}
+
 .time {
   color: $gray4;
 
-  /* Font/12 Regular */
-  font-family: Pretendard;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px; /* 150% */
-  letter-spacing: -0.06px;
+  @include Font12R;
 }
