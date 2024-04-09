@@ -2,6 +2,8 @@ import styles from "./PostMain.module.scss";
 import Input from "./Msg/Input";
 import { useState } from "react";
 
+//Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
+
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
 
@@ -10,7 +12,7 @@ function PostMain() {
   };
 
   return (
-    <div className={styles.PostMain}>
+    <main className={styles.PostMain}>
       <form>
         <label className={styles.to}>To.</label>
         <Input placeholder="받는 사람 이름을 입력해 주세요." error={false} />
@@ -35,7 +37,7 @@ function PostMain() {
           </button>
         </div>
       </form>
-    </div>
+    </main>
   );
 }
 

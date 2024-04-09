@@ -54,11 +54,12 @@ p {
   height: 40px;
 }
 
+// 선택되지 않은 버튼
 .unchecked {
   border: 1px solid $gray2;
   background: $gray2;
 }
-
+//선택된 버튼
 .checked {
   border: 2px solid $purple6;
   background: $white;
