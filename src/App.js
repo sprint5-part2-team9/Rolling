@@ -1,8 +1,8 @@
 // App.js
-import "./global.scss";
-import "./reset.scss";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import './global.scss';
+import './reset.scss';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home';
 
 function App() {
   return (

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const EmptyCard = () => {
   return (
     <div className={`${styles.frame} ${styles.empty}`}>
-      <Link>
+      <Link to="./message">
         <button className={styles.circle}>
           <img src={plus} alt="새로 만들기" height={24} width={24} />
         </button>
