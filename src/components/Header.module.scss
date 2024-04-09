@@ -1,0 +1,36 @@
+@import url(../global.scss);
+
+$headerH: 65px;
+
+.header {
+  display: flex;
+  padding: 12px 24px;
+  border-bottom: 1px solid #ededed;
+  justify-content: center;
+  height: $headerH;
+}
+
+.frame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1248px;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: #4a494f;
+  font-family: Poppins;
+  font-size: 19.971px;
+  line-height: normal;
+  &::before {
+    content: '';
+    background-image: url('../assets/Rolling_icon.png');
+    display: inline-block;
+    width: 27.818px;
+    height: 27.658px;
+    margin-right: 8px;
+  }
+}
