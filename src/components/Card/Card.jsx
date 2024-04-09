@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 import example from './example.json';
+import CardFrom from './CardFrom';
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -16,7 +17,7 @@ const CreatedDay = ({ date }) => {
 };
 
 const Card = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     setData(example);
@@ -24,7 +25,7 @@ const Card = () => {
 
   return (
     <div className={styles.frame}>
-      <div>1</div>
+      <CardFrom data={data} />
       <p className={styles.message}>{data?.content}</p>
       <CreatedDay date={data?.createdAt} />
     </div>
