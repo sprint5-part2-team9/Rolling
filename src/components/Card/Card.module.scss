@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: end;
   row-gap: 16px;
+  position: relative;
 
   @media (max-width: 1199px) {
     width: 352px;
@@ -27,6 +28,19 @@
     justify-content: center;
     align-items: center;
   }
+}
+
+.deleted {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid $gray3;
+  background-color: $white;
+  position: absolute;
+  top: 28px;
+  right: 24px;
 }
 
 .circle {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 import example from './example.json';
 import CardFrom from './CardFrom';
+import deleted from '../../assets/deleted.png';
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -16,8 +17,12 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = () => {
+const Card = ({ edited = true }) => {
   const [data, setData] = useState({});
+
+  const handleDelete = () => {
+    console.log('삭제되길 바래');
+  };
 
   useEffect(() => {
     setData(example);
@@ -25,6 +30,11 @@ const Card = () => {
 
   return (
     <div className={styles.frame}>
+      {edited && (
+        <button className={styles.deleted} type="button" onClick={handleDelete}>
+          <img src={deleted} alt="삭제" width={24} height={24} />
+        </button>
+      )}
       <CardFrom data={data} />
       <p className={styles.message}>{data?.content}</p>
       <CreatedDay date={data?.createdAt} />
