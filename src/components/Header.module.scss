@@ -1,0 +1,36 @@
+$headerH: 64px;
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: $headerH;
+}
+
+.frame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1248px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: var(--gray-light-gray-90, #4a494f);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 19.971px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  &::before {
+    content: '';
+    background-image: url('../assets/Rolling_icon.png');
+    display: inline-block;
+    width: 27.818px;
+    height: 27.658px;
+    margin-right: 8px;
+  }
+}
