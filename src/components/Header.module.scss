@@ -1,3 +1,5 @@
+@import url(../global.scss);
+
 $headerH: 64px;
 
 .header {
@@ -18,13 +20,10 @@ $headerH: 64px;
 .title {
   display: flex;
   align-items: center;
-  color: var(--gray-light-gray-90, #4a494f);
-  text-align: center;
+  color: #4a494f;
   font-family: Poppins;
   font-size: 19.971px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%;
+  line-height: normal;
   &::before {
     content: '';
     background-image: url('../assets/Rolling_icon.png');
