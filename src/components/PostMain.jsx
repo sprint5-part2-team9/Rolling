@@ -1,7 +1,7 @@
 import styles from "./PostMain.module.scss";
 import Input from "./Msg/Input";
 import { useState } from "react";
-
+import Option from "./Option";
 //Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
 
 function PostMain() {
@@ -36,6 +36,7 @@ function PostMain() {
             이미지
           </button>
         </div>
+        <Option ColorOrImg={selectedButton}/>
       </form>
     </main>
   );

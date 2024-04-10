@@ -1,0 +1,41 @@
+@import "../global.scss";
+
+.Options {
+  margin-top: 45px;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.Option {
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orange {
+  background-color: $orange2;
+}
+.purple {
+  background-color: $purple2;
+}
+.blue {
+  background-color: $blue2;
+}
+.green {
+  background-color: $green2;
+}
+
+.Option__backImg {
+  background-position: center;
+  background-size: cover;
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
