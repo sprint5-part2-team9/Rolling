@@ -36,4 +36,112 @@ $black: #000000;
 $error: #dc3a3a;
 $surface: #f6f8ff;
 
-$font-family: "Pretendard", sans-serif;
+$font-family: 'Pretendard', sans-serif;
+
+@mixin font_bold {
+  font-family: $font-family;
+  font-weight: 700;
+}
+
+@mixin font_regular {
+  font-family: $font-family;
+  font-weight: 400;
+}
+
+@mixin Font28B {
+  @include font_bold;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: -0.28px;
+}
+
+@mixin Font24B {
+  @include font_bold;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.24px;
+}
+
+@mixin Font24R {
+  @include font_regular;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.24px;
+}
+
+@mixin Font20B {
+  @include font_bold;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.2px;
+}
+
+@mixin Font20R {
+  @include font_regular;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: -0.2px;
+}
+
+@mixin Font18B {
+  @include font_bold;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.18px;
+}
+
+@mixin Font18R {
+  @include font_regular;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.18px;
+}
+
+@mixin Font16B {
+  @include font_bold;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.16px;
+}
+
+@mixin Font16R {
+  @include font_regular;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.16px;
+}
+
+@mixin Font15B {
+  @include font_bold;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+}
+
+@mixin Font15R {
+  @include font_regular;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+}
+
+@mixin Font14B {
+  @include font_bold;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.07px;
+}
+
+@mixin Font14R {
+  @include font_regular;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.07px;
+}
+
+@mixin Font12R {
+  @include font_regular;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.06px;
+}
