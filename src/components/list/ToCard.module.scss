@@ -1,0 +1,34 @@
+.listcard {
+  width: 275px;
+  height: 260px;
+  border-radius: 16px;
+  border: 1px solid #0000001a;
+  padding: 30px 24px 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 2px 12px 0px #00000014;
+
+  
+}
+
+.profileImgs {
+  display: flex;
+  align-items: flex-start;
+  gap: -12px;
+}
+
+.profileImg {
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+  border: 1.5px solid #fff;
+  background: #fff;
+}
+
+.persons {
+  padding: 5px 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 30px;
+  background: #fff;
+}
