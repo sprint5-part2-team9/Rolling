@@ -2,9 +2,9 @@
 import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({isbutton = true}) {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isbutton ? `` : styles.noButton}`}>
       <nav className={styles.frame}>
         <Link to="/">
           <h1 className={`${styles.title}`}>Rolling</h1>
