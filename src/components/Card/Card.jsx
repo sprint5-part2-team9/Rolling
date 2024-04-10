@@ -36,7 +36,9 @@ const Card = ({ edited = true }) => {
         </button>
       )}
       <CardFrom data={data} />
-      <p className={styles.message}>{data?.content}</p>
+      <p className={styles.message} style={{ fontFamily: data?.font }}>
+        {data?.content}
+      </p>
       <CreatedDay date={data?.createdAt} />
     </div>
   );
