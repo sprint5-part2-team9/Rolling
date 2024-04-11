@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  height: 68px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile {
+  width: 76px;
+  height: 28px;
+  margin: 11px;
+}
+
+.bar {
+  height: 28px;
+  color: #eee;
+  margin: 13px;
+}
+
+.bar2 {
+  height: 28px;
+  color: #eee;
+  margin: 13px;
+}
+
+.emoji {
+  border-radius: 32px;
+  width: 66px;
+  height: 36px;
+  padding: 8px 12px;
+  color: #fff;
+  background-color: rgba($color: #000000, $alpha: 0.54);
+  border: 1px solid rgba($color: #000000, $alpha: 0.54);
+  margin: 4px;
+}
+
+.arrowButton {
+  background-image: url('../assets/arrowButton.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.add {
+  background-image: url('../assets/emojiAdd.svg');
+  background-repeat: no-repeat;
+  background-position: 15px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 88px;
+  height: 36px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.emojiPickerContainer {
+  position: absolute;
+  left: 1300px;
+  top: 130px;
+  z-index: 1;
+}
+
+.share {
+  background-image: url('../assets/share.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 56px;
+  height: 36px;
+  cursor: pointer;
+}
