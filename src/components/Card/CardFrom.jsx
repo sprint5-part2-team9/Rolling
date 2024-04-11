@@ -5,13 +5,17 @@ import styles from './CardFrom.module.scss';
 
 const Relation = ({ relationship = '지인' }) => {
   const relation = function (relate) {
-    if (relate === '동료') return 'coWorker';
-    if (relate === '가족') return 'family';
-    if (relate === '친구') return 'friend';
-    return 'acquaintance';
+    if (relate === '동료') return '-coWorker';
+    if (relate === '가족') return '-family';
+    if (relate === '친구') return '-friend';
+    return '-acquaintance';
   };
 
-  return <span className={styles[relation(relationship)]}>{relationship}</span>;
+  return (
+    <span className={`${styles.badge} ${styles[relation(relationship)]}`}>
+      {relationship}
+    </span>
+  );
 };
 
 const CardFrom = ({ data }) => {

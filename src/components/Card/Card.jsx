@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
 import CardFrom from './CardFrom';
-import { deleteMessage } from '../API';
+import { deleteMessage } from '../Api';
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);

@@ -5,7 +5,7 @@ import plus from '../../assets/plus.png';
 import styles from './Card.module.scss';
 import { Link } from 'react-router-dom';
 
-const EmptyCard = () => {
+const AddCard = () => {
   return (
     <div className={`${styles.frame} ${styles.empty}`}>
       <Link className={styles.circle} to="./message">
@@ -15,4 +15,4 @@ const EmptyCard = () => {
   );
 };
 
-export default EmptyCard;
+export default AddCard;
