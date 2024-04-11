@@ -58,12 +58,8 @@ function Message() {
 
   const handleCreateMessage = async () => {
     try {
-      // 메시지를 생성하기 위해 API 함수를 호출합니다.
       await postMessages(recipientId, name, relationship, content, font, profileImageURL);
-
-      // 생성 후 다른 작업을 수행하거나 페이지를 이동할 수 있습니다.
     } catch (error) {
-      // 오류 처리를 수행합니다.
       console.error("메시지 생성 중 오류 발생:", error);
     }
   };
@@ -75,7 +71,7 @@ function Message() {
     <>
       <div className={styles.container}>
         <section className={styles.section}>
-          <label for="name">From.</label>
+          <label htmlFor="name">From.</label>
           <Input
             id="name"
             placeholder="이름을 입력해 주세요."
@@ -84,11 +80,11 @@ function Message() {
           />
         </section>
         <section className={styles.section}>
-          <label for="profile_img">프로필 이미지</label>
+          <label htmlFor="profile_img">프로필 이미지</label>
           <ProfileImage id="profile_img" onChange={setProfileImageURL} />
         </section>
         <section className={styles.section}>
-          <label for="relationship">상대와의 관계</label>
+          <label htmlFor="relationship">상대와의 관계</label>
           <Dropdown
             id="relationship"
             options={relationshipOptions}
@@ -97,11 +93,11 @@ function Message() {
           />
         </section>
         <section className={styles.section}>
-          <label for="content">내용을 입력해 주세요</label>
+          <label htmlFor="content">내용을 입력해 주세요</label>
           <Editor id="content" onChange={handleContentChange} />
         </section>
         <section className={styles.section}>
-          <label for="font">폰트 선택</label>
+          <label htmlFor="font">폰트 선택</label>
           <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
       </div>

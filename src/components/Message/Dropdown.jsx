@@ -42,10 +42,12 @@ function Dropdown({ options, value, onChange }) {
       {isOpen && (
         <ul className={styles.options}>
           {options.map((option, index) => (
-            <li key={index} className={styles.option}>
-              <button type="button" onClick={() => handleOptionClick(option.value)}>
-                {option.label}
-              </button>
+            <li
+              key={index}
+              className={styles.option}
+              onClick={() => handleOptionClick(option.value)}
+            >
+              <button type="button">{option.label}</button>
             </li>
           ))}
         </ul>
