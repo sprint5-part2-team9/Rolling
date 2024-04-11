@@ -24,7 +24,6 @@ function Message() {
   const [content, setContent] = useState("");
   const [font, setFont] = useState("Noto Sans");
   const [profileImageURL, setProfileImageURL] = useState("");
-  const [recipientId, setRecipientId] = useState("");
 
   const relationshipOptions = [
     { value: "친구", label: "친구" },
@@ -58,7 +57,7 @@ function Message() {
 
   const handleCreateMessage = async () => {
     try {
-      await postMessages(recipientId, name, relationship, content, font, profileImageURL);
+      await postMessages(1, name, relationship, content, font, profileImageURL);
     } catch (error) {
       console.error("메시지 생성 중 오류 발생:", error);
     }
@@ -100,8 +99,8 @@ function Message() {
           <label htmlFor="font">폰트 선택</label>
           <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
+        <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
       </div>
-      <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
     </>
   );
 }
