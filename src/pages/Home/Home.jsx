@@ -1,16 +1,17 @@
 // Home.jsx
 import Header from "../../components/Header";
 import Main from "../../components/Main";
+import example from "../../components/Card/example.json";
 import Card from "../../components/Card/Card";
-import EmptyCard from "../../components/Card/EmptyCard";
+import AddCard from "../../components/Card/AddCard";
 
 function Home() {
   return (
     <>
       <Header />
       <Main>
-        <Card />
-        <EmptyCard />
+        <Card message={example} />
+        <AddCard />
       </Main>
     </>
   );

@@ -51,35 +51,31 @@
   }
 }
 
-%badge {
+.badge {
   display: inline-flex;
   padding: 0px 8px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   @include Font14R;
-}
 
-.acquaintance {
-  @extend %badge;
-  background-color: $orange1;
-  color: $orange5;
-}
+  &.-acquaintance {
+    background-color: $orange1;
+    color: $orange5;
+  }
 
-.coWorker {
-  @extend %badge;
-  background-color: $purple1;
-  color: $purple6;
-}
+  &.-coWorker {
+    background-color: $purple1;
+    color: $purple6;
+  }
 
-.family {
-  @extend %badge;
-  background-color: $green1;
-  color: $green5;
-}
+  &.-family {
+    background-color: $green1;
+    color: $green5;
+  }
 
-.friend {
-  @extend %badge;
-  background-color: $blue1;
-  color: $blue5;
+  &.-friend {
+    background-color: $blue1;
+    color: $blue5;
+  }
 }
