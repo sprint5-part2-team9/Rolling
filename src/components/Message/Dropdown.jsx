@@ -16,27 +16,36 @@ function Dropdown({ options, value, onChange }) {
     setIsOpen(false);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      toggleDropdown();
+    }
+  };
+
   return (
     <div className={styles.dropdown_wrapper}>
-      <div className={styles.dropdown} onClick={toggleDropdown}>
+      <div
+        className={styles.dropdown}
+        role="button"
+        tabIndex={0}
+        onClick={toggleDropdown}
+        onKeyDown={handleKeyPress}
+      >
         <span>{value}</span>
         <img
           src={isOpen ? topIcon : downIcon}
           className={styles.dropdown_icon}
           width={15}
           height={15}
-          alt="dropdown icon"
         />
       </div>
       {isOpen && (
         <ul className={styles.options}>
           {options.map((option, index) => (
-            <li
-              key={index}
-              className={styles.option}
-              onClick={() => handleOptionClick(option.value)}
-            >
-              {option.label}
+            <li key={index} className={styles.option}>
+              <button type="button" onClick={() => handleOptionClick(option.value)}>
+                {option.label}
+              </button>
             </li>
           ))}
         </ul>

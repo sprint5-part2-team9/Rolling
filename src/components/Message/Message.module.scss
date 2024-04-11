@@ -1,4 +1,4 @@
-@import "../../../global.scss";
+@import "../../global.scss";
 
 .container {
   display: flex;
@@ -10,10 +10,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
 
-.section h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: $gray9;
+  label {
+    @include Font24B;
+    color: $gray9;
+  }
 }
