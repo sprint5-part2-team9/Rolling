@@ -16,27 +16,13 @@ import colorsCardGreen from "../../assets/Type_colors=card_list_05.png";
     "createdAt": "2023-10-26T13:19:31.401765Z",
     "messageCount": 3}
 */
-
-/*
-  to-do list
-  1. messageCount 3명 초과시만 숫자 프로필 이미지 노출(-3명 제외)
-  2. 카드 배경화면 사진,색에 따른 폰트색 변경 
-  3. 이모지 추가
-
-*/
 const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
   const [background, setBackground] = useState(colorsCardPurple);
 
-  const fromUserImg =
-    messages &&
-    messages.map((Img) => (
-      <img
-        className={styles.profileImg}
-        key={Img.id}
-        src={Img.profileImageURL}
-        alt="profileimg"
-      />
-    ));
+  useEffect(() => {
+    const color = backgroundItem();
+    setBackground(color);
+  }, []);
 
   const backgroundItem = () => {
     let usingColor = "";
@@ -63,26 +49,55 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
     return usingColor;
   };
 
-  useEffect(() => {
-    const color = backgroundItem();
-    setBackground(color);
-  }, []);
+  const fromUserImg =
+    reactions &&
+    messages.map((Img) => (
+      <img
+        className={styles.profileImg}
+        key={Img.id}
+        src={Img.profileImageURL}
+        alt="profileimg"
+      />
+    ));
 
+  const topReactions =
+    reactions &&
+    reactions.map((item) => (
+      <div
+        className={styles.emoji}
+        key={item.id}
+        emoji={item.emoji}
+        count={item.count}
+        alt="reactions"
+      >
+        {item.emoji} {item.count}
+      </div>
+    ));
+
+  //
   return (
-    <section
-      className={styles.listcard}
-      style={{ backgroundImage: `url(${background})` }}
-    >
-      <Link to={`/post/${id}`}>
-        <h2>TO.{name}</h2>
+    <Link to={`/post/${id}`} style={{ color: "inherit" }}>
+      <section
+        className={styles.tocard}
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <h1 style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
+          TO.{name}
+        </h1>
         <div className={styles.profileImgs}>
           {fromUserImg}
-          <div className={styles.persons}>+{count - 3}</div>
+          {count - 3 > 0 && <div className={styles.persons}>+{count - 3}</div>}
         </div>
-        <div>{count}명이 작성했어요!</div>
+        <h2
+          className="countText"
+          style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}
+        >
+          {count} <span>명이 작성했어요!</span>
+        </h2>
         <hr />
-      </Link>
-    </section>
+        <div className={styles.emojiItems}>{topReactions}</div>
+      </section>
+    </Link>
   );
 };
 

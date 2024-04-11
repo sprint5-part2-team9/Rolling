@@ -1,3 +1,4 @@
+import styles from "./ToCardList.module.scss";
 import ToCard from "./ToCard";
 import { useContext } from "react";
 import { RollingPaperContext } from "./ListMain";
@@ -12,12 +13,12 @@ function ToCardList() {
     
     */
 
-
   const ToCards =
     data &&
     data.map((Carddata) => (
       <ToCard
         key={Carddata.id}
+        id={Carddata.id}
         count={Carddata.messageCount}
         bgColor={Carddata.backgroundColor}
         bgImg={Carddata.backgroundImageURL}
@@ -27,7 +28,13 @@ function ToCardList() {
       />
     ));
 
-  return <>{ToCards}</>;
+  return (
+    <li className={styles.cardList}>
+      <button></button>
+      {ToCards}
+      <button></button>
+    </li>
+  );
 }
 
 export default ToCardList;
