@@ -75,9 +75,11 @@
   cursor: pointer;
 }
 
-.emojiPick {
-  top: 300px;
-  right: 100px;
+.emojiPickerContainer {
+  position: absolute;
+  left: 1300px;
+  top: 130px;
+  z-index: 1;
 }
 
 .share {

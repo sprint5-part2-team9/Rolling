@@ -3,12 +3,18 @@ import profile from '../assets/profile.svg';
 import { useState } from 'react';
 import ShareDropdown from './ShareDropdown';
 import { ToastContainer } from 'react-toastify';
+import EmojiPicker from 'emoji-picker-react';
 
 const Subheader = () => {
   const [moreShareView, setMoreShareView] = useState(false);
+  const [emojiPick, setEmojiPick] = useState(false);
 
   const moreShare = () => {
     setMoreShareView(!moreShareView);
+  };
+
+  const addEmoji = () => {
+    setEmojiPick(!emojiPick);
   };
 
   return (
@@ -25,7 +31,19 @@ const Subheader = () => {
           <button className={styles.emoji}>😍16</button>
           <button className={styles.emoji}>🎉10</button>
           <button className={styles.arrowButton} />
-          <button className={styles.add}>추가</button>
+          <button
+            className={styles.add}
+            emojiPick={emojiPick}
+            onClick={addEmoji}
+          >
+            추가
+          </button>
+          {emojiPick && (
+            <div className={styles.emojiPickerContainer}>
+              <EmojiPicker className={styles.emojiPick} />
+            </div>
+          )}
+
           <div className={styles.bar2}>|</div>
           <button
             className={styles.share}
