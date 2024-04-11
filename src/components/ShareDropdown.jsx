@@ -1,5 +1,5 @@
-import styles from './ShareDropdown.module.scss';
-import CopyClipboard from './CopyClipboard';
+import styles from "./ShareDropdown.module.scss";
+import CopyClipboard from "./CopyClipboard";
 
 function ShareDropdown() {
   return (

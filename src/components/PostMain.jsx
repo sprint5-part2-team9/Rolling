@@ -36,7 +36,7 @@ function PostMain() {
             이미지
           </button>
         </div>
-        <Option ColorOrImg={selectedButton}/>
+        <Option ColorOrImg={selectedButton} />
       </form>
     </main>
   );
