@@ -1,0 +1,18 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+.notosanskr * {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.nanummyeongjo * {
+  font-family: "Nanum Myeongjo", serif;
+}
+
+@font-face {
+  font-family: "Handletter";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Handletter.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
