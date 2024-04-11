@@ -37,7 +37,6 @@ function Editor() {
   return (
     <>
       <ReactQuill
-        ref={editorRef}
         style={{ height: "260px" }}
         theme="snow"
         modules={modules}
