@@ -17,7 +17,7 @@ function BackImg({ imgurl, onclick, isSelected }) {
   );
 }
 
-function Option({ ColorOrImg }) {
+function Option({ ColorOrImg, setBackGround }) {
   const imgData = useFetch("https://rolling-api.vercel.app/background-images/");
 
   const [selectedColor, setSelectedColor] = useState("orange"); //선택된 컬러 state
@@ -25,11 +25,13 @@ function Option({ ColorOrImg }) {
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
+    setBackGround(color); //최종 선택 반영
     setSelectedBackImg(null); // 이미지 선택 해제
   };
 
   const handleBackImgClick = (url) => {
     setSelectedBackImg(url);
+    setBackGround(url); //최종선택 반영
     setSelectedColor(null); // 컬러 선택 해제
   };
 
@@ -39,6 +41,8 @@ function Option({ ColorOrImg }) {
     if (imgData.isError) return <div>Error occurred</div>;
     if (!selectedBackImg && imgData.data?.imageUrls.length > 0) {
       setSelectedBackImg(imgData.data.imageUrls[0]);
+      setSelectedColor(null);
+      setBackGround(imgData.data.imageUrls[0]);
     }
     return (
       <div className={styles.Options}>

@@ -1,13 +1,30 @@
 import styles from "./PostMain.module.scss";
-import Input from "./Msg/Input";
+import Input from "./Message/Input";
 import { useState } from "react";
 import Option from "./Option";
 //Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
 
+const colors = {
+  'orange' : '$orange2',
+  'purple' : '$purple2',
+  'blue' : '$blue2',
+  'green' : '$green2',
+};
+
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
+  const [selectedBackGround, setSelectedBackGround] = useState(colors.orange);
+
+  const pickBackgorund = (picked) => { //최종 선택된 배경
+    if(selectedButton === 'color') {
+      setSelectedBackGround(colors[picked])
+    }
+    else
+    setSelectedBackGround(picked);
+  };
 
   const handleToggleClick = (buttonName) => {
+    
     setSelectedButton(buttonName);
   };
 
@@ -36,7 +53,9 @@ function PostMain() {
             이미지
           </button>
         </div>
-        <Option ColorOrImg={selectedButton}/>
+        <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund}/>
+        <div>{selectedBackGround}</div>
+        <button>생성하기</button>
       </form>
     </main>
   );
