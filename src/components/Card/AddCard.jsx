@@ -5,9 +5,9 @@ import plus from '../../assets/plus.png';
 import styles from './Card.module.scss';
 import { Link } from 'react-router-dom';
 
-const EmptyCard = () => {
+const AddCard = () => {
   return (
-    <div className={`${styles.frame} ${styles.empty}`}>
+    <div className={`${styles.frame} ${styles.add}`}>
       <Link className={styles.circle} to="./message">
         <img src={plus} alt="새로 만들기" height={24} width={24} />
       </Link>
@@ -15,4 +15,4 @@ const EmptyCard = () => {
   );
 };
 
-export default EmptyCard;
+export default AddCard;
