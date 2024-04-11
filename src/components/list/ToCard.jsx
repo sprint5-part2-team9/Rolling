@@ -94,7 +94,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
         >
           {count} <span>명이 작성했어요!</span>
         </h2>
-        <hr />
+        <div className={styles.line} />
         <div className={styles.emojiItems}>{topReactions}</div>
       </section>
     </Link>
