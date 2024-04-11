@@ -9,7 +9,7 @@ content: 메세지의 내용으로, Editor 컴포넌트에서 내용을 전달�
 font: 메세지에 사용할 폰트. font.css 파일에 import 되어있음. value 이름 달라서 수정 要
 createdAt: 객체 생성 시점
 */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { postMessages } from "../../api/Api";
 import styles from "./Message.module.scss";
 import Input from "./Input";
@@ -17,6 +17,7 @@ import Dropdown from "./Dropdown";
 import Editor from "./Editor";
 import ProfileImage from "./ProfileImage";
 import CreateBtn from "./CreateBtn";
+import { useParams } from "react-router-dom";
 
 function Message() {
   const [name, setName] = useState("");
@@ -24,6 +25,13 @@ function Message() {
   const [content, setContent] = useState("");
   const [font, setFont] = useState("Noto Sans");
   const [profileImageURL, setProfileImageURL] = useState("");
+  const [recipientId, setRecipientId] = useState("");
+  const { id } = useParams();
+
+  useEffect(() => {
+    // URL 파라미터에서 가져온 recipientId를 설정
+    setRecipientId(id);
+  }, [id]);
 
   const relationshipOptions = [
     { value: "친구", label: "친구" },
@@ -57,7 +65,9 @@ function Message() {
 
   const handleCreateMessage = async () => {
     try {
-      await postMessages(1, name, relationship, content, font, profileImageURL);
+      console.log(`메시지 생성 중 id : ${recipientId}`);
+      await postMessages(recipientId, name, relationship, content, font, profileImageURL);
+      console.log("메시지 생성 완료");
     } catch (error) {
       console.error("메시지 생성 중 오류 발생:", error);
     }
