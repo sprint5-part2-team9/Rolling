@@ -52,9 +52,9 @@ function Message() {
   const handleFontChange = (value) => {
     setFont(value);
   };
-
   const handleCreateButtonClick = () => {
     const postId = 1;
+    // eslint-disable-next-line no-restricted-globals
     history.push(`/post/${postId}`);
   };
 
@@ -92,10 +92,18 @@ function Message() {
         </section>
         <section className={styles.section}>
           <label for="font">폰트 선택</label>
-          <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
+          <Dropdown
+            id="font"
+            options={fontOptions}
+            value={font}
+            onChange={handleFontChange}
+          />
         </section>
       </div>
-      <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateButtonClick} />
+      <CreateBtn
+        disabled={isCreateButtonDisabled}
+        onClick={handleCreateButtonClick}
+      />
     </>
   );
 }

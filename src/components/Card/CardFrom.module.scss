@@ -1,4 +1,4 @@
-@import '../../global.scss';
+@import "../../global.scss";
 
 .frame {
   display: flex;
@@ -38,7 +38,7 @@
   }
 
   &::before {
-    content: 'From.';
+    content: "From.";
     font-family: $font-family;
     font-size: 20px;
     font-weight: 400;

@@ -40,7 +40,7 @@ p {
   letter-spacing: -0.16px;
 }
 .toggle {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .toggleButton {
@@ -64,4 +64,10 @@ p {
   border: 2px solid $purple6;
   background: $white;
   color: $purple6;
+}
+
+.btn__container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }

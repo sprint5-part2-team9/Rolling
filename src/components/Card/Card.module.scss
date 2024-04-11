@@ -1,4 +1,4 @@
-@import '../../global.scss';
+@import "../../global.scss";
 
 .frame {
   width: 384px;
@@ -39,7 +39,7 @@
   right: 24px;
   width: 42px;
   height: 42px;
-  background-image: url('../../assets/deleted.png');
+  background-image: url("../../assets/deleted.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   color: transparent;
@@ -94,11 +94,11 @@
 }
 
 .nanumMyeongjo {
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: "Nanum Myeongjo", serif;
 }
 
 .notoSans {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .pretendard {
@@ -106,5 +106,5 @@
 }
 
 .nanumSonPyeonJiCe {
-  font-family: 'Nanum SonPyeonJiCe', serif;
+  font-family: "Nanum SonPyeonJiCe", serif;
 }

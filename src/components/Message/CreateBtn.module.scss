@@ -1,15 +1,20 @@
 @import "../../global.scss";
 
 .createBtn {
+  width: 720px;
+  height: 56px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: $purple6;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
+  @include Font18B;
+  display: block;
 }
 
 .createBtn.disabled {
   background-color: #ced4da;
   cursor: not-allowed;
 }
+
