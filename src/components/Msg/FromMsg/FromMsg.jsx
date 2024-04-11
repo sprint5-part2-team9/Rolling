@@ -68,7 +68,7 @@ function FromMsg() {
         </section>
         <section className={styles.section}>
           <h2>내용을 입력해 주세요</h2>
-          <Editor selectedFont={font} />
+          <Editor />
         </section>
         <section className={styles.section}>
           <h2>폰트 선택</h2>

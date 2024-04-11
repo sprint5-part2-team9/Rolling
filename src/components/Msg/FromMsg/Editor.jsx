@@ -2,20 +2,12 @@
 /*
 From이 있는 글을 작성하는 페이지의 content를 작성할 수 있는 에디터 컴포넌트
 */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function Editor({ selectedFont }) {
+function Editor() {
   const [quillValue, setQuillValue] = useState("");
-
-  useEffect(() => {
-    // 에디터 폰트 설정
-    const editor = document.querySelector(".ql-editor");
-    if (editor) {
-      editor.style.fontFamily = selectedFont;
-    }
-  }, [selectedFont]);
 
   const handleQuillChange = (content, delta, source, editor) => {
     setQuillValue(editor.getContents());
@@ -45,6 +37,7 @@ function Editor({ selectedFont }) {
   return (
     <>
       <ReactQuill
+        ref={editorRef}
         style={{ height: "260px" }}
         theme="snow"
         modules={modules}
