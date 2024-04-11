@@ -1,14 +1,18 @@
 // Home.jsx
 import Header from '../../components/Header';
 import Main from '../../components/Main';
-import Subheader from '../../components/Subheader';
+import Card from '../../components/Card/Card';
+import EmptyCard from '../../components/Card/EmptyCard';
 
 function Home() {
   return (
     <>
       <Header />
-      <Subheader />
       <Main />
+      <Main>
+        <Card />
+        <EmptyCard />
+      </Main>
     </>
   );
 }
