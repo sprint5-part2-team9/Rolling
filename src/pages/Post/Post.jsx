@@ -7,8 +7,8 @@ import PostMain from "../../components/PostMain";
 function Post() {
   return (
     <>
-      <Header isbutton = {false}/>
-      <PostMain/>
+      <Header isbutton={false} />
+      <PostMain />
     </>
   );
 }
