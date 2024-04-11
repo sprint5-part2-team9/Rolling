@@ -2,7 +2,7 @@
 import classNames from "classnames"; // classnames 라이브러리
 import styles from "./Input.module.scss";
 
-function Input({ error, disabled }) {
+function Input({ placeholder, error, disabled }) {
   const inputClass = classNames(styles.input, {
     [styles.error]: error,
     [styles.disabled]: disabled,
@@ -10,7 +10,7 @@ function Input({ error, disabled }) {
 
   return (
     <>
-      <input className={inputClass} placeholder="이름을 입력해 주세요." disabled={disabled} />
+      <input className={inputClass} placeholder={placeholder} disabled={disabled} />
     </>
   );
 }
