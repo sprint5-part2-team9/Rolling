@@ -9,9 +9,7 @@ function Header() {
         <Link to="/">
           <h1 className={`${styles.title}`}>Rolling</h1>
         </Link>
-        <Link to="/post">
-          <button type="button">롤링 페이퍼 만들기</button>
-        </Link>
+        <Link to="/post">롤링 페이퍼 만들기</Link>
       </nav>
     </header>
   );
