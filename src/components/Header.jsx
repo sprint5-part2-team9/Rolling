@@ -9,7 +9,7 @@ function Header({ isbutton = true }) {
         <h1 className={`${styles.title}`}>
           <Link to="/">Rolling</Link>
         </h1>
-        {isbutton && <Link to="/post">롤링 페이퍼 만들기</Link>}
+        <Link to="/post">롤링 페이퍼 만들기</Link>
       </nav>
     </header>
   );

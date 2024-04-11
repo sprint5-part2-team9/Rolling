@@ -1,10 +1,10 @@
-//API.jsx
+//Api.jsx
 /*서버에 요청하는 API 모음집, 
 각 요청의 response들은 https://codeit.notion.site/API-d9eecacf2dbd4f268baf33cd11190a78 참조 */
 
 const BASE_URL = 'https://rolling-api.vercel.app/5-9';
 
-/*롤링 페이퍼 대상(redipent)관련 API*/
+/*롤링 페이퍼 대상(redipent)관련 Api*/
 
 //롤링 페이퍼 대상 생성
 export const postRecipients = async (name, bgColor) => {
