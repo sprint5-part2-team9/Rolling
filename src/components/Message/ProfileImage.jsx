@@ -22,15 +22,21 @@ const profileImages = [
 
 const defaultImage = "https://i.pinimg.com/236x/e2/21/f0/e221f0954109ff15ad17ad7d05a1859b.jpg";
 
-function ProfileImage() {
+function ProfileImage({ onChange }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
+    if (onChange) {
+      onChange(image);
+    }
   };
 
   const handleDefaultImageClick = () => {
     setSelectedImage(defaultImage);
+    if (onChange) {
+      onChange(defaultImage);
+    }
   };
 
   return (

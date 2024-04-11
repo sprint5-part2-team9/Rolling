@@ -10,6 +10,7 @@ font: 메세지에 사용할 폰트. font.css 파일에 import 되어있음. val
 createdAt: 객체 생성 시점
 */
 import { useState } from "react";
+import { postMessages } from "../../api/Api";
 import styles from "./Message.module.scss";
 import Input from "./Input";
 import Dropdown from "./Dropdown";
@@ -22,6 +23,8 @@ function Message() {
   const [relationship, setRelationship] = useState("지인");
   const [content, setContent] = useState("");
   const [font, setFont] = useState("Noto Sans");
+  const [profileImageURL, setProfileImageURL] = useState("");
+  const [recipientId, setRecipientId] = useState("");
 
   const relationshipOptions = [
     { value: "친구", label: "친구" },
@@ -53,9 +56,16 @@ function Message() {
     setFont(value);
   };
 
-  const handleCreateButtonClick = () => {
-    const postId = 1;
-    history.push(`/post/${postId}`);
+  const handleCreateMessage = async () => {
+    try {
+      // 메시지를 생성하기 위해 API 함수를 호출합니다.
+      await postMessages(recipientId, name, relationship, content, font, profileImageURL);
+
+      // 생성 후 다른 작업을 수행하거나 페이지를 이동할 수 있습니다.
+    } catch (error) {
+      // 오류 처리를 수행합니다.
+      console.error("메시지 생성 중 오류 발생:", error);
+    }
   };
 
   // 생성하기 버튼 활성화
@@ -75,7 +85,7 @@ function Message() {
         </section>
         <section className={styles.section}>
           <label for="profile_img">프로필 이미지</label>
-          <ProfileImage id="profile_img" />
+          <ProfileImage id="profile_img" onChange={setProfileImageURL} />
         </section>
         <section className={styles.section}>
           <label for="relationship">상대와의 관계</label>
@@ -95,7 +105,7 @@ function Message() {
           <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
       </div>
-      <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateButtonClick} />
+      <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
     </>
   );
 }
