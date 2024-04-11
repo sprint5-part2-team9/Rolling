@@ -3,8 +3,8 @@
 
 import { useEffect, useState } from 'react';
 import styles from './Card.module.scss';
-import example from './example.json';
 import CardFrom from './CardFrom';
+import { deleteMessage } from './CardAPI';
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -19,7 +19,7 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = ({ edited = true }) => {
+const Card = ({ edited = true, message }) => {
   const [data, setData] = useState({});
 
   const fontStyle = function (font) {
@@ -29,19 +29,23 @@ const Card = ({ edited = true }) => {
     return 'notoSans';
   };
 
-  const handleDelete = (e) => {
-    console.log(e.target.name);
+  const handleDelete = async (e) => {
+    try {
+      await deleteMessage(e.target.name);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    setData(example);
-  }, []);
+    setData(message);
+  }, [message]);
 
   return (
     <div className={styles.frame}>
       {edited && (
         <button
-          name={data.id}
+          name={data?.id}
           className={styles.deleted}
           type="button"
           onClick={handleDelete}
@@ -50,7 +54,7 @@ const Card = ({ edited = true }) => {
         </button>
       )}
       <CardFrom data={data} />
-      <p className={`${styles.message} ${styles[fontStyle(data.font)]}`}>
+      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
         {data?.content}
       </p>
       <CreatedDay date={data?.createdAt} />
