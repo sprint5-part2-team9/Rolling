@@ -11,7 +11,10 @@ const Main = () => {
           <div className={styles.point}>Point.01</div>
           <div>
             <p className={styles.firstTitle}>
-              누구나 손쉽게, 온라인 <span>롤링 페이퍼를 만들 수 있어요</span>
+              누구나 손쉽게, 온라인{' '}
+              <span className={styles.firstTitle}>
+                롤링 페이퍼를 만들 수 있어요
+              </span>
             </p>
           </div>
           <div className={styles.description}>
@@ -30,7 +33,8 @@ const Main = () => {
           <div className={styles.point}>Point.02</div>
           <div>
             <p className={styles.secondTitle}>
-              서로에게 이모지로 감정을 <span>표현해보세요</span>
+              서로에게 이모지로 감정을{' '}
+              <span className={styles.secondTitle}>표현해보세요</span>
             </p>
           </div>
           <div className={styles.description}>
