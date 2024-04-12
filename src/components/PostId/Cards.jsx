@@ -3,21 +3,65 @@
 import styles from "./Cards.module.scss";
 import Card from "../Card/Card";
 import AddCard from "../Card/AddCard";
+import { Link, useNavigate } from "react-router-dom";
+import { deleteRecipient } from "../../Api/Api";
+import { useState } from "react";
 
-const Cards = ({ items, onClick }) => {
+const Cards = ({ items, onClick, edit, postId }) => {
+  const [tryDel, setTryDel] = useState("");
+  const navigate = useNavigate();
+
+  const handleDelete = async function () {
+    setTryDel("trying");
+    let response = false;
+    try {
+      response = await deleteRecipient(postId);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setTryDel("");
+    }
+
+    if (response) {
+      navigate("/list");
+    }
+  };
+
   return (
-    <ul className={styles.frame}>
-      <li className={styles.li} key={-1}>
-        <AddCard />
-      </li>
-      {items?.map((item) => {
-        return (
-          <li key={item.id} className={styles.li}>
-            <Card message={item} onClick={onClick} />
+    <div className={`${styles.box} ${styles[tryDel]}`}>
+      {edit && (
+        <button
+          className={`${styles.btn} ${styles["-del"]}`}
+          type="button"
+          onClick={handleDelete}
+        >
+          삭제하기
+        </button>
+      )}
+      {edit ? (
+        <Link className={`${styles.btn} ${styles["-edit"]} `} to="../">
+          수정끝내기
+        </Link>
+      ) : (
+        <Link className={`${styles.btn} ${styles["-edit"]}`} to="./edit">
+          수정하기
+        </Link>
+      )}
+      <ul className={styles.frame}>
+        {edit || (
+          <li className={styles.li} key={-1}>
+            <AddCard />
           </li>
-        );
-      })}
-    </ul>
+        )}
+        {items?.map((item) => {
+          return (
+            <li key={item.id} className={styles.li}>
+              <Card message={item} onClick={onClick} edit={edit} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

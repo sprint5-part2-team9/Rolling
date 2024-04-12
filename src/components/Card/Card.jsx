@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
-import { deleteMessage } from "../../Api/Api";
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -19,7 +18,7 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = ({ edited = true, message, onClick }) => {
+const Card = ({ edit = false, message, onClick }) => {
   const [data, setData] = useState({});
 
   const fontStyle = function (font) {
@@ -35,7 +34,7 @@ const Card = ({ edited = true, message, onClick }) => {
 
   return (
     <div className={styles.frame}>
-      {edited && (
+      {edit && (
         <button
           name={data?.id}
           className={styles.deleted}

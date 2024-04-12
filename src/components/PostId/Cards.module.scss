@@ -1,5 +1,45 @@
 @import "../../global.scss";
 
+.box {
+  position: relative;
+
+  &.trying {
+    pointer-events: none;
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 63px;
+  width: 92px;
+  height: 39px;
+
+  @media (max-width: $tablet-Max-width) {
+    position: fixed;
+    width: unset;
+    top: unset;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    z-index: 3;
+  }
+
+  &.-edit {
+    left: 0px;
+    @media (max-width: $tablet-Max-width) {
+      left: 24px;
+      top: 100px;
+    }
+  }
+
+  &.-del {
+    right: 0px;
+    @media (max-width: $tablet-Max-width) {
+      right: 24px;
+    }
+  }
+}
+
 .frame {
   display: grid;
   max-width: 1200px;

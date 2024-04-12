@@ -14,7 +14,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/post">
           <Route index element={<Post />} />
-          <Route path=":postId" element={<PostId />} />
+          <Route path=":postId">
+            <Route index element={<PostId edit={false} />} />
+            <Route path="edit" element={<PostId edit={true} />} />
+          </Route>
         </Route>
         <Route path="/post/:id/message" element={<FromMsgPage />} />
       </Routes>

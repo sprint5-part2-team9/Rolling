@@ -8,7 +8,7 @@ import Cards from "../../components/PostId/Cards";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function PostId() {
+function PostId({ edit }) {
   const { postId } = useParams();
   const [messages, setMessages] = useState([]);
   const [isLoading, setisLoading] = useState(false);
@@ -48,7 +48,12 @@ function PostId() {
       <Header />
       {/* <Subheader /> */}
       <Main>
-        <Cards items={messages} onClick={handleDelete} />
+        <Cards
+          items={messages}
+          onClick={handleDelete}
+          edit={edit}
+          postId={postId}
+        />
       </Main>
     </>
   );

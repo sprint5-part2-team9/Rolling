@@ -43,7 +43,8 @@ export const deleteRecipient = async (recipientId) => {
     method: "DELETE",
   });
   if (!response.ok) throw new Error("대상 삭제 오류");
-  return response.json();
+
+  return response.ok;
 };
 
 /*메세지 관련 API */

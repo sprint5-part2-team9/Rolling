@@ -1,5 +1,25 @@
+@import "../global.scss";
+
 .main {
   display: flex;
   padding: 0 24px;
   justify-content: center;
+  background-size: cover;
+  height: 100vh;
+
+  &.beige {
+    background-color: $orange2;
+  }
+
+  &.purple {
+    background-color: $purple2;
+  }
+
+  &.blue {
+    background-color: $blue2;
+  }
+
+  &.green {
+    background-color: $green2;
+  }
 }
