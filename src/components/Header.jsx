@@ -6,8 +6,10 @@ function Header({ isbutton = true }) {
   return (
     <header className={`${styles.header} ${isbutton ? `` : styles.noButton}`}>
       <nav className={styles.frame}>
-        <h1 className={`${styles.title}`}>
-          <Link to="/">Rolling</Link>
+        <h1>
+          <Link to="/" className={`${styles.title}`}>
+            Rolling
+          </Link>
         </h1>
         <Link to="/post">롤링 페이퍼 만들기</Link>
       </nav>

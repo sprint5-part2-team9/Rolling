@@ -36,7 +36,9 @@ $black: #000000;
 $error: #dc3a3a;
 $surface: #f6f8ff;
 
-$font-family: 'Pretendard', sans-serif;
+$font-family: "Pretendard", sans-serif;
+$tablet-Max-width: 1199px;
+$mobile-Max-width: 767px;
 
 @mixin font_bold {
   font-family: $font-family;

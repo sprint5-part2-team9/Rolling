@@ -30,7 +30,7 @@ export const getRecipientsList = async (
   return response.json();
 };
 
-//롱링 페이퍼 대상 조회
+//롤링 페이퍼 대상 조회
 export const getRecipient = async (recipientId) => {
   const response = await fetch(`${BASE_URL}/recipients/${recipientId}/`);
   if (!response.ok) throw new Error("대상 불러오기 오류");
@@ -48,7 +48,7 @@ export const deleteRecipient = async (recipientId) => {
 
 /*메세지 관련 API */
 
-//대상에게 보내는 메세지 생성 완
+//대상에게 보내는 메세지 생성
 export const postMessages = async (
   recipientId,
   sender,
@@ -91,7 +91,6 @@ export const deleteMessage = async (messageId) => {
   });
 
   if (!response.ok) throw new Error("메세지 삭제 오류");
-  return response.json();
 };
 
 /* 리액션 관련 API */
