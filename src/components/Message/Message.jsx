@@ -109,8 +109,10 @@ function Message() {
           <Editor id="content" onChange={handleContentChange} />
         </section>
         <section className={styles.section}>
+
           <label htmlFor="font">폰트 선택</label>
           <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
+
         </section>
         <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
       </div>
