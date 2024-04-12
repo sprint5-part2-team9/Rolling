@@ -3,8 +3,9 @@ import "./global.scss";
 import "./reset.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import List from "./pages/List/List";
 import Post from "./pages/Post/Post";
-import FromMsgPage from "./pages/Msg/FromMsg/FromMsgPage";
+import MessagePage from "./pages/Message/MessagePage";
 import PostId from "./pages/Post/Postid";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/list" element={<List />} />
         <Route path="/post">
           <Route index element={<Post />} />
           <Route path=":postId">
@@ -19,7 +21,7 @@ function App() {
             <Route path="edit" element={<PostId edit={true} />} />
           </Route>
         </Route>
-        <Route path="/post/:id/message" element={<FromMsgPage />} />
+        <Route path="/post/:id/message" element={<MessagePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 
 function Header({ isbutton = true }) {
   return (
-    <header className={`${styles.header} ${isbutton ? `` : styles.noButton}`}>
+    <header className={styles.header}>
       <nav className={styles.frame}>
-        <h1>
-          <Link to="/" className={`${styles.title}`}>
-            Rolling
+        <Link to="/">
+          <h1 className={`${styles.title}`}>Rolling</h1>
+        </Link>
+        {isbutton && (
+          <Link to="/post">
+            <button type="button">롤링 페이퍼 만들기</button>
           </Link>
-        </h1>
-        <Link to="/post">롤링 페이퍼 만들기</Link>
+        )}
       </nav>
     </header>
   );

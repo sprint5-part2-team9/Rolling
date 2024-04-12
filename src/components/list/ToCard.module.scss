@@ -1,0 +1,83 @@
+.tocard {
+  width: 275px;
+  height: 260px;
+  border-radius: 16px;
+  border: 1px solid #0000001a;
+  padding: 30px 24px 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 2px 12px 0px #00000014;
+}
+
+h1 {
+  font-family: Pretendard;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+h2 {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+span {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.profileImgs {
+  display: flex;
+  align-items: center;
+  color: #000;
+  margin: 12px 0 12px;
+}
+
+.profileImg {
+  width: 28px;
+  height: 28px;
+  margin: -6px;
+  border-radius: 50px;
+  border: 1.5px solid #fff;
+  background: #fff;
+}
+
+.persons {
+  margin: -6px;
+  padding: 5px 6px;
+
+  border-radius: 40px;
+  background: #fff;
+  text-align: center;
+}
+
+.line {
+  width: 227px;
+  height: 1px;
+  margin: 43px 0 16px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.emojiItems {
+  display: flex;
+  gap: 8px;
+  color: #fff;
+}
+
+.emoji {
+  padding: 8px 12px;
+  flex-direction: column;
+  border-radius: 32px;
+  background: rgba(0, 0, 0, 0.54);
+  color: #fff;
+}

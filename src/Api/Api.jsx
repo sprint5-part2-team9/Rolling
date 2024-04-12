@@ -22,11 +22,7 @@ export const postRecipients = async (name, bgColor, bgImg = null) => {
 };
 
 //롤링 페이퍼 대상 목록 조회
-export const getRecipientsList = async (
-  limit = 8,
-  offset = 0,
-  sort = "like"
-) => {
+export const getRecipientsList = async (limit = 8, offset = 0, sort = "like") => {
   const response = await fetch(
     `${BASE_URL}/recipients/?limit=${limit}&offset=${offset}&sort=${sort}`
   );
@@ -62,20 +58,17 @@ export const postMessages = async (
   font,
   profileImageURL
 ) => {
-  const response = await fetch(
-    `${BASE_URL}/recipients/${recipientId}/messages/`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        sender: sender,
-        relationship: relationship,
-        content: content,
-        font: font,
-        profileImageURL: profileImageURL,
-      }),
-    }
-  );
+  const response = await fetch(`${BASE_URL}/recipients/${recipientId}/messages/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      sender: sender,
+      relationship: relationship,
+      content: content,
+      font: font,
+      profileImageURL: profileImageURL,
+    }),
+  });
   if (!response.ok) throw new Error("메세지 보내기 오류");
   return response.json();
 };
@@ -102,17 +95,14 @@ export const deleteMessage = async (messageId) => {
 
 //대상에게 리액션 달기
 export const postReaction = async (recipientId, emoji, type) => {
-  const response = await fetch(
-    `${BASE_URL}/recipients/${recipientId}/reactions/`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        emoji: emoji,
-        type: type,
-      }),
-    }
-  );
+  const response = await fetch(`${BASE_URL}/recipients/${recipientId}/reactions/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      emoji: emoji,
+      type: type,
+    }),
+  });
   if (!response.ok) throw new Error("리액션 달기 오류");
   return response.json();
 };

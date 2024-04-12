@@ -9,7 +9,6 @@ function Home() {
   return (
     <>
       <Header />
-      <Main />
       <Main>
         <Card message={example} />
         <AddCard />

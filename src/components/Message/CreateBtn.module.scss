@@ -1,0 +1,27 @@
+@import "../../global.scss";
+
+.createBtn {
+  width: 100%;
+  height: 56px;
+  background-color: $purple6;
+  color: $white;
+  border: none;
+  border-radius: 12px;
+  @include Font18B;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple7;
+  }
+
+  &:focus {
+    background-color: $purple8;
+    border: 2px solid $purple9;
+  }
+}
+
+.createBtn.disabled {
+  background-color: $gray3;
+  cursor: not-allowed;
+}
+
