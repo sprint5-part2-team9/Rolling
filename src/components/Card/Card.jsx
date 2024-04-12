@@ -1,12 +1,10 @@
 //Card.jsx
 //카드 컴포넌트, 메세지 추가하는 카드는 EmptyCard.jsx입니다.
 
-
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import { deleteMessage } from "../../Api/Api";
-
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -21,7 +19,7 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = ({ edited = true, message }) => {
+const Card = ({ edit = false, message, onClick }) => {
   const [data, setData] = useState({});
 
   const fontStyle = function (font) {
@@ -31,27 +29,26 @@ const Card = ({ edited = true, message }) => {
     return "notoSans";
   };
 
-  const handleDelete = async (e) => {
-    try {
-      await deleteMessage(e.target.name);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
     setData(message);
   }, [message]);
 
   return (
     <div className={styles.frame}>
-      {edited && (
-        <button name={data?.id} className={styles.deleted} type="button" onClick={handleDelete}>
+      {edit && (
+        <button
+          name={data?.id}
+          className={styles.deleted}
+          type="button"
+          onClick={onClick}
+        >
           삭제
         </button>
       )}
       <CardFrom data={data} />
-      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>{data?.content}</p>
+      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+        {data?.content}
+      </p>
       <CreatedDay date={data?.createdAt} />
     </div>
   );
