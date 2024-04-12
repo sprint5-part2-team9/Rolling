@@ -3,28 +3,19 @@ import Input from "./Message/Input";
 import { useState } from "react";
 import Option from "./Option";
 import CreateBtn from "./Message/CreateBtn";
+import { postRecipients } from "../Api/Api";
 //Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
 
 //name : input.value,
 //backgroundimg : selectedBackground,
 
-const colors = {
-  orange: "$orange2",
-  purple: "$purple2",
-  blue: "$blue2",
-  green: "$green2",
-};
 
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
-  const [selectedBackGround, setSelectedBackGround] = useState(colors.orange);
+  const [selectedBackGround, setSelectedBackGround] = useState("beige");
   const [name, setName] = useState("");
 
   const isCreateButtonDisabled = !name.trim();
-  const postData = {
-    name,
-    backgroundColor: selectedBackGround,
-  };
 
   const handleNameChange = (value) => {
     setName(value);
@@ -32,13 +23,23 @@ function PostMain() {
 
   const pickBackgorund = (picked) => {
     //최종 선택된 배경
-    if (selectedButton === "color") {
-      setSelectedBackGround(colors[picked]);
-    } else setSelectedBackGround(picked);
+    setSelectedBackGround(picked);
   };
+  
 
   const handleToggleClick = (buttonName) => {
     setSelectedButton(buttonName);
+  };
+
+  const handleCreatePost = async () => {
+    try {
+      console.log('post 생성중..');
+      await postRecipients(name, selectedBackGround);
+      console.log('생성완료');
+    } catch(error) {
+      console.log('생성 실패 :');
+      console.error(error);
+    }
   };
 
   return (
@@ -73,7 +74,7 @@ function PostMain() {
         </div>
         <div className={styles.btn__container}>
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
-          <CreateBtn disabled={isCreateButtonDisabled} />
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost}/>
         </div>
       </form>
     </main>

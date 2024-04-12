@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Option.module.scss";
 import selectedImg from "../assets/check.svg";
 import useFetch from "../Hooks/useFetch";
@@ -20,7 +20,7 @@ function BackImg({ imgurl, onclick, isSelected }) {
 function Option({ ColorOrImg, setBackGround }) {
   const imgData = useFetch("https://rolling-api.vercel.app/background-images/");
 
-  const [selectedColor, setSelectedColor] = useState("orange"); //선택된 컬러 state
+  const [selectedColor, setSelectedColor] = useState("beige"); //선택된 컬러 state
   const [selectedBackImg, setSelectedBackImg] = useState(null); //선택된 배경이미지 state
 
   const handleColorClick = (color) => {
@@ -35,6 +35,12 @@ function Option({ ColorOrImg, setBackGround }) {
     setSelectedColor(null); // 컬러 선택 해제
   };
 
+  useEffect(() => {
+    if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
+      setBackGround(imgData.data.imageUrls[0]);
+    }
+  }, [ColorOrImg, imgData.data, setBackGround]);
+
   if (ColorOrImg === "image") {
     //이미지 선택시 보여지는 레이아웃
     if (imgData.isLoading) return <div>Loading...</div>;
@@ -42,7 +48,6 @@ function Option({ ColorOrImg, setBackGround }) {
     if (!selectedBackImg && imgData.data?.imageUrls.length > 0) {
       setSelectedBackImg(imgData.data.imageUrls[0]);
       setSelectedColor(null);
-      setBackGround(imgData.data.imageUrls[0]);
     }
     return (
       <div className={styles.Options}>
@@ -62,10 +67,10 @@ function Option({ ColorOrImg, setBackGround }) {
     //컬러 선택 레이아웃
     <div className={styles.Options}>
       <div
-        className={`${styles.Option} ${styles.orange}`}
-        onClick={() => handleColorClick("orange")}
+        className={`${styles.Option} ${styles.beige}`}
+        onClick={() => handleColorClick("beige")}
       >
-        {selectedColor === "orange" && (
+        {selectedColor === "beige" && (
           <img
             src={selectedImg}
             className={styles.selectedImg}
