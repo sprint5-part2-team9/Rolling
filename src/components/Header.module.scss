@@ -1,4 +1,4 @@
-@import url(../global.scss);
+@import "../global.scss";
 
 $headerH: 65px;
 
@@ -14,7 +14,7 @@ $headerH: 65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1248px;
+  max-width: 1200px;
   width: 100%;
 }
 
@@ -26,11 +26,17 @@ $headerH: 65px;
   font-size: 19.971px;
   line-height: normal;
   &::before {
-    content: '';
-    background-image: url('../assets/Rolling_icon.png');
+    content: "";
+    background-image: url("../assets/Rolling_icon.png");
     display: inline-block;
     width: 27.818px;
     height: 27.658px;
     margin-right: 8px;
+  }
+}
+
+.noButton {
+  button {
+    display: none;
   }
 }

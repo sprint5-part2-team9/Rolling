@@ -1,0 +1,81 @@
+@import "../../global.scss";
+
+.frame {
+  display: flex;
+  column-gap: 14px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $gray2;
+}
+
+.imgCase {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid $gray2;
+  background-color: $white;
+  overflow: hidden;
+  .img {
+    object-fit: cover;
+  }
+}
+
+.from {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.name {
+  font-family: $font-family;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+
+  @media (max-width: 787px) {
+    @include Font16B;
+  }
+
+  &::before {
+    content: "From.";
+    font-family: $font-family;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-right: 6px;
+
+    @media (max-width: 787px) {
+      @include Font18R;
+    }
+  }
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0px 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  @include Font14R;
+
+  &.-acquaintance {
+    background-color: $orange1;
+    color: $orange5;
+  }
+
+  &.-coWorker {
+    background-color: $purple1;
+    color: $purple6;
+  }
+
+  &.-family {
+    background-color: $green1;
+    color: $green5;
+  }
+
+  &.-friend {
+    background-color: $blue1;
+    color: $blue5;
+  }
+}

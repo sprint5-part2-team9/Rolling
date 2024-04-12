@@ -1,0 +1,32 @@
+@import '../global.scss';
+
+.dropdown {
+  width: 140px;
+  height: 120px;
+  border: 1px solid $gray3;
+  border-radius: 8px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  text-align: left;
+  position: relative;
+  right: 18px;
+  top: 40px;
+  list-style-type: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+li.kakao {
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+li.url {
+  margin-top: 12px;
+  margin-bottom: 10px;
+}

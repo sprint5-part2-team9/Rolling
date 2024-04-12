@@ -1,10 +1,9 @@
 // Main.jsx
-function Main() {
-  return (
-    <main>
-      <h2>Main</h2>
-    </main>
-  );
+
+import styles from "./Main.module.scss";
+
+function Main({ children }) {
+  return <main className={styles.main}>{children}</main>;
 }
 
 export default Main;

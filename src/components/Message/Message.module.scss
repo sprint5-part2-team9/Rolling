@@ -1,0 +1,18 @@
+@import "../../global.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  label {
+    @include Font24B;
+    color: $gray9;
+  }
+}
