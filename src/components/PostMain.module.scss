@@ -65,3 +65,9 @@ p {
   background: $white;
   color: $purple6;
 }
+
+.btn__container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
