@@ -7,29 +7,31 @@ const Main = () => {
   return (
     <div className={styles.main}>
       <section className={styles.section1}>
-        <div>
+        <div className={styles.first}>
           <div className={styles.point}>Point.01</div>
           <div>
-            <p className={styles.title}>누구나 손쉽게, 온라인</p>
-            <p className={styles.title}>롤링 페이퍼를 만들 수 있어요</p>
+            <p className={styles.firstTitle}>
+              누구나 손쉽게, 온라인 <span>롤링 페이퍼를 만들 수 있어요</span>
+            </p>
           </div>
           <div className={styles.description}>
             로그인 없이 자유롭게 만들어요.
           </div>
         </div>
         <div>
-          <img src={landing01} alt='메인페이지' className={styles.img} />
+          <img src={landing01} alt='메인페이지' className={styles.img1} />
         </div>
       </section>
       <section className={styles.section2}>
         <div>
-          <img src={landing02} alt='메인페이지' className={styles.img} />
+          <img src={landing02} alt='메인페이지' className={styles.img2} />
         </div>
-        <div>
+        <div className={styles.second}>
           <div className={styles.point}>Point.02</div>
           <div>
-            <p className={styles.title}>서로에게 이모지로 감정을</p>
-            <p className={styles.title}>표현해보세요</p>
+            <p className={styles.secondTitle}>
+              서로에게 이모지로 감정을 <span>표현해보세요</span>
+            </p>
           </div>
           <div className={styles.description}>
             롤링 페이퍼에 이모지를 추가할 수 있어요.
@@ -45,7 +47,6 @@ const Main = () => {
       </footer>
     </div>
   );
-  // return <main className={styles.main}>{children}</main>;
 };
 
 export default Main;
