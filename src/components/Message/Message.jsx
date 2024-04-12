@@ -10,6 +10,7 @@ font: 메세지에 사용할 폰트. font.css 파일에 import 되어있음. val
 createdAt: 객체 생성 시점
 */
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { postMessages } from "../../api/Api";
 import styles from "./Message.module.scss";
 import Input from "./Input";
@@ -27,6 +28,7 @@ function Message() {
   const [profileImageURL, setProfileImageURL] = useState("");
   const [recipientId, setRecipientId] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // URL 파라미터에서 가져온 recipientId를 설정
@@ -68,6 +70,7 @@ function Message() {
       console.log(`메시지 생성 중 id : ${recipientId}`);
       await postMessages(recipientId, name, relationship, content, font, profileImageURL);
       console.log("메시지 생성 완료");
+      navigate(`/post/${recipientId}`);
     } catch (error) {
       console.error("메시지 생성 중 오류 발생:", error);
     }
