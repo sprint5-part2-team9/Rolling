@@ -39,6 +39,11 @@ $error: #dc3a3a;
 $surface: #f6f8ff;
 
 $font-family: "Pretendard", sans-serif;
+<<<<<<< HEAD
+$tablet-Max-width: 1199px;
+$mobile-Max-width: 767px;
+=======
+>>>>>>> 4e8dc6914243fcbeb5fc89d108e0a281800c85f2
 
 @mixin font_bold {
   font-family: $font-family;

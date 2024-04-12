@@ -14,12 +14,12 @@
   row-gap: 16px;
   position: relative;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-Max-width) {
     width: 352px;
     height: 284px;
   }
 
-  @media (max-width: 787px) {
+  @media (max-width: $mobile-Max-width) {
     width: 320px;
     height: 230px;
   }
@@ -72,12 +72,12 @@
 
   @include Font18R;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-Max-width) {
     width: 304px;
     margin-bottom: 26px;
   }
 
-  @media (max-width: 787px) {
+  @media (max-width: $mobile-Max-width) {
     width: 272px;
     height: 44px;
     margin-bottom: 12px;
