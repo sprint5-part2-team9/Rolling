@@ -1,17 +1,15 @@
 // Header.jsx
-import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import styles from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
-function Header({isbutton = true}) {
+function Header({ isbutton = true }) {
   return (
     <header className={`${styles.header} ${isbutton ? `` : styles.noButton}`}>
       <nav className={styles.frame}>
-        <Link to="/">
-          <h1 className={`${styles.title}`}>Rolling</h1>
-        </Link>
-        <Link to="/post">
-          <button type="button">롤링 페이퍼 만들기</button>
-        </Link>
+        <h1 className={`${styles.title}`}>
+          <Link to="/">Rolling</Link>
+        </h1>
+        <Link to="/post">롤링 페이퍼 만들기</Link>
       </nav>
     </header>
   );

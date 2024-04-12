@@ -1,0 +1,15 @@
+@import "../../global.scss";
+
+.createBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createBtn.disabled {
+  background-color: #ced4da;
+  cursor: not-allowed;
+}
