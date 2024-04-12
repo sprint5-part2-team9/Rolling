@@ -24,6 +24,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
     setBackground(color);
   }, []);
 
+  // 배경 색
   const backgroundItem = () => {
     let usingColor = "";
     if (bgImg !== null) {
@@ -49,6 +50,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
     return usingColor;
   };
 
+  // from 프로필
   const fromUserImg =
     reactions &&
     messages.map((Img) => (
@@ -60,6 +62,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
       />
     ));
 
+  // 이모지
   const topReactions =
     reactions &&
     reactions.map((item) => (

@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/list" element={<List />} />
         <Route path="/post" element={<Post />} />
-        <Route path="/post/:id/message" element={<FromMsgPage />} />
+        <Route path="/post/:id/message" element={<MessagePage />} />
         <Route path="/post/3" element={<PostId />} />
       </Routes>
     </BrowserRouter>

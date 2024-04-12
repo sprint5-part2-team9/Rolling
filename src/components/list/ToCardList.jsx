@@ -1,10 +1,11 @@
 import styles from "./ToCardList.module.scss";
 import ToCard from "./ToCard";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { RollingPaperContext } from "./ListMain";
 
 function ToCardList() {
   const data = useContext(RollingPaperContext);
+  const [startIndex, setStartIndex] = useState(0);
 
   /*
       to-do list
@@ -12,27 +13,53 @@ function ToCardList() {
       2. 양옆 버튼
     
     */
+   
 
   const ToCards =
     data &&
-    data.map((Carddata) => (
+    data.map((CardData) => (
       <ToCard
-        key={Carddata.id}
-        id={Carddata.id}
-        count={Carddata.messageCount}
-        bgColor={Carddata.backgroundColor}
-        bgImg={Carddata.backgroundImageURL}
-        name={Carddata.name}
-        messages={Carddata.recentMessages}
-        reactions={Carddata.topReactions}
+        key={CardData.id}
+        id={CardData.id}
+        count={CardData.messageCount}
+        bgColor={CardData.backgroundColor}
+        bgImg={CardData.backgroundImageURL}
+        name={CardData.name}
+        messages={CardData.recentMessages}
+        reactions={CardData.topReactions}
       />
     ));
 
+  // messageCount 베스트순
+  const bestToCards = [...ToCards].sort((a, b) => {
+    return b.props.count - a.props.count;
+  });
+
+  // 버튼
+  const slicedBestToCards = bestToCards.slice(startIndex, startIndex + 4);
+  console.log(bestToCards)
+  console.log(slicedBestToCards)
+  console.log(data)
+
+  const handleNext = () => {
+    if (startIndex + 4 < bestToCards.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
   return (
     <li className={styles.cardList}>
-      <button></button>
-      {ToCards}
-      <button></button>
+      {startIndex !== 0 && <button className="listBtn" onClick={handlePrev}>이전</button>}
+      {slicedBestToCards}
+      {startIndex + 4 <= bestToCards.length && (
+        <button className="listBtn" onClick={handleNext}>다음</button>
+      )}
     </li>
   );
 }

@@ -1,5 +1,5 @@
 import styles from "./PostMain.module.scss";
-import Input from "./Msg/Input";
+import Input from "./Message/Input";
 import { useState } from "react";
 import Option from "./Option";
 //Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
