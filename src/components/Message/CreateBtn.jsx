@@ -5,12 +5,12 @@
 import classNames from "classnames";
 import styles from "./CreateBtn.module.scss";
 
-function CreateBtn({ disabled }) {
+function CreateBtn({ disabled, onClick }) {
   const btnClasses = classNames(styles.createBtn, { [styles.disabled]: disabled });
 
   return (
     <>
-      <button type="button" className={btnClasses} disabled={disabled}>
+      <button type="button" className={btnClasses} disabled={disabled} onClick={onClick}>
         생성하기
       </button>
     </>
