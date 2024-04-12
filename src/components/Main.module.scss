@@ -5,7 +5,7 @@
   padding: 0 24px;
   justify-content: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 
   &.beige {
     background-color: $orange2;

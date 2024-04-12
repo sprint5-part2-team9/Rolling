@@ -2,6 +2,8 @@
 
 .box {
   position: relative;
+  max-width: 1200px;
+  width: 100%;
 
   &.trying {
     pointer-events: none;

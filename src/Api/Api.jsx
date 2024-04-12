@@ -7,11 +7,15 @@ const BASE_URL = "https://rolling-api.vercel.app/5-9";
 /*롤링 페이퍼 대상(redipent)관련 Api*/
 
 //롤링 페이퍼 대상 생성
-export const postRecipients = async (name, bgColor) => {
+export const postRecipients = async (name, bgColor, bgImg = null) => {
   const response = await fetch(`${BASE_URL}/recipients/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: name, backgroundColor: bgColor }),
+    body: JSON.stringify({
+      name: name,
+      backgroundColor: bgColor,
+      backgroundImageURL: bgImg,
+    }),
   });
   if (!response.ok) throw new Error("대상 생성 오류");
   return response.json();
