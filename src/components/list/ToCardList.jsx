@@ -54,11 +54,11 @@ function ToCardList() {
 
   return (
     <li className={styles.cardList}>
-      {startIndex !== 0 && <button className="listBtn" onClick={handlePrev}>이전</button>}
+      {startIndex !== 0 && <button className={styles.listBtn} onClick={handlePrev}>이전</button>}
       {slicedBestToCards}
-      {startIndex + 4 <= bestToCards.length && (
-        <button className="listBtn" onClick={handleNext}>다음</button>
-      )}
+      {startIndex + 4 < bestToCards.length && 
+        <button className={styles.listBtn} onClick={handleNext}>다음</button>
+      }
     </li>
   );
 }

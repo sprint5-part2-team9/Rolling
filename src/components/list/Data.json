@@ -1,5 +1,5 @@
 [{
-"id": 2,
+"id": 1,
 "name": "김남준",
 "backgroundColor": "green",
 "backgroundImageURL": null,
@@ -109,7 +109,7 @@
 },
 
 {
-  "id": 2,
+  "id": 3,
   "name": "민윤기",
   "backgroundColor": "green",
   "backgroundImageURL": null,
@@ -164,7 +164,7 @@
   },
   
   {
-  "id": 2,
+  "id": 4,
   "name": "정호석",
   "backgroundColor": "green",
   "backgroundImageURL": "https://img.khan.co.kr/news/2023/06/12/rcv.YNA.20230609.PYH2023060912380000500_P1.jpg",
@@ -218,7 +218,7 @@
   ]
   },
   {
-    "id": 2,
+    "id": 5,
     "name": "박지민",
     "backgroundColor": "green",
     "backgroundImageURL": "https://img.khan.co.kr/news/2023/06/12/rcv.YNA.20230609.PYH2023060912380000500_P1.jpg",
@@ -272,7 +272,7 @@
     ]
     },
     {
-      "id": 2,
+      "id": 6,
       "name": "김태형",
       "backgroundColor": "green",
       "backgroundImageURL": "https://img.khan.co.kr/news/2023/06/12/rcv.YNA.20230609.PYH2023060912380000500_P1.jpg",
@@ -326,7 +326,7 @@
       ]
       },
       {
-        "id": 2,
+        "id": 7,
         "name": "전정국",
         "backgroundColor": "green",
         "backgroundImageURL": "https://img.khan.co.kr/news/2023/06/12/rcv.YNA.20230609.PYH2023060912380000500_P1.jpg",

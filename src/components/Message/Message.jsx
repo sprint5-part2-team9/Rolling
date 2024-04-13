@@ -55,7 +55,7 @@ function Message() {
 
   const handleCreateButtonClick = () => {
     const postId = 1;
-    history.push(`/post/${postId}`);
+    History.push(`/post/${postId}`);
   };
 
   // 생성하기 버튼 활성화
