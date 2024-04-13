@@ -82,7 +82,12 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
     <Link to={`/post/${id}`} style={{ color: "inherit" }}>
       <section
         className={styles.tocard}
-        style={{ backgroundImage: `url(${background})` }}
+        style={{
+          backgroundImage:
+            bgImg !== null
+              ? `linear-gradient(180deg, rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%), url(${background})`
+              : `url(${background})`,
+        }}
       >
         <h1 style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
           TO.{name}

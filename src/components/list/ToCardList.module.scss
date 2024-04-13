@@ -1,5 +1,18 @@
-.cardList{
+.listwrap {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
 }
 
+.cardList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.listBtn {
+  width: 40px;
+  height: 40px;
+  top: 276px;
+  left: 1520px;
+}

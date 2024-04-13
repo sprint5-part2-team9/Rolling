@@ -1,4 +1,5 @@
-import ToCardList from "./ToCardList";
+import ToCardListBest from "./ToCardListBest";
+import ToCardListNew from "./ToCardListNew";
 
 import { useState, useEffect, createContext } from "react";
 import Data from "./Data.json";
@@ -10,7 +11,8 @@ const ListMain = () => {
 
   return (
     <RollingPaperContext.Provider value={rollingPaperData}>
-      <ToCardList />
+      <ToCardListBest />
+      <ToCardListNew />
     </RollingPaperContext.Provider>
   );
 };
