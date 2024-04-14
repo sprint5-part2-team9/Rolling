@@ -1,7 +1,6 @@
 import styles from "./ToCard.module.scss";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { RollingPaperContext } from "./ListMain";
+import { useState, useEffect } from "react";
 import colorsCardPurple from "../../assets/Type_colors=card_list_01.png";
 import colorsCardBeige from "../../assets/Type_colors=card_list_02.png";
 import colorsCardBlue from "../../assets/Type_colors=card_list_03.png";
@@ -89,7 +88,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
               : `url(${background})`,
         }}
       >
-        <h1 style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
+        <h1 className={styles.toCardTitle} style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
           TO.{name}
         </h1>
         <div className={styles.profileImgs}>
@@ -97,7 +96,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
           {count - 3 > 0 && <div className={styles.persons}>+{count - 3}</div>}
         </div>
         <h2
-          className="countText"
+          className={styles.countText}
           style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}
         >
           {count} <span>명이 작성했어요!</span>

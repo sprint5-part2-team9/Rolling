@@ -2,8 +2,10 @@ import styles from "./ToCardList.module.scss";
 import ToCard from "./ToCard";
 import { useState, useContext } from "react";
 import { RollingPaperContext } from "./ListMain";
+import arrowLeft from "../../assets/arrow_left.svg";
+import arrowRight from "../../assets/arrow_right.svg";
 
-function ToCardList() {
+const ToCardList = () => {
   const data = useContext(RollingPaperContext);
   const [startIndex, setStartIndex] = useState(0);
 
@@ -43,22 +45,20 @@ function ToCardList() {
   };
 
   return (
-    <section className={styles.listwrap} >
-    {startIndex !== 0 && (
-      <button className={styles.listBtn} onClick={handlePrev}>
-      이전
-      </button>
-      )}
-      <li className={styles.cardList}>
-      {slicedNewToCards}
-      </li>
-      {startIndex + 4 < newToCards.length && (
-        <button className={styles.listBtn} onClick={handleNext}>
-          다음
+    <section className={styles.listwrap}>
+      {startIndex !== 0 && (
+        <button className={`${styles.listBtn} ${styles.listBtnL}`} onClick={handlePrev}>
+          <img src={arrowLeft} alt="arrowLeft" />
         </button>
       )}
-      </section>
+      <li className={styles.cardList}>{slicedNewToCards}</li>
+      {startIndex + 4 < newToCards.length && (
+        <button className={`${styles.listBtn} ${styles.listBtnR}`} onClick={handleNext}>
+          <img src={arrowRight} alt="arrowright" />
+        </button>
+      )}
+    </section>
   );
-}
+};
 
 export default ToCardList;
