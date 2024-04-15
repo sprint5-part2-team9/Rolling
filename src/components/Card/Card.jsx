@@ -19,7 +19,7 @@ const Card = ({ edit = false, message, deleteClick }) => {
   };
 
   const handleModal = () => {
-    console.log("아이");
+    setIsModal(true);
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Card = ({ edit = false, message, deleteClick }) => {
 
   return (
     <>
-      {true && <Modal data={data} />}
+      {isModal && <Modal data={data} setIsModal={setIsModal} />}
       {edit && (
         <button
           name={data?.id}

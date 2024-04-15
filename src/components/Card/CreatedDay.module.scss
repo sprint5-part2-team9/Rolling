@@ -4,4 +4,8 @@
   color: $gray4;
 
   @include Font12R;
+
+  &.-modal {
+    @include Font14R;
+  }
 }
