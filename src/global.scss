@@ -1,5 +1,3 @@
-@import url(/src/assets/fonts.css);
-
 $purple1: #f8f0ff;
 $purple2: #ecd9ff;
 $purple3: #dcb9ff;
@@ -38,7 +36,67 @@ $black: #000000;
 $error: #dc3a3a;
 $surface: #f6f8ff;
 
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot");
+  src:
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.eot");
+  src:
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot");
+  src:
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.ttf")
+      format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Handletter";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Handletter.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 $font-family: "Pretendard", sans-serif;
+$NotoSansKR: "NotoSansKR", serif;
+$NanumMyeongjo: "NanumMyeongjo", serif;
+$Handletter: "Handletter", serif;
+
 $tablet-Max-width: 1199px;
 $mobile-Max-width: 767px;
 
