@@ -50,6 +50,10 @@ function Option({ ColorOrImg, setBackGround }) {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
       setBackGround("beige", imgData.data.imageUrls[0]);
     }
+    else if(ColorOrImg === "color") {
+      setSelectedBackImg(null);
+      setSelectedColor("beige");
+    }
   }, [ColorOrImg, imgData.data, setBackGround]);
 
   if (ColorOrImg === "image") {
