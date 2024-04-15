@@ -1,12 +1,12 @@
 //Post/{id}.jsx
 /*카드 리스트에서 카드 선택시 이동하게될 페이지*/
-import Header from "../../components/Header";
-import Subheader from "../../components/Subheader";
-import PostIdMain from "../../components/PostId/PostIdMain";
-import { getMessages, deleteMessage, getRecipient } from "../../Api/Api";
-import Cards from "../../components/PostId/Cards";
-import { useCallback, useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import Header from '../../components/Header';
+import Subheader from '../../components/Subheader';
+import PostIdMain from '../../components/PostId/PostIdMain';
+import { getMessages, deleteMessage, getRecipient } from '../../Api/Api';
+import Cards from '../../components/PostId/Cards';
+import { useCallback, useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 const FIRST_LIMIT = 8;
 const LIMIT = 6;
@@ -110,7 +110,7 @@ function PostId({ edit }) {
             postId={postId}
           />
           {isLoading && <div>로딩중...</div>}
-          <div style={{ height: "10px" }} ref={pageEnd}></div>
+          <div style={{ height: '10px' }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
     </>

@@ -1,9 +1,9 @@
-import styles from "./Subheader.module.scss";
-import profile from "../assets/profile.svg";
-import { useState } from "react";
-import ShareDropdown from "./ShareDropdown";
-import { ToastContainer } from "react-toastify";
-import EmojiPicker from "emoji-picker-react";
+import styles from './Subheader.module.scss';
+import profile from '../assets/profile.svg';
+import { useState } from 'react';
+import ShareDropdown from './ShareDropdown';
+import { ToastContainer } from 'react-toastify';
+import EmojiPicker from 'emoji-picker-react';
 
 const Subheader = () => {
   const [moreShareView, setMoreShareView] = useState(false);
@@ -24,7 +24,7 @@ const Subheader = () => {
           <h1>To.Ashley Kim</h1>
         </div>
         <div className={styles.menu}>
-          <img className={styles.profile} src={profile} alt="profile" />
+          <img className={styles.profile} src={profile} alt='profile' />
           <h1>23명이 작성했어요!</h1>
           <div className={styles.bar}>|</div>
           <button className={styles.emoji}>👍24</button>
@@ -52,7 +52,7 @@ const Subheader = () => {
           >
             {moreShareView && <ShareDropdown />}
           </button>
-          <ToastContainer style={{ fontSize: "12px" }} />
+          <ToastContainer style={{ fontSize: '12px' }} />
         </div>
       </nav>
     </header>
