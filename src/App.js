@@ -1,4 +1,5 @@
 // App.js
+
 import "./global.scss";
 import "./reset.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,16 +13,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/post">
-          <Route index element={<Post />} />
-          <Route path=":postId">
-            <Route index element={<PostId edit={false} />} />
-            <Route path="edit" element={<PostId edit={true} />} />
-          </Route>
-        </Route>
-        <Route path="/post/:id/message" element={<MessagePage />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/list' element={<List />} />
+        <Route path='/post' element={<Post />} />
+        <Route path='/post/:id/message' element={<MessagePage />} />
+        <Route path='/post/3' element={<PostId />} />
       </Routes>
     </BrowserRouter>
   );

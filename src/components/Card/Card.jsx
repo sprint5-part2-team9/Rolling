@@ -18,8 +18,9 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = ({ edit = false, message, onClick }) => {
+const Card = ({ edit = false, message, deleteClick }) => {
   const [data, setData] = useState({});
+  const [isModal, setIsModal] = useState(false);
 
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
@@ -28,28 +29,35 @@ const Card = ({ edit = false, message, onClick }) => {
     return "notoSans";
   };
 
+  const handleModal = () => {
+    setIsModal(true);
+  };
+
   useEffect(() => {
     setData(message);
   }, [message]);
 
   return (
-    <div className={styles.frame}>
+    <>
+      {isModal && <Modal data={data} setIsModal={setIsModal} />}
       {edit && (
         <button
           name={data?.id}
           className={styles.deleted}
           type="button"
-          onClick={onClick}
+          onClick={deleteClick}
         >
           삭제
         </button>
       )}
-      <CardFrom data={data} />
-      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-        {data?.content}
-      </p>
-      <CreatedDay date={data?.createdAt} />
-    </div>
+      <button type="button" className={styles.frame} onClick={handleModal}>
+        <CardFrom data={data} />
+        <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+          {data?.content}
+        </p>
+        <CreatedDay date={data?.createdAt} />
+      </button>
+    </>
   );
 };
 
