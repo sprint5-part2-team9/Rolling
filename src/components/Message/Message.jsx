@@ -88,49 +88,44 @@ function Message() {
   const isCreateButtonDisabled = !name.trim() || !content.trim();
 
   return (
-    <>
+    <div className={styles.message}>
       <div className={styles.container}>
         <section className={styles.section}>
-          <label htmlFor="name">From.</label>
+          <label htmlFor='name'>From.</label>
           <Input
-            id="name"
-            placeholder="이름을 입력해 주세요."
+            id='name'
+            placeholder='이름을 입력해 주세요.'
             value={name}
             onChange={handleNameChange}
           />
         </section>
         <section className={styles.section}>
-          <label htmlFor="profile_img">프로필 이미지</label>
-          <ProfileImage id="profile_img" onChange={setProfileImageURL} />
+          <label htmlFor='profile_img'>프로필 이미지</label>
+          <ProfileImage id='profile_img' onChange={setProfileImageURL} />
         </section>
         <section className={styles.section}>
-          <label htmlFor="relationship">상대와의 관계</label>
+          <label htmlFor='relationship'>상대와의 관계</label>
           <Dropdown
-            id="relationship"
+            id='relationship'
             options={relationshipOptions}
             value={relationship}
             onChange={handleRelationshipChange}
           />
         </section>
         <section className={styles.section}>
-          <label htmlFor="content">내용을 입력해 주세요</label>
-          <Editor id="content" onChange={handleContentChange} />
+          <label htmlFor='content'>내용을 입력해 주세요</label>
+          <Editor id='content' onChange={handleContentChange} />
         </section>
         <section className={styles.section}>
-          <label htmlFor="font">폰트 선택</label>
-          <Dropdown
-            id="font"
-            options={fontOptions}
-            value={font}
-            onChange={handleFontChange}
-          />
+          <label htmlFor='font'>폰트 선택</label>
+          <Dropdown id='font' options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
         <CreateBtn
           disabled={isCreateButtonDisabled}
           onClick={handleCreateMessage}
         />
       </div>
-    </>
+    </div>
   );
 }
 
