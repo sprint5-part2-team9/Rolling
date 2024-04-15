@@ -33,7 +33,7 @@
   font-weight: 700;
   line-height: 24px;
 
-  @media (max-width: 787px) {
+  @media (max-width: $mobile-Max-width) {
     @include Font16B;
   }
 
@@ -45,7 +45,7 @@
     line-height: 24px;
     margin-right: 6px;
 
-    @media (max-width: 787px) {
+    @media (max-width: $mobile-Max-width) {
       @include Font18R;
     }
   }

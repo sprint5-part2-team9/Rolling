@@ -1,0 +1,73 @@
+@import "../../global.scss";
+
+.box {
+  position: relative;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &.trying {
+    pointer-events: none;
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 63px;
+  width: 92px;
+  height: 39px;
+
+  @media (max-width: $tablet-Max-width) {
+    position: fixed;
+    width: unset;
+    top: unset;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    z-index: 3;
+  }
+
+  &.-edit {
+    left: 0px;
+    @media (max-width: $tablet-Max-width) {
+      left: 24px;
+      top: 100px;
+    }
+  }
+
+  &.-del {
+    right: 0px;
+    @media (max-width: $tablet-Max-width) {
+      right: 24px;
+    }
+  }
+}
+
+.frame {
+  display: grid;
+  flex-grow: 0;
+  max-width: 1200px;
+  grid-template: auto / 1fr 1fr 1fr;
+  gap: 28px 24px;
+  margin-top: 113px;
+  align-self: center;
+
+  @media (max-width: $tablet-Max-width) {
+    grid-template: auto / 1fr 1fr;
+    gap: 16px;
+    margin-top: 93px;
+  }
+
+  @media (max-width: $mobile-Max-width) {
+    grid-template: auto / 1fr;
+    margin-top: 32px;
+  }
+}
+
+.li {
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+}
