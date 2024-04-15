@@ -23,6 +23,13 @@ function Option({ ColorOrImg, setBackGround }) {
   const [selectedColor, setSelectedColor] = useState("beige"); //선택된 컬러 state
   const [selectedBackImg, setSelectedBackImg] = useState(null); //선택된 배경이미지 state
 
+  const colorOptions = [
+    { color: "beige" },
+    { color: "purple" },
+    { color: "blue" },
+    { color: "green" },
+  ];
+
   const handleColorClick = (color) => {
     setSelectedColor(color);
     setBackGround(color, null); //최종 선택 반영
@@ -64,56 +71,22 @@ function Option({ ColorOrImg, setBackGround }) {
   }
 
   return (
-    //컬러 선택 레이아웃
     <div className={styles.Options}>
-      <div
-        className={`${styles.Option} ${styles.beige}`}
-        onClick={() => handleColorClick("beige")}
-      >
-        {selectedColor === "beige" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.purple}`}
-        onClick={() => handleColorClick("purple")}
-      >
-        {selectedColor === "purple" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.blue}`}
-        onClick={() => handleColorClick("blue")}
-      >
-        {selectedColor === "blue" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.green}`}
-        onClick={() => handleColorClick("green")}
-      >
-        {selectedColor === "green" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
+      {colorOptions.map((colorOption) => (
+        <div
+          key={colorOption.color}
+          className={`${styles.Option} ${styles[colorOption.color]}`}
+          onClick={() => handleColorClick(colorOption.color)}
+        >
+          {selectedColor === colorOption.color && (
+            <img
+              src={selectedImg}
+              className={styles.selectedImg}
+              alt="selected"
+            />
+          )}
+        </div>
+      ))}
     </div>
   );
 }
