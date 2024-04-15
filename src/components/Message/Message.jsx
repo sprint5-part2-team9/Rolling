@@ -9,9 +9,10 @@ content: 메세지의 내용으로, Editor 컴포넌트에서 내용을 전달�
 font: 메세지에 사용할 폰트. font.css 파일에 import 되어있음. value 이름 달라서 수정 要
 createdAt: 객체 생성 시점
 */
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postMessages } from "../../api/Api";
+import { postMessages } from "../../Api/Api";
 import styles from "./Message.module.scss";
 import Input from "./Input";
 import Dropdown from "./Dropdown";
@@ -68,7 +69,14 @@ function Message() {
   const handleCreateMessage = async () => {
     try {
       console.log(`메시지 생성 중 id : ${recipientId}`);
-      await postMessages(recipientId, name, relationship, content, font, profileImageURL);
+      await postMessages(
+        recipientId,
+        name,
+        relationship,
+        content,
+        font,
+        profileImageURL
+      );
       console.log("메시지 생성 완료");
       navigate(`/post/${recipientId}`);
     } catch (error) {
@@ -109,12 +117,18 @@ function Message() {
           <Editor id="content" onChange={handleContentChange} />
         </section>
         <section className={styles.section}>
-
           <label htmlFor="font">폰트 선택</label>
-          <Dropdown id="font" options={fontOptions} value={font} onChange={handleFontChange} />
-
+          <Dropdown
+            id="font"
+            options={fontOptions}
+            value={font}
+            onChange={handleFontChange}
+          />
         </section>
-        <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
+        <CreateBtn
+          disabled={isCreateButtonDisabled}
+          onClick={handleCreateMessage}
+        />
       </div>
     </>
   );

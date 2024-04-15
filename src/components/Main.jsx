@@ -2,7 +2,7 @@
 
 import styles from "./Main.module.scss";
 
-function Main({ children, bgColor = "beige", bgImg = null }) {
+function Main({ children, bgColor = "", bgImg = null }) {
   return (
     <main
       style={{ backgroundImage: `url(${bgImg})` }}

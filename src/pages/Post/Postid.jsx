@@ -3,17 +3,18 @@
 import Header from "../../components/Header";
 import Subheader from "../../components/Subheader";
 import Main from "../../components/Main";
-import { getMessages, deleteMessage } from "../../Api/Api";
+import { getMessages, deleteMessage, getRecipient } from "../../Api/Api";
 import Cards from "../../components/PostId/Cards";
-import { useCallback, useEffect, useState, useRef, useMemo } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 
-const FIRST_LIMIT = 11;
+const FIRST_LIMIT = 8;
 const LIMIT = 6;
 
 function PostId({ edit }) {
   const { postId } = useParams();
   const [messages, setMessages] = useState([]);
+  const [rolling, setRolling] = useState({});
   const [isLoading, setisLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const pageEnd = useRef(null);
@@ -24,7 +25,7 @@ function PostId({ edit }) {
     if (!isLoading && entry.isIntersecting && offset.current < counts.current) {
       try {
         observer.unobserve(entry.target);
-        getData(getMessages, postId, LIMIT, offset.current);
+        getMessageData(getMessages, postId, LIMIT, offset.current);
         setTimeout(() => {
           observer.observe(entry.target);
         }, 1000);
@@ -46,17 +47,34 @@ function PostId({ edit }) {
     }
   };
 
-  const getData = useCallback(async (asyncFunction, id, limit, offset) => {
+  const getMessageData = useCallback(
+    async (asyncFunction, postId, limit, offset) => {
+      setisLoading(true);
+      setIsError(false);
+      try {
+        const { results, count } = await asyncFunction(postId, limit, offset);
+        if (offset === 0) {
+          setMessages(results);
+        } else {
+          setMessages((prev) => [...prev, ...results]);
+        }
+        counts.current = count;
+      } catch (err) {
+        console.log(err);
+        setIsError(true);
+      } finally {
+        setisLoading(false);
+      }
+    },
+    []
+  );
+
+  const getRollingData = useCallback(async (asyncFunction, postId) => {
     setisLoading(true);
     setIsError(false);
     try {
-      const { results, count } = await asyncFunction(id, limit, offset);
-      if (offset === 0) {
-        setMessages(results);
-      } else {
-        setMessages((prev) => [...prev, ...results]);
-      }
-      counts.current = count;
+      const result = await asyncFunction(postId);
+      setRolling(result);
     } catch (err) {
       console.log(err);
       setIsError(true);
@@ -71,19 +89,20 @@ function PostId({ edit }) {
   );
 
   useEffect(() => {
-    getData(getMessages, postId, FIRST_LIMIT, 0);
+    getMessageData(getMessages, postId, FIRST_LIMIT, 0);
+    getRollingData(getRecipient, postId);
     if (pageEnd.current) observer.observe(pageEnd.current);
-  }, [getData, postId, observer]);
+  }, [getMessageData, getRollingData, postId, observer]);
 
   return (
     <>
       <Header />
       {/* <Subheader /> */}
-      <Main>
+      <Main bgColor={rolling?.backgroundColor} bgImg={rolling?.backgroundImg}>
         <div>
           <Cards
             items={messages}
-            onClick={handleDelete}
+            deleteClick={handleDelete}
             edit={edit}
             postId={postId}
           />

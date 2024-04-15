@@ -1,0 +1,7 @@
+@import "../../global.scss";
+
+.time {
+  color: $gray4;
+
+  @include Font12R;
+}
