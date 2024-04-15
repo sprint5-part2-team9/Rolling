@@ -36,8 +36,8 @@ function Main({ children, bgColor = "", bgImg = null }) {
           <div className={styles.description}>롤링 페이퍼에 이모지를 추가할 수 있어요.</div>
         </div>
       </section>
-      <Link to='/list'>
-        <div className={styles.linkButton}>구경해보기</div>
+      <Link to='/list' className={styles.linkButton}>
+        구경해보기
       </Link>
     </div>
   );
