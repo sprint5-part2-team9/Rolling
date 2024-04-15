@@ -66,6 +66,7 @@ function Message() {
     setFont(value);
   };
 
+
   const handleCreateMessage = async () => {
     try {
       console.log(`메시지 생성 중 id : ${recipientId}`);
