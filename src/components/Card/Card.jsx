@@ -1,12 +1,10 @@
 //Card.jsx
 //카드 컴포넌트, 메세지 추가하는 카드는 EmptyCard.jsx입니다.
 
-
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
-import { deleteMessage } from "../../api/Api";
-
+import { deleteMessage } from "../../Api/Api";
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -46,7 +44,7 @@ const Card = ({ edited = true, message }) => {
   return (
     <div className={styles.frame}>
       {edited && (
-        <button name={data?.id} className={styles.deleted} type="button" onClick={handleDelete}>
+        <button name={data?.id} className={styles.deleted} type='button' onClick={handleDelete}>
           삭제
         </button>
       )}
