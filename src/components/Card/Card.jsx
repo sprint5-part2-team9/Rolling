@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
+import { deleteMessage } from "../../Api/Api";
 import Modal from "../PostId/Modal";
 import CreatedDay from "./CreatedDay";
 
