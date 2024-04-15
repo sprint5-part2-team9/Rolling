@@ -25,19 +25,19 @@ function Option({ ColorOrImg, setBackGround }) {
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
-    setBackGround(color); //최종 선택 반영
+    setBackGround(color, null); //최종 선택 반영
     setSelectedBackImg(null); // 이미지 선택 해제
   };
 
   const handleBackImgClick = (url) => {
     setSelectedBackImg(url);
-    setBackGround(url); //최종선택 반영
+    setBackGround("beige", url); //최종선택 반영
     setSelectedColor(null); // 컬러 선택 해제
   };
 
   useEffect(() => {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
-      setBackGround(imgData.data.imageUrls[0]);
+      setBackGround(null, imgData.data.imageUrls[0]);
     }
   }, [ColorOrImg, imgData.data, setBackGround]);
 

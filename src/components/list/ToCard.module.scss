@@ -1,3 +1,6 @@
+@import "../../global.scss";
+
+
 .tocard {
   width: 275px;
   height: 260px;
@@ -9,28 +12,22 @@
   box-shadow: 0px 2px 12px 0px #00000014;
 }
 
-h1 {
-  font-family: Pretendard;
-  font-size: 24px;
-  font-weight: 700;
+.toCardTitle {
+  @include Font24B;
   line-height: 36px;
   letter-spacing: -0.01em;
   text-align: left;
 }
 
-h2 {
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 700;
+.countText {
+  @include Font16B;
   line-height: 26px;
   letter-spacing: -0.01em;
   text-align: left;
 }
 
-span {
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 400;
+.countText span {
+  @include Font16R;
   line-height: 26px;
   letter-spacing: -0.01em;
   text-align: left;
@@ -43,21 +40,24 @@ span {
   margin: 12px 0 12px;
 }
 
+// 첫번째 자식요소를 제외하고
+.profileImgs img:not(:first-of-type){
+  margin: 0 0 0 -8px;
+}
+
 .profileImg {
   width: 28px;
   height: 28px;
-  margin: -6px;
   border-radius: 50px;
-  border: 1.5px solid #fff;
-  background: #fff;
+  border: 1.5px solid $white;
+  background: $white;
 }
 
 .persons {
   margin: -6px;
   padding: 5px 6px;
-
   border-radius: 40px;
-  background: #fff;
+  background: $white;
   text-align: center;
 }
 
@@ -80,4 +80,8 @@ span {
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
   color: #fff;
+}
+
+.emoji div{
+  @include Font16R;
 }
