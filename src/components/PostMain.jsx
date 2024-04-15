@@ -34,8 +34,9 @@ function PostMain() {
   const handleCreatePost = async () => {
     try {
       console.log('post 생성중..');
-      await postRecipients(name, selectedBackGround);
+      const postID = await postRecipients(name, selectedBackGround);
       console.log('생성완료');
+      console.log(postID);
     } catch(error) {
       console.log('생성 실패 :');
       console.error(error);
