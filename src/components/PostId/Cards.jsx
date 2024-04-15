@@ -7,11 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
 import { useState } from "react";
 
-const Cards = ({ items, onClick, edit, postId }) => {
+const Cards = ({ items, deleteClick, edit, postId }) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
 
-  const handleDelete = async function () {
+  const deleteRolling = async function () {
     setTryDel("trying");
     let response = false;
     try {
@@ -33,7 +33,7 @@ const Cards = ({ items, onClick, edit, postId }) => {
         <button
           className={`${styles.btn} ${styles["-del"]}`}
           type="button"
-          onClick={handleDelete}
+          onClick={deleteRolling}
         >
           삭제하기
         </button>
@@ -56,7 +56,7 @@ const Cards = ({ items, onClick, edit, postId }) => {
         {items?.map((item) => {
           return (
             <li key={item.id} className={styles.li}>
-              <Card message={item} onClick={onClick} edit={edit} />
+              <Card message={item} deleteClick={deleteClick} edit={edit} />
             </li>
           );
         })}

@@ -3,7 +3,8 @@ import styles from "./Main.module.scss";
 import landing01 from "../assets/landing_01.png";
 import landing02 from "../assets/landing_02.png";
 import { Link } from "react-router-dom";
-const Main = () => {
+
+function Main({ children, bgColor = "", bgImg = null }) {
   return (
     <div className={styles.main}>
       <section className={styles.section1}>

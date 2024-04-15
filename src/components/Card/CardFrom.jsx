@@ -18,11 +18,11 @@ const Relation = ({ relationship = "지인" }) => {
   );
 };
 
-const CardFrom = ({ data }) => {
+const CardFrom = ({ data, modal }) => {
   const { profileImageURL, sender, relationship } = data;
 
   return (
-    <div className={styles.frame}>
+    <div className={`${styles.frame} ${styles[modal]}`}>
       <div className={styles.imgCase}>
         <img
           src={profileImageURL}
