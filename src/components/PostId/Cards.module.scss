@@ -29,10 +29,12 @@
   }
 
   &.-edit {
+    background-color: $gray5;
     left: 0px;
     @media (max-width: $tablet-Max-width) {
       left: 24px;
-      top: 100px;
+      right: unset;
+      top: 150px;
     }
   }
 
