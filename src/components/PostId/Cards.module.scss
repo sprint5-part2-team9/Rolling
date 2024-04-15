@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: auto;
+  margin-bottom: 50px;
 
   &.trying {
     pointer-events: none;
@@ -15,8 +17,17 @@
 .btn {
   position: absolute;
   top: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 92px;
   height: 39px;
+  color: $white;
+  background-color: $purple4;
+  border-radius: 6px;
+  border: none;
+  @include Font16R;
+  cursor: pointer;
 
   @media (max-width: $tablet-Max-width) {
     position: fixed;
@@ -28,8 +39,16 @@
     z-index: 3;
   }
 
+  &:hover {
+    background-color: $purple6;
+  }
+
+  &:focus {
+    background-color: $purple6;
+    border: 1px solid $purple9;
+  }
+
   &.-edit {
-    background-color: $gray5;
     left: 0px;
     @media (max-width: $tablet-Max-width) {
       left: 24px;
@@ -40,8 +59,18 @@
 
   &.-del {
     right: 0px;
+    background-color: $gray4;
     @media (max-width: $tablet-Max-width) {
       right: 24px;
+    }
+
+    &:hover {
+      background-color: $error;
+    }
+
+    &:focus {
+      background-color: $error;
+      border: 1px solid $gray8;
     }
   }
 }
