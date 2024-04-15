@@ -21,7 +21,21 @@
 }
 
 .default_btn {
-  margin-top: 10px;
+  background-color: $purple4;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple6;
+  }
+
+  &:focus {
+    background-color: $purple6;
+    border: 1px solid $purple8;
+  }
 }
 
 .selectedImg_container {
@@ -45,6 +59,7 @@
 .txt_container {
   display: flex;
   align-items: center;
+  margin-top: 10px;
   gap: 10px;
   color: $gray5;
   @include Font16R;
