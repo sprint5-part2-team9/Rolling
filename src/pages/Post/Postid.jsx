@@ -2,10 +2,7 @@
 /*카드 리스트에서 카드 선택시 이동하게될 페이지*/
 import Header from "../../components/Header";
 import Subheader from "../../components/Subheader";
-<<<<<<< HEAD
 import PostIdMain from "../../components/PostId/PostIdMain";
-=======
->>>>>>> 1a1ed3bc6752610c0574b90cfd3ca1ac0a2ec2db
 import { getMessages, deleteMessage, getRecipient } from "../../Api/Api";
 import Cards from "../../components/PostId/Cards";
 import { useCallback, useEffect, useState, useRef } from "react";
@@ -50,24 +47,27 @@ function PostId({ edit }) {
     }
   };
 
-  const getMessageData = useCallback(async (asyncFunction, postId, limit, offset) => {
-    setisLoading(true);
-    setIsError(false);
-    try {
-      const { results, count } = await asyncFunction(postId, limit, offset);
-      if (offset === 0) {
-        setMessages(results);
-      } else {
-        setMessages((prev) => [...prev, ...results]);
+  const getMessageData = useCallback(
+    async (asyncFunction, postId, limit, offset) => {
+      setisLoading(true);
+      setIsError(false);
+      try {
+        const { results, count } = await asyncFunction(postId, limit, offset);
+        if (offset === 0) {
+          setMessages(results);
+        } else {
+          setMessages((prev) => [...prev, ...results]);
+        }
+        counts.current = count;
+      } catch (err) {
+        console.log(err);
+        setIsError(true);
+      } finally {
+        setisLoading(false);
       }
-      counts.current = count;
-    } catch (err) {
-      console.log(err);
-      setIsError(true);
-    } finally {
-      setisLoading(false);
-    }
-  }, []);
+    },
+    []
+  );
 
   const getRollingData = useCallback(async (asyncFunction, postId) => {
     setisLoading(true);
@@ -83,7 +83,10 @@ function PostId({ edit }) {
     }
   }, []);
 
-  const observer = useCallback(new IntersectionObserver(onIntersect, { threshold: 0.5 }), []);
+  const observer = useCallback(
+    new IntersectionObserver(onIntersect, { threshold: 0.5 }),
+    []
+  );
 
   useEffect(() => {
     getMessageData(getMessages, postId, FIRST_LIMIT, 0);
@@ -95,7 +98,6 @@ function PostId({ edit }) {
     <>
       <Header />
       {/* <Subheader /> */}
-<<<<<<< HEAD
       <PostIdMain
         bgColor={rolling?.backgroundColor}
         bgImg={rolling?.backgroundImg}
@@ -111,13 +113,6 @@ function PostId({ edit }) {
           <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
-=======
-      <div bgColor={rolling?.backgroundColor} bgImg={rolling?.backgroundImg}>
-        <Cards items={messages} deleteClick={handleDelete} edit={edit} postId={postId} />
-        {isLoading && <div>로딩중...</div>}
-        <div style={{ height: "10px" }} ref={pageEnd}></div>
-      </div>
->>>>>>> 1a1ed3bc6752610c0574b90cfd3ca1ac0a2ec2db
     </>
   );
 }
