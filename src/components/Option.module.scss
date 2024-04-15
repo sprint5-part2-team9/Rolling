@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.Option:hover {
+  cursor: pointer;
+}
+
 .beige {
   background-color: $orange2;
 }
@@ -38,4 +42,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Option__backImg:hover { 
+  cursor: pointer;
 }
