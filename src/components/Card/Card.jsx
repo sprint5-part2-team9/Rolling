@@ -35,19 +35,12 @@ const Card = ({ edit = false, message, onClick }) => {
   return (
     <div className={styles.frame}>
       {edit && (
-        <button
-          name={data?.id}
-          className={styles.deleted}
-          type="button"
-          onClick={onClick}
-        >
+        <button name={data?.id} className={styles.deleted} type='button' onClick={onClick}>
           삭제
         </button>
       )}
       <CardFrom data={data} />
-      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-        {data?.content}
-      </p>
+      <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>{data?.content}</p>
       <CreatedDay date={data?.createdAt} />
     </div>
   );
