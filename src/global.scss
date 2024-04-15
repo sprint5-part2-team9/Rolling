@@ -38,17 +38,17 @@ $surface: #f6f8ff;
 
 @font-face {
   font-family: "Pretendard";
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.eot");
   src:
-    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.eot?#iefix")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.eot?#iefix")
       format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff2")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff2")
       format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.woff")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.woff")
       format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-ExtraLight.ttf")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/pretendard/Pretendard-Regular.ttf")
       format("truetype");
   font-display: swap;
 }
@@ -69,17 +69,16 @@ $surface: #f6f8ff;
 
 @font-face {
   font-family: "NanumMyeongjo";
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
-  src: url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot");
+  src: url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.eot");
   src:
-    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.eot?#iefix")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.eot?#iefix")
       format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff2")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.woff2")
       format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjoBold.ttf")
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.woff") format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/NanumMyeongjo/NanumMyeongjo.ttf")
       format("truetype");
   font-display: swap;
 }

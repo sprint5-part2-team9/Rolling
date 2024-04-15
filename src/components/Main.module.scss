@@ -11,7 +11,7 @@
 .section1,
 .section2 {
   width: 1200px;
-  height: 324px;
+  height: 300px;
   display: flex;
   align-items: center;
   border: 1px solid $surface;
@@ -21,8 +21,8 @@
 
 .section1 {
   justify-content: center;
-  margin-top: 60px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .img1,
@@ -33,16 +33,15 @@
 }
 
 .point {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 32px;
-  border: 1px solid $purple6;
   border-radius: 50px;
   background-color: $purple6;
   color: $white;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: -0.5%;
+  @include Font14B;
   margin-bottom: 16px;
 }
 
@@ -50,33 +49,37 @@
 .secondTitle {
   display: flex;
   flex-direction: column;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: -1%;
-  line-height: 36px;
+  @include Font24B;
+  color: $gray9;
 }
 
 .description {
   margin-top: 8px;
-  font-size: 18px;
-  letter-spacing: -1%;
-  line-height: 28px;
+  @include Font18R;
 }
 
 .linkButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
   width: 280px;
   height: 56px;
   background-color: $purple6;
-  border: 1px solid $purple6;
-  border-radius: 12px;
-  padding: 14px 24px;
-  margin-top: 48px;
-  margin-bottom: 174px;
-  font-size: 18px;
-}
-
-.linkToList {
   color: $white;
+  border: none;
+  border-radius: 12px;
+  @include Font18B;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple7;
+  }
+
+  &:focus {
+    background-color: $purple8;
+    border: 2px solid $purple9;
+  }
 }
 
 //tablet

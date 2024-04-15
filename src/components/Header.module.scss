@@ -34,3 +34,26 @@ $headerH: 65px;
     margin-right: 8px;
   }
 }
+
+.create_btn {
+  cursor: pointer;
+  width: 157px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border: 1px solid $gray3;
+  border-radius: 5px;
+  color: $gray9;
+  @include Font16B;
+
+  &:hover {
+    background-color: $gray1;
+  }
+
+  &:focus {
+    background-color: $white;
+    border: 1px solid $gray5;
+  }
+}
