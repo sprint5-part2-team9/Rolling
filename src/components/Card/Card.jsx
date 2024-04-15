@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
-import { deleteMessage } from "../../Api/Api";
 
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
@@ -35,8 +34,8 @@ const Card = ({ edit = false, message, onClick }) => {
 
   return (
     <div className={styles.frame}>
-      {edited && (
-        <button name={data?.id} className={styles.deleted} type='button' onClick={handleDelete}>
+      {edit && (
+        <button name={data?.id} className={styles.deleted} type='button' onClick={onClick}>
           삭제
         </button>
       )}
