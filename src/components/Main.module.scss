@@ -1,4 +1,4 @@
-@import '../global.scss';
+@import "../global.scss";
 
 .main {
   display: flex;
@@ -94,16 +94,16 @@
   .section1 {
     display: grid;
     grid-template:
-      'first'
-      'img';
+      "first"
+      "img";
     margin-top: 49px;
   }
 
   .section2 {
     display: grid;
     grid-template:
-      'second'
-      'img';
+      "second"
+      "img";
     margin-top: 30px;
     margin-bottom: 48px;
   }
@@ -162,8 +162,8 @@
   .section1 {
     display: grid;
     grid-template:
-      'first'
-      'img';
+      "first"
+      "img";
     height: 352px;
     margin-top: 42px;
     overflow: hidden;
@@ -173,8 +173,8 @@
     height: 362px;
     display: grid;
     grid-template:
-      'second'
-      'img';
+      "second"
+      "img";
     margin-top: 24px;
     margin-bottom: 37px;
   }

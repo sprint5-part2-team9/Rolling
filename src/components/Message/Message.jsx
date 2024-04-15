@@ -11,7 +11,7 @@ createdAt: 객체 생성 시점
 */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postMessages } from "../../api/Api";
+import { postMessages } from "../../Api/Api";
 import styles from "./Message.module.scss";
 import Input from "./Input";
 import Dropdown from "./Dropdown";

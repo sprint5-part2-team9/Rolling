@@ -1,12 +1,13 @@
 // App.js
-import './global.scss';
-import './reset.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Post from './pages/Post/Post';
-import PostId from './pages/Post/Postid';
-import List from './pages/List/List';
-import MessagePage from './pages/Message/MessagePage';
+
+import "./global.scss";
+import "./reset.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import List from "./pages/List/List";
+import Post from "./pages/Post/Post";
+import MessagePage from "./pages/Message/MessagePage";
+import PostId from "./pages/Post/Postid";
 
 function App() {
   return (

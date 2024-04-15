@@ -19,7 +19,7 @@ const CreatedDay = ({ date }) => {
   );
 };
 
-const Card = ({ edited = true, message }) => {
+const Card = ({ edit = false, message, onClick }) => {
   const [data, setData] = useState({});
 
   const fontStyle = function (font) {
@@ -27,14 +27,6 @@ const Card = ({ edited = true, message }) => {
     if (font === "나눔명조") return "nanumMyeongjo";
     if (font === "나눔손글씨 손편지체") return "nanumSonPyeonJiCe";
     return "notoSans";
-  };
-
-  const handleDelete = async (e) => {
-    try {
-      await deleteMessage(e.target.name);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   useEffect(() => {
