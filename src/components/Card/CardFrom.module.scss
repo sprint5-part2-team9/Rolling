@@ -5,6 +5,12 @@
   column-gap: 14px;
   padding-bottom: 15px;
   border-bottom: 1px solid $gray2;
+  align-self: stretch;
+
+  &.-modal {
+    padding-bottom: 0;
+    border-bottom: 0 solid $white;
+  }
 }
 
 .imgCase {
