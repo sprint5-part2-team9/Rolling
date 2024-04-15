@@ -5,6 +5,12 @@
   column-gap: 14px;
   padding-bottom: 15px;
   border-bottom: 1px solid $gray2;
+  align-self: stretch;
+
+  &.-modal {
+    padding-bottom: 0;
+    border-bottom: 0 solid $white;
+  }
 }
 
 .imgCase {
@@ -33,7 +39,7 @@
   font-weight: 700;
   line-height: 24px;
 
-  @media (max-width: 787px) {
+  @media (max-width: $mobile-Max-width) {
     @include Font16B;
   }
 
@@ -45,7 +51,7 @@
     line-height: 24px;
     margin-right: 6px;
 
-    @media (max-width: 787px) {
+    @media (max-width: $mobile-Max-width) {
       @include Font18R;
     }
   }

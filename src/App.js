@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 import List from "./pages/List/List";
 import Post from "./pages/Post/Post";
 import MessagePage from "./pages/Message/MessagePage";
-import PostId from './pages/Post/Postid';
+import PostId from "./pages/Post/Postid";
 
 function App() {
   return (
