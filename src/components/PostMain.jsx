@@ -1,6 +1,7 @@
 import styles from "./PostMain.module.scss";
 import Input from "./Message/Input";
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import Option from "./Option";
 import CreateBtn from "./Message/CreateBtn";
 import { postRecipients } from "../Api/Api";
@@ -11,11 +12,11 @@ import { postRecipients } from "../Api/Api";
 
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
-  const [selectedBackGround, setSelectedBackGround] = useState("beige");
   const [pickedBackGround, setPickedBackGround] = useState({
-    backgroundColor : "beige",
-    backgroundImageURL : null,
+    backgroundColor: "beige",
+    backgroundImageURL: null,
   });
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
 
@@ -26,8 +27,7 @@ function PostMain() {
   };
 
   const pickBackgorund = useCallback((color, url) => {
-    setSelectedBackGround(color);
-    setPickedBackGround(prev => ({
+    setPickedBackGround((prev) => ({
       ...prev,
       backgroundColor: color,
       backgroundImageURL: url,
@@ -42,9 +42,13 @@ function PostMain() {
     try {
       console.log("post 생성중..");
 
-      const postID = await postRecipients(name, pickedBackGround.backgroundColor, pickedBackGround.backgroundImageURL);
-
+      const postID = await postRecipients(
+        name,
+        pickedBackGround.backgroundColor,
+        pickedBackGround.backgroundImageURL
+      );
       console.log("생성완료");
+      navigate(`/post/${postID.ID}`);
     } catch (error) {
       console.log("생성 실패 :");
       console.error(error);
