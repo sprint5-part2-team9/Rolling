@@ -28,7 +28,7 @@ const Card = ({ edit = false, message, deleteClick }) => {
 
   return (
     <>
-      {isModal && <Modal />}
+      {true && <Modal data={data} />}
       {edit && (
         <button
           name={data?.id}

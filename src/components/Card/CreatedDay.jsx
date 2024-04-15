@@ -3,8 +3,8 @@ import styles from "./CreatedDay.module.scss";
 const CreatedDay = ({ date }) => {
   const created = new Date(date);
   const year = created.getFullYear();
-  const month = String(created.getMonth());
-  const day = String(created.getDay());
+  const month = String(created.getMonth() + 1);
+  const day = String(created.getDate());
 
   return (
     <time dateTime={date} className={styles.time}>
