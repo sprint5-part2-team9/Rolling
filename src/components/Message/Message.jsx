@@ -80,7 +80,7 @@ function Message() {
   const isCreateButtonDisabled = !name.trim() || !content.trim();
 
   return (
-    <>
+    <div className={styles.message}>
       <div className={styles.container}>
         <section className={styles.section}>
           <label htmlFor='name'>From.</label>
@@ -114,7 +114,7 @@ function Message() {
         </section>
         <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
       </div>
-    </>
+    </div>
   );
 }
 
