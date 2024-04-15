@@ -33,9 +33,8 @@
   background-color: $green2;
 }
 
-.Option__backImg {
-  background-position: center;
-  background-size: cover;
+.Option__backImg__container {
+  position: relative;
   width: 168px;
   height: 168px;
   border-radius: 16px;
@@ -44,6 +43,20 @@
   align-items: center;
 }
 
-.Option__backImg:hover { 
-  cursor: pointer;
+.Option__backImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+.Option__backImg__opacity {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  opacity: 50%;
+}
+
+.selectedImg {
+  position: absolute;
 }

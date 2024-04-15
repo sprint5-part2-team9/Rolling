@@ -6,10 +6,14 @@ import useFetch from "../Hooks/useFetch";
 function BackImg({ imgurl, onclick, isSelected }) {
   return (
     <div
-      className={styles.Option__backImg}
-      style={{ backgroundImage: `url(${imgurl})` }}
+      className={styles.Option__backImg__container}
       onClick={() => onclick(imgurl)}
     >
+      <img
+        src={imgurl}
+        alt="선택 배경 이미지"
+        className={`${isSelected ? styles.Option__backImg__opacity : styles.Option__backImg}`}
+      />
       {isSelected && (
         <img src={selectedImg} alt="selected" className={styles.selectedImg} />
       )}
@@ -44,7 +48,7 @@ function Option({ ColorOrImg, setBackGround }) {
 
   useEffect(() => {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
-      setBackGround(null, imgData.data.imageUrls[0]);
+      setBackGround("beige", imgData.data.imageUrls[0]);
     }
   }, [ColorOrImg, imgData.data, setBackGround]);
 

@@ -24,11 +24,7 @@ label {
 
 .choose {
   margin-top: 40px;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 36px; /* 150% */
-  letter-spacing: -0.24px;
+  @include Font24B;
 }
 
 p {
