@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 
 const AddCard = () => {
   return (
-    <div className={`${styles.frame} ${styles.add}`}>
-      <Link className={styles.circle} to="./message">
-        <img src={plus} alt="새로 만들기" height={24} width={24} />
-      </Link>
-    </div>
+    <Link to="./message">
+      <div className={`${styles.frame} ${styles.add}`}>
+        <div className={styles.circle}>
+          <img src={plus} alt="새로 만들기" height={24} width={24} />
+        </div>
+      </div>
+    </Link>
   );
 };
 

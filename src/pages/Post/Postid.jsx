@@ -15,7 +15,7 @@ function PostId({ edit }) {
   const { postId } = useParams();
   const [messages, setMessages] = useState([]);
   const [rolling, setRolling] = useState({});
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const pageEnd = useRef(null);
   let offset = useRef(FIRST_LIMIT);
@@ -31,7 +31,7 @@ function PostId({ edit }) {
         }, 1000);
       } catch (err) {
       } finally {
-        setisLoading(false);
+        setIsLoading(false);
         offset.current = offset.current + 6;
       }
     }
@@ -49,7 +49,7 @@ function PostId({ edit }) {
 
   const getMessageData = useCallback(
     async (asyncFunction, postId, limit, offset) => {
-      setisLoading(true);
+      setIsLoading(true);
       setIsError(false);
       try {
         const { results, count } = await asyncFunction(postId, limit, offset);
@@ -63,14 +63,14 @@ function PostId({ edit }) {
         console.log(err);
         setIsError(true);
       } finally {
-        setisLoading(false);
+        setIsLoading(false);
       }
     },
     []
   );
 
   const getRollingData = useCallback(async (asyncFunction, postId) => {
-    setisLoading(true);
+    setIsLoading(true);
     setIsError(false);
     try {
       const result = await asyncFunction(postId);
@@ -79,7 +79,7 @@ function PostId({ edit }) {
       console.log(err);
       setIsError(true);
     } finally {
-      setisLoading(false);
+      setIsLoading(false);
     }
   }, []);
 
@@ -97,7 +97,7 @@ function PostId({ edit }) {
   return (
     <>
       <Header />
-      {/* <Subheader /> */}
+      <Subheader rolling={rolling} postId={postId} />
       <PostIdMain
         bgColor={rolling?.backgroundColor}
         bgImg={rolling?.backgroundImg}
