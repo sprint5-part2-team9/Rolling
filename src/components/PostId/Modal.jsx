@@ -24,10 +24,10 @@ const Modal = ({ data, setIsModal }) => {
           <CardFrom data={data} modal={MODAL} />
           <CreatedDay date={data?.createdAt} modal={MODAL} />
         </div>
-        <div className={`${styles.content} ${styles[fontStyle(data?.font)]}`}>
+        <p className={`${styles.content} ${styles[fontStyle(data?.font)]}`}>
           <HtmlParser content={data?.content} />
-        </div>
-        <button type='button' className={styles.button} onClick={handleClick}>
+        </p>
+        <button type="button" className={styles.button} onClick={handleClick}>
           확인
         </button>
       </article>

@@ -14,7 +14,6 @@
   border: none;
   text-align: inherit;
   cursor: pointer;
-  align-self: stretch;
 
   @media (max-width: $tablet-Max-width) {
     width: 352px;
@@ -35,18 +34,23 @@
 .deleted {
   border-radius: 6px;
   border: 1px solid $gray3;
-  background-color: $white;
   position: absolute;
   top: 28px;
   right: 24px;
   width: 42px;
   height: 42px;
-  background-image: url("../../assets/deleted.png");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background: $white url("../../assets/deleted.png") 50% 50% no-repeat;
   color: transparent;
   z-index: 1;
   cursor: pointer;
+
+  &:hover {
+    background-color: $gray1;
+  }
+
+  &:focus {
+    border-color: $gray5;
+  }
 }
 
 .circle {
@@ -89,18 +93,12 @@
   }
 }
 
-.time {
-  color: $gray4;
-
-  @include Font12R;
-}
-
 .nanumMyeongjo {
-  font-family: $NanumMyeongjo;
+  font-family: "Nanum Myeongjo", serif;
 }
 
 .notoSans {
-  font-family: $NotoSansKR;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .pretendard {
@@ -108,5 +106,5 @@
 }
 
 .nanumSonPyeonJiCe {
-  font-family: $Handletter;
+  font-family: "Nanum SonPyeonJiCe", serif;
 }
