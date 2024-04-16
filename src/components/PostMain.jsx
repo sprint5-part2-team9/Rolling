@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Option from "./Option";
 import CreateBtn from "./Message/CreateBtn";
 import { postRecipients } from "../Api/Api";
+import CancelBtn from "./Message/CancelBtn";
 //Post 페이지 내부의 Main으로 사용될 컴포넌트입니다.
 
 //name : input.value,
@@ -55,6 +56,10 @@ function PostMain() {
     }
   };
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   return (
     <main className={styles.PostMain}>
       <form>
@@ -87,7 +92,10 @@ function PostMain() {
         </div>
         <div className={styles.btn__container}>
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
-          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
+          <div className={styles.btns}>
+            <CancelBtn onClick={handleCancel} />
+            <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
+          </div>
         </div>
       </form>
     </main>
