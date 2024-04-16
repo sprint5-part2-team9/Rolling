@@ -46,11 +46,19 @@ const Cards = ({
         </button>
       )}
       {edit ? (
-        <Link className={`${styles.btn} ${styles["-edit"]} `} to="../">
+        <Link
+          key={"edit-end"}
+          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
+          to="../"
+        >
           수정끝내기
         </Link>
       ) : (
-        <Link className={`${styles.btn} ${styles["-edit"]}`} to="./edit">
+        <Link
+          key={"edit-start"}
+          className={`${styles.btn} ${styles["-edit"]}`}
+          to="./edit"
+        >
           수정하기
         </Link>
       )}

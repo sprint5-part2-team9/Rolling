@@ -79,6 +79,7 @@ function PostId({ edit }) {
     try {
       const result = await asyncFunction(postId);
       setRolling(result);
+      console.log(result);
     } catch (err) {
       console.log(err);
       setIsError(true);
@@ -104,7 +105,7 @@ function PostId({ edit }) {
       <Subheader rolling={rolling} postId={postId} />
       <PostIdMain
         bgColor={rolling?.backgroundColor}
-        bgImg={rolling?.backgroundImg}
+        bgImg={rolling?.backgroundImageURL}
       >
         <div>
           <Cards

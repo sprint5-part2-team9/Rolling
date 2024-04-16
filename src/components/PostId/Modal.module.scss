@@ -19,6 +19,7 @@
   padding: 40px;
   max-width: 600px;
   width: 100%;
+  margin: 0 24px;
   height: 51.796vh;
   max-height: 476px;
   min-height: 278px;
@@ -43,6 +44,20 @@
   overflow-wrap: break-word;
   overflow-y: scroll;
   @include Font18R;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border: 0 solid #cccccc;
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 20px;
+  }
 }
 
 .button {
