@@ -1,6 +1,5 @@
 import styles from './Subheader.module.scss';
-import profile from '../assets/profile.svg';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ShareDropdown from './ShareDropdown';
 import { ToastContainer } from 'react-toastify';
 import EmojiPicker from 'emoji-picker-react';
@@ -27,7 +26,7 @@ const Subheader = ({ rolling, postId }) => {
   };
 
   const showReactions = () => {
-    setExtraReactions((prev) => !prev);
+    setMoreReactions((prev) => !prev);
   };
 
   const addEmoji = () => {
