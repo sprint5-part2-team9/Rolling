@@ -76,9 +76,11 @@ const Subheader = ({ rolling, postId }) => {
                 />
               </div>
             ))}
-            <div className={`${styles.profileCase} ${styles.rest}`}>
-              +{rolling?.messageCount - 3}
-            </div>
+            {rolling?.messageCount > 3 && (
+              <div className={`${styles.profileCase} ${styles.rest}`}>
+                +{rolling?.messageCount - 3}
+              </div>
+            )}
           </div>
           {/* 메시지 수 */}
           <span className={styles.howMany}>
