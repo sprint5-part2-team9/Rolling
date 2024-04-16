@@ -31,20 +31,30 @@
   }
 
   &:focus {
-    outline: none;
+    outline: 1px solid $gray4;
+    background-color: $gray1;
+
+    .circle {
+      background-color: $gray7;
+      border: 1px solid $gray8;
+    }
   }
 
-  &:hover .circle {
-    background-color: $gray6;
+  &:hover {
+    outline: 1px solid $gray3;
+
+    .circle {
+      background-color: $gray6;
+    }
   }
 
-  &:active .circle {
-    background-color: $gray7;
-  }
+  &:active {
+    background-color: $gray1;
+    outline: 1px solid $gray5;
 
-  &:focus .circle {
-    background-color: $gray7;
-    border: 1px solid $gray8;
+    .circle {
+      background-color: $gray7;
+    }
   }
 }
 
