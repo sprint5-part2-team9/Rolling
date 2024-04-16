@@ -1,7 +1,7 @@
 @import "../../global.scss";
 
 .input {
-  width: 720px;
+  width: 100%;
   height: 50px;
   background-color: $white;
   border: 1px solid $gray3;
@@ -31,5 +31,6 @@
 
 .error_msg {
   color: $error;
-  @include Font12R;
+  @include Font14R;
+  margin-left: 10px;
 }
