@@ -27,7 +27,7 @@ const Subheader = ({ rolling, postId }) => {
   };
 
   const showReactions = () => {
-    setMoreReactions((prev) => !prev);
+    setExtraReactions((prev) => !prev);
   };
 
   const addEmoji = () => {
@@ -49,6 +49,7 @@ const Subheader = ({ rolling, postId }) => {
         try {
           await postReaction(postId, selectedEmoji.emoji, 'increase');
           getExtraReactions(getReaction, postId);
+          window.location.reload();
         } catch (error) {
           console.error('리액션 추가 에러:', error);
         }
