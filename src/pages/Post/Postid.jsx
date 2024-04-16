@@ -20,7 +20,6 @@ function PostId({ edit }) {
   const [isError, setIsError] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isModal, setIsModal] = useState(false);
-  const [isDisable, setIsDisable] = useState("");
   const pageEnd = useRef(null);
   let offset = useRef(FIRST_LIMIT);
   let counts = useRef(0);
