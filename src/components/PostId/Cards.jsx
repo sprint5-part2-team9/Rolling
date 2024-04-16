@@ -7,7 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
 import { useState } from "react";
 
-const Cards = ({ items, deleteClick, edit, postId }) => {
+const Cards = ({
+  items,
+  deleteClick,
+  edit,
+  postId,
+  setModalData,
+  setIsModal,
+}) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
 
@@ -56,7 +63,13 @@ const Cards = ({ items, deleteClick, edit, postId }) => {
         {items?.map((item) => {
           return (
             <li key={item.id} className={styles.li}>
-              <Card message={item} deleteClick={deleteClick} edit={edit} />
+              <Card
+                message={item}
+                deleteClick={deleteClick}
+                edit={edit}
+                setModalData={setModalData}
+                setIsModal={setIsModal}
+              />
             </li>
           );
         })}

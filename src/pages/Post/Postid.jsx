@@ -7,6 +7,7 @@ import { getMessages, deleteMessage, getRecipient } from "../../Api/Api";
 import Cards from "../../components/PostId/Cards";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import Modal from "../../components/PostId/Modal";
 
 const FIRST_LIMIT = 8;
 const LIMIT = 6;
@@ -17,6 +18,9 @@ function PostId({ edit }) {
   const [rolling, setRolling] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [isModal, setIsModal] = useState(false);
+  const [isDisable, setIsDisable] = useState("");
   const pageEnd = useRef(null);
   let offset = useRef(FIRST_LIMIT);
   let counts = useRef(0);
@@ -84,7 +88,7 @@ function PostId({ edit }) {
   }, []);
 
   const observer = useCallback(
-    new IntersectionObserver(onIntersect, { threshold: 0.5 }),
+    new IntersectionObserver(onIntersect, { threshold: 0 }),
     []
   );
 
@@ -96,23 +100,28 @@ function PostId({ edit }) {
 
   return (
     <>
-      <Header isbutton={false} />
-      <Subheader rolling={rolling} postId={postId} />
-      <PostIdMain
-        bgColor={rolling?.backgroundColor}
-        bgImg={rolling?.backgroundImg}
-      >
-        <div>
-          <Cards
-            items={messages}
-            deleteClick={handleDelete}
-            edit={edit}
-            postId={postId}
-          />
-          {isLoading && <div>로딩중...</div>}
-          <div style={{ height: "10px" }} ref={pageEnd}></div>
-        </div>
-      </PostIdMain>
+      <div>
+        <Header isbutton={false} />
+        <Subheader rolling={rolling} postId={postId} />
+        <PostIdMain
+          bgColor={rolling?.backgroundColor}
+          bgImg={rolling?.backgroundImg}
+        >
+          <div>
+            <Cards
+              items={messages}
+              deleteClick={handleDelete}
+              edit={edit}
+              setModalData={setModalData}
+              postId={postId}
+              setIsModal={setIsModal}
+            />
+            {isLoading && <div>로딩중...</div>}
+            <div style={{ height: "10px" }} ref={pageEnd}></div>
+          </div>
+        </PostIdMain>
+      </div>
+      {isModal && <Modal data={modalData} setIsModal={setIsModal} />}
     </>
   );
 }
