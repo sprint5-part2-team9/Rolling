@@ -96,11 +96,11 @@
 }
 
 .nanumMyeongjo {
-  font-family: "Nanum Myeongjo", serif;
+  font-family: $NanumMyeongjo;
 }
 
 .notoSans {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: $NotoSansKR;
 }
 
 .pretendard {
@@ -108,5 +108,5 @@
 }
 
 .nanumSonPyeonJiCe {
-  font-family: "Nanum SonPyeonJiCe", serif;
+  font-family: $Handletter;
 }

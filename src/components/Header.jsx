@@ -6,12 +6,14 @@ function Header({ isbutton = true }) {
   return (
     <header className={styles.header}>
       <nav className={styles.frame}>
-        <Link to="/">
+        <Link to='/'>
           <h1 className={`${styles.title}`}>Rolling</h1>
         </Link>
         {isbutton && (
-          <Link to="/post">
-            <button type="button">롤링 페이퍼 만들기</button>
+          <Link to='/post'>
+            <button type='button' className={styles.create_btn}>
+              롤링 페이퍼 만들기
+            </button>
           </Link>
         )}
       </nav>

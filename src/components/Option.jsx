@@ -6,10 +6,14 @@ import useFetch from "../Hooks/useFetch";
 function BackImg({ imgurl, onclick, isSelected }) {
   return (
     <div
-      className={styles.Option__backImg}
-      style={{ backgroundImage: `url(${imgurl})` }}
+      className={styles.Option__backImg__container}
       onClick={() => onclick(imgurl)}
     >
+      <img
+        src={imgurl}
+        alt="선택 배경 이미지"
+        className={`${isSelected ? styles.Option__backImg__opacity : styles.Option__backImg}`}
+      />
       {isSelected && (
         <img src={selectedImg} alt="selected" className={styles.selectedImg} />
       )}
@@ -23,21 +27,33 @@ function Option({ ColorOrImg, setBackGround }) {
   const [selectedColor, setSelectedColor] = useState("beige"); //선택된 컬러 state
   const [selectedBackImg, setSelectedBackImg] = useState(null); //선택된 배경이미지 state
 
+  const colorOptions = [
+    { color: "beige" },
+    { color: "purple" },
+    { color: "blue" },
+    { color: "green" },
+  ];
+
   const handleColorClick = (color) => {
     setSelectedColor(color);
-    setBackGround(color); //최종 선택 반영
+    setBackGround(color, null); //최종 선택 반영
     setSelectedBackImg(null); // 이미지 선택 해제
   };
 
   const handleBackImgClick = (url) => {
     setSelectedBackImg(url);
-    setBackGround(url); //최종선택 반영
+    setBackGround("beige", url); //최종선택 반영
     setSelectedColor(null); // 컬러 선택 해제
   };
 
   useEffect(() => {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
-      setBackGround(imgData.data.imageUrls[0]);
+      setBackGround("beige", imgData.data.imageUrls[0]);
+    }
+    else if(ColorOrImg === "color") {
+      setSelectedBackImg(null);
+      setSelectedColor("beige");
+      setBackGround("beige", null);
     }
   }, [ColorOrImg, imgData.data, setBackGround]);
 
@@ -64,56 +80,22 @@ function Option({ ColorOrImg, setBackGround }) {
   }
 
   return (
-    //컬러 선택 레이아웃
     <div className={styles.Options}>
-      <div
-        className={`${styles.Option} ${styles.beige}`}
-        onClick={() => handleColorClick("beige")}
-      >
-        {selectedColor === "beige" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.purple}`}
-        onClick={() => handleColorClick("purple")}
-      >
-        {selectedColor === "purple" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.blue}`}
-        onClick={() => handleColorClick("blue")}
-      >
-        {selectedColor === "blue" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
-      <div
-        className={`${styles.Option} ${styles.green}`}
-        onClick={() => handleColorClick("green")}
-      >
-        {selectedColor === "green" && (
-          <img
-            src={selectedImg}
-            className={styles.selectedImg}
-            alt="selected"
-          />
-        )}
-      </div>
+      {colorOptions.map((colorOption) => (
+        <div
+          key={colorOption.color}
+          className={`${styles.Option} ${styles[colorOption.color]}`}
+          onClick={() => handleColorClick(colorOption.color)}
+        >
+          {selectedColor === colorOption.color && (
+            <img
+              src={selectedImg}
+              className={styles.selectedImg}
+              alt="selected"
+            />
+          )}
+        </div>
+      ))}
     </div>
   );
 }
