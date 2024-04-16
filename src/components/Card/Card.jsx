@@ -31,11 +31,16 @@ const Card = ({ edit = false, message, deleteClick }) => {
     <>
       {isModal && <Modal data={data} setIsModal={setIsModal} />}
       {edit && (
-        <button name={data?.id} className={styles.deleted} type='button' onClick={deleteClick}>
+        <button
+          name={data?.id}
+          className={styles.deleted}
+          type="button"
+          onClick={deleteClick}
+        >
           삭제
         </button>
       )}
-      <button type='button' className={styles.frame} onClick={handleModal}>
+      <button type="button" className={styles.frame} onClick={handleModal}>
         <CardFrom data={data} />
         <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
           <HtmlParser content={data?.content} />

@@ -29,6 +29,23 @@
     justify-content: center;
     align-items: center;
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover .circle {
+    background-color: $gray6;
+  }
+
+  &:active .circle {
+    background-color: $gray7;
+  }
+
+  &:focus .circle {
+    background-color: $gray7;
+    border: 1px solid $gray8;
+  }
 }
 
 .deleted {
@@ -50,12 +67,14 @@
 
   &:focus {
     border-color: $gray5;
+    outline: none;
   }
 }
 
 .circle {
   $W_H: 56px;
-  background-color: $gray5;
+  background: $gray5 url("../../assets/plus.svg") 50% 50% no-repeat;
+  color: transparent;
   width: $W_H;
   height: $W_H;
   padding: 16px;

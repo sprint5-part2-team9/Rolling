@@ -7,12 +7,8 @@ import { Link } from "react-router-dom";
 
 const AddCard = () => {
   return (
-    <Link to="./message">
-      <div className={`${styles.frame} ${styles.add}`}>
-        <div className={styles.circle}>
-          <img src={plus} alt="새로 만들기" height={24} width={24} />
-        </div>
-      </div>
+    <Link className={`${styles.frame} ${styles.add}`} to="./message">
+      <div className={styles.circle}>롤링 페이퍼 작성</div>
     </Link>
   );
 };
