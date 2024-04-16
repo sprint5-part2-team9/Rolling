@@ -1,6 +1,7 @@
 import styles from "./PostMain.module.scss";
 import Input from "./Message/Input";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import Option from "./Option";
 import CreateBtn from "./Message/CreateBtn";
 import { postRecipients } from "../Api/Api";
@@ -11,7 +12,12 @@ import { postRecipients } from "../Api/Api";
 
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
-  const [selectedBackGround, setSelectedBackGround] = useState("beige");
+  const [pickedBackGround, setPickedBackGround] = useState({
+    backgroundColor: "beige",
+    backgroundImageURL: null,
+  });
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
 
   const isCreateButtonDisabled = !name.trim();
@@ -20,10 +26,13 @@ function PostMain() {
     setName(value);
   };
 
-  const pickBackgorund = (picked) => {
-    //최종 선택된 배경
-    setSelectedBackGround(picked);
-  };
+  const pickBackgorund = useCallback((color, url) => {
+    setPickedBackGround((prev) => ({
+      ...prev,
+      backgroundColor: color,
+      backgroundImageURL: url,
+    }));
+  }, []);
 
   const handleToggleClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -32,8 +41,14 @@ function PostMain() {
   const handleCreatePost = async () => {
     try {
       console.log("post 생성중..");
-      await postRecipients(name, selectedBackGround);
+
+      const postID = await postRecipients(
+        name,
+        pickedBackGround.backgroundColor,
+        pickedBackGround.backgroundImageURL
+      );
       console.log("생성완료");
+      navigate(`/post/${postID.ID}`);
     } catch (error) {
       console.log("생성 실패 :");
       console.error(error);
@@ -45,8 +60,8 @@ function PostMain() {
       <form>
         <label className={styles.to}>To.</label>
         <Input
-          id='name'
-          placeholder='받는 사람 이름을 입력해 주세요.'
+          id="name"
+          placeholder="받는 사람 이름을 입력해 주세요."
           value={name}
           onChange={handleNameChange}
         />
@@ -54,16 +69,16 @@ function PostMain() {
         <p>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
         <div className={styles.toggle}>
           <button
-            type='button'
-            name='color'
+            type="button"
+            name="color"
             className={`${styles.toggleButton} ${selectedButton === "color" ? styles.checked : styles.unchecked}`}
             onClick={() => handleToggleClick("color")}
           >
             컬러
           </button>
           <button
-            type='button'
-            name='image'
+            type="button"
+            name="image"
             className={`${styles.toggleButton} ${selectedButton === "image" ? styles.checked : styles.unchecked}`}
             onClick={() => handleToggleClick("image")}
           >
@@ -72,7 +87,7 @@ function PostMain() {
         </div>
         <div className={styles.btn__container}>
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
-          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost}/>
         </div>
       </form>
     </main>
