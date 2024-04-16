@@ -49,7 +49,8 @@ function PostMain() {
         pickedBackGround.backgroundImageURL
       );
       console.log("생성완료");
-      navigate(`/post/${postID.ID}`);
+      console.log(postID);
+      navigate(`/post/${postID.id}`);
     } catch (error) {
       console.log("생성 실패 :");
       console.error(error);
@@ -97,6 +98,8 @@ function PostMain() {
             <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
           </div>
         </div>
+        <div>{pickedBackGround.backgroundColor}</div>
+        <div>{pickedBackGround.backgroundImageURL}</div>
       </form>
     </main>
   );

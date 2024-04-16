@@ -1,4 +1,4 @@
-@import "../global.scss";
+@import '../global.scss';
 
 .header {
   display: flex;
@@ -87,6 +87,7 @@
 }
 
 .emoji {
+  display: inline;
   border-radius: 32px;
   width: 66px;
   height: 36px;
@@ -98,7 +99,7 @@
 }
 
 .arrowButton {
-  background-image: url("../assets/arrowButton.svg");
+  background-image: url('../assets/arrowButton.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -111,10 +112,8 @@
 }
 
 .extraReactions {
-  display: flex;
-  padding: 24px;
+  padding: 18px;
   width: 264px;
-  flex-direction: column;
   gap: 10px;
   border-radius: 8px;
   border: 1px solid #b6b6b6;
@@ -127,7 +126,7 @@
 }
 
 .add {
-  background-image: url("../assets/emojiAdd.svg");
+  background-image: url('../assets/emojiAdd.svg');
   background-repeat: no-repeat;
   background-position: 15px;
   padding: 6px 16px;
@@ -149,7 +148,7 @@
 }
 
 .share {
-  background-image: url("../assets/share.svg");
+  background-image: url('../assets/share.svg');
   background-repeat: no-repeat;
   background-position: center;
   padding: 6px 16px;
