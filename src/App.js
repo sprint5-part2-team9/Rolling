@@ -21,7 +21,6 @@ function App() {
           <Route path="edit" element={<PostId edit={true} />} />
         </Route>
         <Route path="/post/:id/message" element={<MessagePage />} />
-        <Route path="/post/3" element={<PostId />} />
       </Routes>
     </BrowserRouter>
   );

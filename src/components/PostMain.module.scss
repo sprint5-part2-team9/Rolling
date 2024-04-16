@@ -50,11 +50,9 @@ p {
   width: 122px;
   height: 40px;
   @include Font16R;
-}
-
-.toggleButton:hover {
   cursor: pointer;
 }
+
 
 // 선택되지 않은 버튼
 .unchecked {
