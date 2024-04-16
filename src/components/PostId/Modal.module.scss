@@ -12,6 +12,8 @@
 
 .frame {
   margin: 348px auto 0;
+  display: flex;
+  flex-direction: column;
   padding: 40px;
   width: 600px;
   height: 476px;
@@ -38,6 +40,29 @@
 
 .button {
   margin: 24px auto 0;
+  border-radius: 6px;
+  background-color: $purple6;
+  width: 120px;
+  padding: 7px 16px;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  @include Font16R;
+
+  &:hover {
+    background-color: $purple7;
+  }
+
+  &:focus {
+    border-radius: 6px;
+    outline: 1px solid $purple9;
+    background-color: $purple8;
+  }
+
+  &:active {
+    border-radius: 6px;
+    background-color: $purple8;
+  }
 }
 
 .nanumMyeongjo {

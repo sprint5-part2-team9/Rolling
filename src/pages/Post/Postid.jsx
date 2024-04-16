@@ -47,24 +47,27 @@ function PostId({ edit }) {
     }
   };
 
-  const getMessageData = useCallback(async (asyncFunction, postId, limit, offset) => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const { results, count } = await asyncFunction(postId, limit, offset);
-      if (offset === 0) {
-        setMessages(results);
-      } else {
-        setMessages((prev) => [...prev, ...results]);
+  const getMessageData = useCallback(
+    async (asyncFunction, postId, limit, offset) => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const { results, count } = await asyncFunction(postId, limit, offset);
+        if (offset === 0) {
+          setMessages(results);
+        } else {
+          setMessages((prev) => [...prev, ...results]);
+        }
+        counts.current = count;
+      } catch (err) {
+        console.log(err);
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
       }
-      counts.current = count;
-    } catch (err) {
-      console.log(err);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    },
+    []
+  );
 
   const getRollingData = useCallback(async (asyncFunction, postId) => {
     setIsLoading(true);
@@ -80,7 +83,10 @@ function PostId({ edit }) {
     }
   }, []);
 
-  const observer = useCallback(new IntersectionObserver(onIntersect, { threshold: 0.5 }), []);
+  const observer = useCallback(
+    new IntersectionObserver(onIntersect, { threshold: 0.5 }),
+    []
+  );
 
   useEffect(() => {
     getMessageData(getMessages, postId, FIRST_LIMIT, 0);
@@ -90,11 +96,19 @@ function PostId({ edit }) {
 
   return (
     <>
-      <Header />
+      <Header isbutton={false} />
       <Subheader rolling={rolling} postId={postId} />
-      <PostIdMain bgColor={rolling?.backgroundColor} bgImg={rolling?.backgroundImg}>
+      <PostIdMain
+        bgColor={rolling?.backgroundColor}
+        bgImg={rolling?.backgroundImg}
+      >
         <div>
-          <Cards items={messages} deleteClick={handleDelete} edit={edit} postId={postId} />
+          <Cards
+            items={messages}
+            deleteClick={handleDelete}
+            edit={edit}
+            postId={postId}
+          />
           {isLoading && <div>로딩중...</div>}
           <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
