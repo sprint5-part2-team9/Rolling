@@ -5,19 +5,8 @@ import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import Modal from "../PostId/Modal";
-
-const CreatedDay = ({ date }) => {
-  const created = new Date(date);
-  const year = created.getFullYear();
-  const month = String(created.getMonth());
-  const day = String(created.getDay());
-
-  return (
-    <time dateTime={date} className={styles.time}>
-      {year}.{month.padStart(2, "0")}.{day.padStart(2, "0")}
-    </time>
-  );
-};
+import CreatedDay from "./CreatedDay";
+import HtmlParser from "./HtmlParser";
 
 const Card = ({ edit = false, message, deleteClick }) => {
   const [data, setData] = useState({});
@@ -42,20 +31,15 @@ const Card = ({ edit = false, message, deleteClick }) => {
     <>
       {isModal && <Modal data={data} setIsModal={setIsModal} />}
       {edit && (
-        <button
-          name={data?.id}
-          className={styles.deleted}
-          type="button"
-          onClick={deleteClick}
-        >
+        <button name={data?.id} className={styles.deleted} type='button' onClick={deleteClick}>
           삭제
         </button>
       )}
-      <button type="button" className={styles.frame} onClick={handleModal}>
+      <button type='button' className={styles.frame} onClick={handleModal}>
         <CardFrom data={data} />
-        <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-          {data?.content}
-        </p>
+        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+          <HtmlParser content={data?.content} />
+        </div>
         <CreatedDay date={data?.createdAt} />
       </button>
     </>

@@ -63,3 +63,12 @@
 .selectedImg {
   position: absolute;
 }
+
+@media (max-width: 767px) {
+  .Options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2개의 열을 가로로 나열 */
+    grid-template-rows: repeat(2, 1fr); /* 2개의 행을 세로로 나열 */
+    gap: 10px; /* 열과 행 사이의 간격을 10px로 설정 */
+  }
+}

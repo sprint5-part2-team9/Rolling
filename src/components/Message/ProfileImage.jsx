@@ -39,11 +39,11 @@ function ProfileImage({ onChange }) {
   return (
     <div className={styles.container}>
       <div className={styles.selectedImg_container}>
-        {selectedImage ? (
-          <img src={selectedImage} alt="Selected Profile" className={styles.selectedImage} />
-        ) : (
-          <img src={defaultImage} alt="Default Profile" className={styles.selectedImage} />
-        )}
+        <img
+          src={selectedImage || defaultImage}
+          alt='ProfileImage'
+          className={styles.selectedImage}
+        />
       </div>
       <div className={styles.txt_img_container}>
         <div className={styles.txt_container}>

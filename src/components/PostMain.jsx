@@ -87,10 +87,7 @@ function PostMain() {
         </div>
         <div className={styles.btn__container}>
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
-          <CreateBtn
-            disabled={isCreateButtonDisabled}
-            onClick={handleCreatePost}
-          />
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost}/>
         </div>
       </form>
     </main>
