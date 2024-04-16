@@ -9,7 +9,6 @@ import { postRecipients } from "../Api/Api";
 //name : input.value,
 //backgroundimg : selectedBackground,
 
-
 function PostMain() {
   const [selectedButton, setSelectedButton] = useState("color");
   const [selectedBackGround, setSelectedBackGround] = useState("beige");
@@ -25,7 +24,6 @@ function PostMain() {
     //최종 선택된 배경
     setSelectedBackGround(picked);
   };
-  
 
   const handleToggleClick = (buttonName) => {
     setSelectedButton(buttonName);
@@ -33,11 +31,11 @@ function PostMain() {
 
   const handleCreatePost = async () => {
     try {
-      console.log('post 생성중..');
+      console.log("post 생성중..");
       await postRecipients(name, selectedBackGround);
-      console.log('생성완료');
-    } catch(error) {
-      console.log('생성 실패 :');
+      console.log("생성완료");
+    } catch (error) {
+      console.log("생성 실패 :");
       console.error(error);
     }
   };
@@ -74,7 +72,7 @@ function PostMain() {
         </div>
         <div className={styles.btn__container}>
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
-          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost}/>
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
         </div>
       </form>
     </main>

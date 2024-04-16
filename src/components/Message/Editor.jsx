@@ -28,7 +28,7 @@ function Editor({ onChange }) {
     toolbar: [
       ["bold", "italic", "underline", "strike"],
       [{ list: "ordered" }, { list: "bullet" }],
-      [{ align: [] }, { color: [] }, { background: [] }],
+      [{ color: [] }, { background: [] }],
     ],
   };
 
@@ -39,7 +39,6 @@ function Editor({ onChange }) {
     "strike",
     "list",
     "bullet",
-    "align",
     "color",
     "background",
   ];
@@ -47,7 +46,7 @@ function Editor({ onChange }) {
   return (
     <ReactQuill
       style={{ height: "260px" }}
-      theme="snow"
+      theme='snow'
       modules={modules}
       formats={formats}
       value={content}

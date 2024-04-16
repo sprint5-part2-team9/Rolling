@@ -10,7 +10,7 @@ function CreateBtn({ disabled, onClick }) {
 
   return (
     <>
-      <button type="button" className={btnClasses} disabled={disabled} onClick={onClick}>
+      <button type='button' className={btnClasses} disabled={disabled} onClick={onClick}>
         생성하기
       </button>
     </>
