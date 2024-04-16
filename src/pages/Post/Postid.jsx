@@ -100,27 +100,25 @@ function PostId({ edit }) {
 
   return (
     <>
-      <div>
-        <Header isbutton={false} />
-        <Subheader rolling={rolling} postId={postId} />
-        <PostIdMain
-          bgColor={rolling?.backgroundColor}
-          bgImg={rolling?.backgroundImg}
-        >
-          <div>
-            <Cards
-              items={messages}
-              deleteClick={handleDelete}
-              edit={edit}
-              setModalData={setModalData}
-              postId={postId}
-              setIsModal={setIsModal}
-            />
-            {isLoading && <div>로딩중...</div>}
-            <div style={{ height: "10px" }} ref={pageEnd}></div>
-          </div>
-        </PostIdMain>
-      </div>
+      <Header isbutton={false} />
+      <Subheader rolling={rolling} postId={postId} />
+      <PostIdMain
+        bgColor={rolling?.backgroundColor}
+        bgImg={rolling?.backgroundImg}
+      >
+        <div>
+          <Cards
+            items={messages}
+            deleteClick={handleDelete}
+            edit={edit}
+            setModalData={setModalData}
+            postId={postId}
+            setIsModal={setIsModal}
+          />
+          {isLoading && <div>로딩중...</div>}
+          <div style={{ height: "10px" }} ref={pageEnd}></div>
+        </div>
+      </PostIdMain>
       {isModal && <Modal data={modalData} setIsModal={setIsModal} />}
     </>
   );

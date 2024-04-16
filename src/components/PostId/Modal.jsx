@@ -2,12 +2,11 @@ import CreatedDay from "../Card/CreatedDay";
 import CardFrom from "../Card/CardFrom";
 import styles from "./Modal.module.scss";
 import HtmlParser from "../Card/HtmlParser";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const MODAL = "-modal";
 
 const Modal = ({ data, setIsModal }) => {
-  let modal = useRef();
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
     if (font === "나눔명조") return "nanumMyeongjo";
@@ -19,15 +18,18 @@ const Modal = ({ data, setIsModal }) => {
     setIsModal(false);
   };
 
-  const handleWheel = (e) => {
+  const handleBubble = (e) => {
     e.stopPropagation();
   };
 
-  // modal.current.addEventListner(WheelEvent, handleWheel, true);
+  useEffect(() => {
+    document.body.style = `overflow: hidden; margin-right: 17px`;
+    return () => (document.body.style = `overflow: auto`);
+  }, []);
 
   return (
-    <div className={styles.background} ref={modal}>
-      <article className={styles.frame}>
+    <div className={styles.background} onClick={handleClick}>
+      <article className={styles.frame} onClick={handleBubble}>
         <div className={styles.modalTop}>
           <CardFrom data={data} modal={MODAL} />
           <CreatedDay date={data?.createdAt} modal={MODAL} />
