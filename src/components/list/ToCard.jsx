@@ -48,12 +48,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
   const fromUserImg =
     reactions &&
     messages.map((Img) => (
-      <img
-        className={styles.profileImg}
-        key={Img.id}
-        src={Img.profileImageURL}
-        alt="profileimg"
-      />
+      <img className={styles.profileImg} key={Img.id} src={Img.profileImageURL} alt='profileimg' />
     ));
 
   useEffect(() => {
@@ -70,7 +65,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
         key={item.id}
         emoji={item.emoji}
         count={item.count}
-        alt="reactions"
+        alt='reactions'
       >
         {item.emoji} {item.count}
       </div>
@@ -88,22 +83,16 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
               : `url(${background})`,
         }}
       >
-        <h1
-          className={styles.toCardTitle}
-          style={{ color: bgImg !== null ? "#fff" : "#181818" }}
-        >
-          TO.{name}
-        </h1>
+        <h2 className={styles.toCardTitle} style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
+          TO. {name}
+        </h2>
         <div className={styles.profileImgs}>
           {fromUserImg}
           {count - 3 > 0 && <div className={styles.persons}>+{count - 3}</div>}
         </div>
-        <h2
-          className={styles.countText}
-          style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}
-        >
+        <h3 className={styles.countText} style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}>
           {count} <span>명이 작성했어요!</span>
-        </h2>
+        </h3>
         <div className={styles.line} />
         <div className={styles.emojiItems}>{topReactions}</div>
       </section>
