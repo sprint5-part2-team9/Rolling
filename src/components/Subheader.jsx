@@ -46,11 +46,11 @@ const Subheader = ({ rolling, postId }) => {
     if (selectedEmoji) {
       const addReaction = async () => {
         try {
-          await postReaction(postId, selectedEmoji.emoji, 'increase');
+          await postReaction(postId, selectedEmoji.emoji, "increase");
           getExtraReactions(getReaction, postId);
           window.location.reload();
         } catch (error) {
-          console.error('리액션 추가 에러:', error);
+          console.error("리액션 추가 에러:", error);
         }
       };
       addReaction();
@@ -77,9 +77,11 @@ const Subheader = ({ rolling, postId }) => {
                 />
               </div>
             ))}
-            <div className={`${styles.profileCase} ${styles.rest}`}>
-              +{rolling?.messageCount - 3}
-            </div>
+            {rolling?.messageCount > 3 && (
+              <div className={`${styles.profileCase} ${styles.rest}`}>
+                +{rolling?.messageCount - 3}
+              </div>
+            )}
           </div>
           {/* 메시지 수 */}
           <span className={styles.howMany}>
@@ -99,11 +101,7 @@ const Subheader = ({ rolling, postId }) => {
             <div>반응이 없어요...</div>
           )}
           {/* 추가 반응 버튼 */}
-          <button
-            type='button'
-            className={styles.arrowButton}
-            onClick={showReactions}
-          >
+          <button type='button' className={styles.arrowButton} onClick={showReactions}>
             {moreReactions && (
               <div className={styles.extraReactions}>
                 {extraReactions.length
@@ -113,7 +111,7 @@ const Subheader = ({ rolling, postId }) => {
                         {extra.count}
                       </button>
                     ))
-                  : '추가적인 반응은 없어요'}
+                  : "추가적인 반응은 없어요"}
               </div>
             )}
           </button>
@@ -124,10 +122,7 @@ const Subheader = ({ rolling, postId }) => {
           {/* 이모지 피커 */}
           {emojiPick && (
             <div className={styles.emojiPickerContainer}>
-              <EmojiPicker
-                className={styles.emojiPick}
-                onEmojiClick={emojiClick}
-              />
+              <EmojiPicker className={styles.emojiPick} onEmojiClick={emojiClick} />
             </div>
           )}
           <div className={styles.bar2}>|</div>
@@ -135,7 +130,7 @@ const Subheader = ({ rolling, postId }) => {
           <button className={styles.share} onClick={moreShare}>
             {moreShareView && <ShareDropdown />}
           </button>
-          <ToastContainer style={{ fontSize: '12px' }} />
+          <ToastContainer style={{ fontSize: "12px" }} />
         </div>
       </nav>
     </header>
