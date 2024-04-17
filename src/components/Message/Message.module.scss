@@ -19,8 +19,7 @@
     width: $tablet-Max-width;
   }
 
-  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
-    width: $mobile-Min-width;
+  @media (max-width: $mobile-Max-width) {
     margin-top: 20px;
   }
 }
@@ -39,7 +38,7 @@
     margin: 0 24px;
   }
 
-  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+  @media (max-width: $mobile-Max-width) {
     margin: 0px 20px;
   }
 }
@@ -51,7 +50,7 @@
     margin: 0 24px;
   }
 
-  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+  @media (max-width: $mobile-Max-width) {
     margin: 0px 20px;
   }
 }
