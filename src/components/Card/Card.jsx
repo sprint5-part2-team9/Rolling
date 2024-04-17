@@ -35,7 +35,12 @@ const Card = ({
   return (
     <>
       {edit && (
-        <button className={styles.deleted} type="button" onClick={deleteClick}>
+        <button
+          name={message?.id}
+          className={styles.deleted}
+          type="button"
+          onClick={deleteClick}
+        >
           삭제
         </button>
       )}
