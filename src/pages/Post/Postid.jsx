@@ -78,7 +78,6 @@ function PostId({ edit }) {
     try {
       const result = await asyncFunction(postId);
       setRolling(result);
-      console.log(result);
     } catch (err) {
       console.log(err);
       setIsError(true);
@@ -100,7 +99,7 @@ function PostId({ edit }) {
 
   return (
     <>
-      <Header isbutton={false} />
+      <Header isbutton={false} postIdPage="postIdPage" />
       <Subheader rolling={rolling} postId={postId} />
       <PostIdMain
         bgColor={rolling?.backgroundColor}
