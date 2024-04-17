@@ -2,7 +2,7 @@ import CreatedDay from "../Card/CreatedDay";
 import CardFrom from "../Card/CardFrom";
 import styles from "./Modal.module.scss";
 import HtmlParser from "../Card/HtmlParser";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Portal from "../../Portal/Portal";
 
 const MODAL = "-modal";
@@ -10,6 +10,7 @@ const MODAL = "-modal";
 const Modal = ({ datas, setIsModal }) => {
   const focusing = useRef(null);
   const [data, thisCard] = datas;
+  const [focused, setFocused] = useState("");
   let prevCard = thisCard?.current;
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
@@ -18,8 +19,21 @@ const Modal = ({ datas, setIsModal }) => {
     return "notoSans";
   };
 
+  const handleEnter = () => {
+    setIsModal(false);
+    prevCard.focus();
+  };
+
   const handleClick = () => {
     setIsModal(false);
+  };
+
+  const handleFocus = () => {
+    setFocused("focused");
+  };
+
+  const handleBlur = () => {
+    setFocused("");
   };
 
   const handleBubble = (e) => {
@@ -37,9 +51,8 @@ const Modal = ({ datas, setIsModal }) => {
       const scrollY = document.body.style.top;
       document.body.style.cssText = "";
       window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-      prevCard.focus();
     };
-  }, [prevCard]);
+  }, []);
 
   return (
     <Portal elementId="modal-root">
@@ -55,7 +68,20 @@ const Modal = ({ datas, setIsModal }) => {
           <div className={`${styles.content} ${styles[fontStyle(data?.font)]}`}>
             <HtmlParser content={data?.content} />
           </div>
-          <button type="button" className={styles.button} onClick={handleClick}>
+          <div
+            className={`${styles.button} ${styles[focused]}`}
+            onClick={handleClick}
+          >
+            확인
+          </div>
+          <button
+            name="접근성"
+            type="button"
+            className={styles.focus}
+            onClick={handleEnter}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          >
             확인
           </button>
         </article>

@@ -68,6 +68,9 @@
 }
 
 .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 24px auto 0;
   border-radius: 6px;
   background-color: $purple6;
@@ -82,7 +85,7 @@
     background-color: $purple7;
   }
 
-  &:focus {
+  &.focused {
     border-radius: 6px;
     outline: 1px solid $purple9;
     background-color: $purple8;
