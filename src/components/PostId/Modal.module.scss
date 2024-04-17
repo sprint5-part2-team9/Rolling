@@ -45,6 +45,34 @@
   overflow-y: scroll;
   @include Font18R;
 
+  &.nanumMyeongjo {
+    font-family: $NanumMyeongjo;
+    & * {
+      font-family: $NanumMyeongjo;
+    }
+  }
+
+  &.notoSans {
+    font-family: $NotoSansKR;
+    & * {
+      font-family: $NotoSansKR;
+    }
+  }
+
+  &.pretendard {
+    font-family: $font-family;
+    & * {
+      font-family: $font-family;
+    }
+  }
+
+  &.nanumSonPyeonJiCe {
+    font-family: $Handletter;
+    & * {
+      font-family: $Handletter;
+    }
+  }
+
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -85,20 +113,4 @@
     border-radius: 6px;
     background-color: $purple8;
   }
-}
-
-.nanumMyeongjo {
-  font-family: $NanumMyeongjo;
-}
-
-.notoSans {
-  font-family: $NotoSansKR;
-}
-
-.pretendard {
-  font-family: $font-family;
-}
-
-.nanumSonPyeonJiCe {
-  font-family: $Handletter;
 }

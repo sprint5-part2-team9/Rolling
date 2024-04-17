@@ -96,8 +96,8 @@
 .message {
   color: $gray6;
   width: 336px;
-  height: 84px;
-  margin-bottom: 22px;
+  height: 83px;
+  margin-bottom: 23px;
   display: -webkit-box;
   word-wrap: break-word;
   -webkit-line-clamp: 3;
@@ -106,6 +106,37 @@
   overflow: hidden;
 
   @include Font18R;
+
+  & * {
+  }
+
+  &.nanumMyeongjo {
+    font-family: $NanumMyeongjo;
+    & * {
+      font-family: $NanumMyeongjo;
+    }
+  }
+
+  &.notoSans {
+    font-family: $NotoSansKR;
+    & * {
+      font-family: $NotoSansKR;
+    }
+  }
+
+  &.pretendard {
+    font-family: $font-family;
+    & * {
+      font-family: $font-family;
+    }
+  }
+
+  &.nanumSonPyeonJiCe {
+    font-family: $Handletter;
+    & * {
+      font-family: $Handletter;
+    }
+  }
 
   @media (max-width: $tablet-Max-width) {
     width: 304px;
@@ -120,20 +151,4 @@
 
     @include Font15R;
   }
-}
-
-.nanumMyeongjo {
-  font-family: "Nanum Myeongjo", serif;
-}
-
-.notoSans {
-  font-family: "Noto Sans KR", sans-serif;
-}
-
-.pretendard {
-  font-family: $font-family;
-}
-
-.nanumSonPyeonJiCe {
-  font-family: "Nanum SonPyeonJiCe", serif;
 }
