@@ -1,6 +1,6 @@
 import styles from "./ToCardList.module.scss";
 import ToCard from "./ToCard";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { RollingPaperContext } from "./ListMain";
 import arrowLeft from "../../assets/arrow_left.svg";
 import arrowRight from "../../assets/arrow_right.svg";
@@ -8,6 +8,7 @@ import arrowRight from "../../assets/arrow_right.svg";
 const ToCardList = () => {
   const data = useContext(RollingPaperContext);
   const [startIndex, setStartIndex] = useState(0);
+  const [slicedBestToCards, setSlicedBestToCards] = useState([]);
 
   const ToCards =
     data &&
@@ -30,8 +31,18 @@ const ToCardList = () => {
     return b.props.count - a.props.count;
   });
 
-  // 버튼
-  const slicedBestToCards = bestToCards.slice(startIndex, startIndex + 4);
+  // 화면 크기에 따른 버튼, 스크롤 변경
+  useEffect(() => {
+    const slicedToCards = () => {
+      if (window.matchMedia("(max-width: 1199px)").matches) {
+        setSlicedBestToCards(ToCards);
+      } else {
+        setSlicedBestToCards(ToCards.slice(startIndex, startIndex + 4));
+      }
+    };
+
+    slicedToCards();
+  }, [startIndex, ToCards]);
 
   const handleNext = () => {
     if (startIndex + 4 < bestToCards.length) {
@@ -48,8 +59,11 @@ const ToCardList = () => {
   return (
     <section className={styles.listwrap}>
       {startIndex !== 0 && (
-        <button className={`${styles.listBtn} ${styles.listBtnL}`} onClick={handlePrev}>
-        <img src={arrowLeft} alt="arrowLeft" />
+        <button
+          className={`${styles.listBtn} ${styles.listBtnL}`}
+          onClick={handlePrev}
+        >
+          <img src={arrowLeft} alt="arrowLeft" />
         </button>
       )}
       <li className={styles.cardList}>{slicedBestToCards}</li>

@@ -88,19 +88,19 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
               : `url(${background})`,
         }}
       >
-        <h1 className={styles.toCardTitle} style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
-          TO.{name}
-        </h1>
+        <h2 className={styles.toCardTitle} style={{ color: bgImg !== null ? "#fff" : "#181818" }}>
+          TO. {name}
+        </h2>
         <div className={styles.profileImgs}>
           {fromUserImg}
           {count - 3 > 0 && <div className={styles.persons}>+{count - 3}</div>}
         </div>
-        <h2
+        <h3
           className={styles.countText}
           style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}
         >
           {count} <span>명이 작성했어요!</span>
-        </h2>
+        </h3>
         <div className={styles.line} />
         <div className={styles.emojiItems}>{topReactions}</div>
       </section>
