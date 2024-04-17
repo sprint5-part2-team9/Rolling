@@ -1,7 +1,7 @@
 //Card.jsx
 //카드 컴포넌트, 메세지 추가하는 카드는 EmptyCard.jsx입니다.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import CreatedDay from "./CreatedDay";
@@ -15,6 +15,7 @@ const Card = ({
   setIsModal,
 }) => {
   const [data, setData] = useState({});
+  const thisCard = useRef(null);
 
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
@@ -24,7 +25,7 @@ const Card = ({
   };
 
   const handleModal = () => {
-    setModalData(() => data);
+    setModalData(() => [data, thisCard]);
     setIsModal(true);
   };
 
@@ -34,7 +35,12 @@ const Card = ({
 
   return (
     <>
-      <button type="button" className={styles.frame} onClick={handleModal}>
+      <button
+        type="button"
+        className={styles.frame}
+        onClick={handleModal}
+        ref={thisCard}
+      >
         <CardFrom data={data} />
         <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
           <HtmlParser content={data?.content} />

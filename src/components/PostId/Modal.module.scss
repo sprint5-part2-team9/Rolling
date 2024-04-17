@@ -14,6 +14,10 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.focus {
+  @include hide;
+}
+
 .frame {
   display: flex;
   flex-direction: column;
