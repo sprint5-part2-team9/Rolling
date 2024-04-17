@@ -3,4 +3,5 @@
 .rollingPaperTitle {
   @include Font24B;
   margin: 50px 0 16px 0;
+  margin-top: $headerH;
 }

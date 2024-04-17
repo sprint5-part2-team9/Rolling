@@ -100,6 +100,8 @@ $Handletter: "Handletter", serif;
 $tablet-Max-width: 1199px;
 $mobile-Max-width: 767px;
 $tablet-Min-width: 768px;
+$headerH: 65px;
+$subheaderH: 69px;
 
 @mixin font_bold {
   font-family: $font-family;

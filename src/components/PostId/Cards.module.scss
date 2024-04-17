@@ -8,6 +8,7 @@
   width: 100%;
   height: auto;
   margin-bottom: 50px;
+  margin-top: $headerH + $subheaderH;
 
   &.trying {
     pointer-events: none;
