@@ -1,9 +1,9 @@
-import styles from "./Subheader.module.scss";
-import { useCallback, useEffect, useState } from "react";
-import ShareDropdown from "./ShareDropdown";
-import { ToastContainer } from "react-toastify";
-import EmojiPicker from "emoji-picker-react";
-import { getReaction, postReaction } from "../Api/Api";
+import styles from './Subheader.module.scss';
+import { useCallback, useEffect, useState } from 'react';
+import ShareDropdown from './ShareDropdown';
+import { ToastContainer } from 'react-toastify';
+import EmojiPicker from 'emoji-picker-react';
+import { getReaction, postReaction } from '../Api/Api';
 
 const Subheader = ({ rolling, postId }) => {
   const [moreShareView, setMoreShareView] = useState(false);
@@ -15,7 +15,7 @@ const Subheader = ({ rolling, postId }) => {
   const getExtraReactions = useCallback(async (asyncFunction, postId) => {
     try {
       const { results } = await asyncFunction(postId, 8, 3);
-      setExtraReactions((prev) => [...results]);
+      setExtraReactions(() => [...results]);
     } catch (err) {
       console.log(err);
     }
@@ -48,6 +48,7 @@ const Subheader = ({ rolling, postId }) => {
         try {
           await postReaction(postId, selectedEmoji.emoji, "increase");
           getExtraReactions(getReaction, postId);
+          window.location.reload();
         } catch (error) {
           console.error("리액션 추가 에러:", error);
         }
