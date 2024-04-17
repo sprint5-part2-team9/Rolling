@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   position: relative;
+
   @media (max-width: $tablet-Max-width) {
     width: 100%;
   }
@@ -17,14 +18,9 @@
     overflow-x: auto;
     padding: 24px;
     white-space: nowrap;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-
-  @media (max-width: $mobile-Max-width) {
-    padding: 20px;
   }
 }
 

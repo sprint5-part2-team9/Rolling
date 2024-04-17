@@ -2,9 +2,9 @@ import styles from "./ListMain.module.scss";
 import ToCardListBest from "./ToCardListBest";
 import ToCardListNew from "./ToCardListNew";
 import { getRecipientsList } from "../../Api/Api";
+import { Link } from "react-router-dom";
 
 import { useState, createContext, useEffect } from "react";
-
 
 export const RollingPaperContext = createContext();
 
@@ -30,9 +30,9 @@ const ListMain = () => {
         <ToCardListBest />
         <h1 className={styles.rollingPaperTitle}>최근 만든 롤링 페이퍼 ⭐</h1>
         <ToCardListNew />
-        <div className={styles.wrapBtn}>
-          <button className={styles.createBtn}>나도 만들어보기</button>
-        </div>
+        <Link to='/post' className={styles.createBtn}>
+          나도 만들어보기
+        </Link>
       </section>
     </RollingPaperContext.Provider>
   );
