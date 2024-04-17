@@ -9,7 +9,7 @@
 
   &.-modal {
     padding-bottom: 0;
-    border-bottom: 0 solid $white;
+    border-bottom: 0 solid transparent;
   }
 }
 
@@ -22,6 +22,7 @@
   border: 1px solid $gray2;
   background-color: $white;
   overflow: hidden;
+  flex-shrink: 0;
   .img {
     object-fit: cover;
   }
@@ -38,9 +39,19 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
+  max-width: 178px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: $mobile-Max-width) {
     @include Font16B;
+    max-width: 146px;
+  }
+
+  &.-modal {
+    max-width: none;
+    white-space: unset;
   }
 
   &::before {
