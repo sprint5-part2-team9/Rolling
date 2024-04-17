@@ -15,40 +15,15 @@ const LIMIT = 6;
 function PostId({ edit }) {
   const { postId } = useParams();
   const [messages, setMessages] = useState([]);
+  const [didMount, setDidMount] = useState(false);
   const [rolling, setRolling] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [isModal, setIsModal] = useState(false);
   const pageEnd = useRef(null);
-  let offset = useRef(FIRST_LIMIT);
-  let counts = useRef(0);
-
-  const onIntersect = async ([entry], observer) => {
-    if (!isLoading && entry.isIntersecting && offset.current < counts.current) {
-      try {
-        observer.unobserve(entry.target);
-        getMessageData(getMessages, postId, LIMIT, offset.current);
-        setTimeout(() => {
-          observer.observe(entry.target);
-        }, 1000);
-      } catch (err) {
-      } finally {
-        setIsLoading(false);
-        offset.current = offset.current + 6;
-      }
-    }
-  };
-
-  const handleDelete = async (e) => {
-    const target = Number(e.target.name);
-    try {
-      await deleteMessage(target);
-      setMessages((prev) => prev.filter((item) => item?.id !== target));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const offsets = useRef(FIRST_LIMIT);
+  const counts = useRef(0);
 
   const getMessageData = useCallback(
     async (asyncFunction, postId, limit, offset) => {
@@ -58,8 +33,10 @@ function PostId({ edit }) {
         const { results, count } = await asyncFunction(postId, limit, offset);
         if (offset === 0) {
           setMessages(results);
+          offsets.current = FIRST_LIMIT;
         } else {
           setMessages((prev) => [...prev, ...results]);
+          offsets.current = offsets.current + LIMIT;
         }
         counts.current = count;
       } catch (err) {
@@ -71,6 +48,34 @@ function PostId({ edit }) {
     },
     []
   );
+
+  const onIntersect = useCallback(
+    async ([entry], observer) => {
+      if (entry.isIntersecting && offsets.current < counts.current) {
+        try {
+          observer.unobserve(entry.target);
+          await getMessageData(getMessages, postId, LIMIT, offsets.current);
+          setTimeout(() => {
+            observer.observe(entry.target);
+          }, 1000);
+        } catch (err) {
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    },
+    [getMessageData, postId]
+  );
+
+  const handleDelete = async (e) => {
+    const target = Number(e.target.name);
+    try {
+      await deleteMessage(target);
+      setMessages((prev) => prev.filter((item) => item?.id !== target));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const getRollingData = useCallback(async (asyncFunction, postId) => {
     setIsLoading(true);
@@ -86,16 +91,18 @@ function PostId({ edit }) {
     }
   }, []);
 
-  const observer = useCallback(
-    new IntersectionObserver(onIntersect, { threshold: 0 }),
-    []
-  );
+  useEffect(() => {
+    setDidMount(true);
+  }, []);
 
   useEffect(() => {
-    getMessageData(getMessages, postId, FIRST_LIMIT, 0);
-    getRollingData(getRecipient, postId);
-    if (pageEnd.current) observer.observe(pageEnd.current);
-  }, [getMessageData, getRollingData, postId, observer]);
+    if (didMount) {
+      getMessageData(getMessages, postId, FIRST_LIMIT, 0);
+      getRollingData(getRecipient, postId);
+      const observer = new IntersectionObserver(onIntersect, { threshold: 0 });
+      if (pageEnd.current) observer.observe(pageEnd.current);
+    }
+  }, [getMessageData, getRollingData, postId, onIntersect, didMount]);
 
   return (
     <>
@@ -115,7 +122,8 @@ function PostId({ edit }) {
             setIsModal={setIsModal}
           />
           {isLoading && <div>로딩중...</div>}
-          <div style={{ height: '10px' }} ref={pageEnd}></div>
+          {isError && <div>에러 에러!</div>}
+          <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
       {isModal && <Modal data={modalData} setIsModal={setIsModal} />}
