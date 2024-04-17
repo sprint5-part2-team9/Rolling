@@ -115,7 +115,7 @@ function PostId({ edit }) {
             setIsModal={setIsModal}
           />
           {isLoading && <div>로딩중...</div>}
-          <div style={{ height: "10px" }} ref={pageEnd}></div>
+          <div style={{ height: '10px' }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
       {isModal && <Modal data={modalData} setIsModal={setIsModal} />}

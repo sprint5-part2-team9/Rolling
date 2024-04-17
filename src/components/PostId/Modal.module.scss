@@ -63,6 +63,13 @@
   }
 }
 
+// content 內 p 태그 스타일
+p {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.18px;
+}
+
 .button {
   margin: 24px auto 0;
   border-radius: 6px;

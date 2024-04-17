@@ -20,6 +20,7 @@ import Editor from "./Editor";
 import ProfileImage from "./ProfileImage";
 import CreateBtn from "./CreateBtn";
 import { useParams } from "react-router-dom";
+import CancelBtn from "./CancelBtn";
 
 function Message() {
   const [name, setName] = useState("");
@@ -79,6 +80,10 @@ function Message() {
     }
   };
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   // 생성하기 버튼 활성화
   const isCreateButtonDisabled = !name.trim() || !content.trim();
 
@@ -115,7 +120,10 @@ function Message() {
           <label htmlFor='font'>폰트 선택</label>
           <Dropdown id='font' options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
-        <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
+        <div className={styles.btns}>
+          <CancelBtn onClick={handleCancel} />
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
+        </div>
       </div>
     </div>
   );

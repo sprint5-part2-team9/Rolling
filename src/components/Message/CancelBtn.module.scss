@@ -1,0 +1,22 @@
+@import "../../global.scss";
+
+.cancelBtn {
+  width: 25%;
+  height: 56px;
+  background-color: $white;
+  color: $purple6;
+  border: 1px solid $purple6;
+  border-radius: 12px;
+  @include Font18R;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple6;
+    color: $white;
+  }
+
+  &:focus {
+    background-color: $purple6;
+    border: 2px solid $purple9;
+  }
+}

@@ -13,13 +13,9 @@ label {
 }
 
 .to {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 42px; /* 175% */
-  letter-spacing: -0.24px;
   margin-top: 60px;
   margin-bottom: 12px;
+  @include Font24B;
 }
 
 .choose {
@@ -27,15 +23,11 @@ label {
   @include Font24B;
 }
 
-p {
+.text {
   color: $gray5;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px; /* 162.5% */
-  letter-spacing: -0.16px;
   @include Font16R;
 }
+
 .toggle {
   margin-top: 20px;
 }
@@ -52,7 +44,6 @@ p {
   @include Font16R;
   cursor: pointer;
 }
-
 
 // 선택되지 않은 버튼
 .unchecked {
@@ -71,4 +62,9 @@ p {
   display: flex;
   flex-direction: column;
   gap: 60px;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
 }
