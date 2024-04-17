@@ -7,6 +7,7 @@ import { getMessages, deleteMessage, getRecipient } from "../../Api/Api";
 import Cards from "../../components/PostId/Cards";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import Modal from "../../components/PostId/Modal";
 
 const FIRST_LIMIT = 8;
 const LIMIT = 6;
@@ -17,6 +18,8 @@ function PostId({ edit }) {
   const [rolling, setRolling] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [modalData, setModalData] = useState(null);
+  const [isModal, setIsModal] = useState(false);
   const pageEnd = useRef(null);
   let offset = useRef(FIRST_LIMIT);
   let counts = useRef(0);
@@ -47,24 +50,27 @@ function PostId({ edit }) {
     }
   };
 
-  const getMessageData = useCallback(async (asyncFunction, postId, limit, offset) => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const { results, count } = await asyncFunction(postId, limit, offset);
-      if (offset === 0) {
-        setMessages(results);
-      } else {
-        setMessages((prev) => [...prev, ...results]);
+  const getMessageData = useCallback(
+    async (asyncFunction, postId, limit, offset) => {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const { results, count } = await asyncFunction(postId, limit, offset);
+        if (offset === 0) {
+          setMessages(results);
+        } else {
+          setMessages((prev) => [...prev, ...results]);
+        }
+        counts.current = count;
+      } catch (err) {
+        console.log(err);
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
       }
-      counts.current = count;
-    } catch (err) {
-      console.log(err);
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    },
+    []
+  );
 
   const getRollingData = useCallback(async (asyncFunction, postId) => {
     setIsLoading(true);
@@ -72,6 +78,7 @@ function PostId({ edit }) {
     try {
       const result = await asyncFunction(postId);
       setRolling(result);
+      console.log(result);
     } catch (err) {
       console.log(err);
       setIsError(true);
@@ -80,7 +87,10 @@ function PostId({ edit }) {
     }
   }, []);
 
-  const observer = useCallback(new IntersectionObserver(onIntersect, { threshold: 0.5 }), []);
+  const observer = useCallback(
+    new IntersectionObserver(onIntersect, { threshold: 0 }),
+    []
+  );
 
   useEffect(() => {
     getMessageData(getMessages, postId, FIRST_LIMIT, 0);
@@ -90,15 +100,26 @@ function PostId({ edit }) {
 
   return (
     <>
-      <Header />
+      <Header isbutton={false} />
       <Subheader rolling={rolling} postId={postId} />
-      <PostIdMain bgColor={rolling?.backgroundColor} bgImg={rolling?.backgroundImg}>
+      <PostIdMain
+        bgColor={rolling?.backgroundColor}
+        bgImg={rolling?.backgroundImageURL}
+      >
         <div>
-          <Cards items={messages} deleteClick={handleDelete} edit={edit} postId={postId} />
+          <Cards
+            items={messages}
+            deleteClick={handleDelete}
+            edit={edit}
+            setModalData={setModalData}
+            postId={postId}
+            setIsModal={setIsModal}
+          />
           {isLoading && <div>로딩중...</div>}
           <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
+      {isModal && <Modal data={modalData} setIsModal={setIsModal} />}
     </>
   );
 }

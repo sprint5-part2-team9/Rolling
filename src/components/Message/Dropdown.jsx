@@ -37,6 +37,7 @@ function Dropdown({ options, value, onChange }) {
           className={styles.dropdown_icon}
           width={15}
           height={15}
+          alt=""
         />
       </div>
       {isOpen && (
