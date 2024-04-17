@@ -15,7 +15,7 @@ const Subheader = ({ rolling, postId }) => {
   const getExtraReactions = useCallback(async (asyncFunction, postId) => {
     try {
       const { results } = await asyncFunction(postId, 8, 3);
-      setExtraReactions((prev) => [...results]);
+      setExtraReactions(() => [...results]);
     } catch (err) {
       console.log(err);
     }

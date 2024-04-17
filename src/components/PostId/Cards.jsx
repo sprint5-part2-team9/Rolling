@@ -7,7 +7,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
 import { useState } from "react";
 
-const Cards = ({ items, deleteClick, edit, postId }) => {
+const Cards = ({
+  items,
+  deleteClick,
+  edit,
+  postId,
+  setModalData,
+  setIsModal,
+}) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
 
@@ -39,11 +46,19 @@ const Cards = ({ items, deleteClick, edit, postId }) => {
         </button>
       )}
       {edit ? (
-        <Link className={`${styles.btn} ${styles["-edit"]} `} to="../">
+        <Link
+          key={"edit-end"}
+          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
+          to="../"
+        >
           수정끝내기
         </Link>
       ) : (
-        <Link className={`${styles.btn} ${styles["-edit"]}`} to="./edit">
+        <Link
+          key={"edit-start"}
+          className={`${styles.btn} ${styles["-edit"]}`}
+          to="./edit"
+        >
           수정하기
         </Link>
       )}
@@ -56,7 +71,13 @@ const Cards = ({ items, deleteClick, edit, postId }) => {
         {items?.map((item) => {
           return (
             <li key={item.id} className={styles.li}>
-              <Card message={item} deleteClick={deleteClick} edit={edit} />
+              <Card
+                message={item}
+                deleteClick={deleteClick}
+                edit={edit}
+                setModalData={setModalData}
+                setIsModal={setIsModal}
+              />
             </li>
           );
         })}
