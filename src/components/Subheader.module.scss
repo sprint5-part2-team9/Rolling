@@ -158,3 +158,74 @@
   height: 36px;
   cursor: pointer;
 }
+
+//tablet
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .header {
+    height: 68px;
+  }
+
+  .nav {
+    max-width: 768px;
+    width: 100%;
+  }
+
+  .profiles,
+  .bar,
+  .howMany {
+    display: none;
+  }
+
+  .emojiPickerContainer {
+    position: absolute;
+    left: 310px;
+    top: 130px;
+    z-index: 1;
+  }
+}
+
+//mobile
+@media (min-width: 375px) and (max-width: 767px) {
+  .header {
+    height: auto;
+    width: 360px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .toPerson {
+    @include Font18B;
+  }
+
+  .add {
+    width: 36px;
+    height: 32px;
+    background-position: center;
+  }
+  .addTitle {
+    display: none;
+  }
+
+  .emojiPickerContainer {
+    position: absolute;
+    left: 10px;
+    top: 170px;
+    z-index: 1;
+  }
+
+  .share {
+    width: 36px;
+    height: 32px;
+  }
+
+  .profiles,
+  .bar,
+  .howMany {
+    display: none;
+  }
+}
