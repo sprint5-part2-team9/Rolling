@@ -2,9 +2,9 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-function Header({ isbutton = true }) {
+function Header({ isbutton = true, postIdPage = "" }) {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${styles[postIdPage]}`}>
       <nav className={styles.frame}>
         <Link to="/">
           <h1 className={`${styles.title}`}>Rolling</h1>

@@ -7,6 +7,12 @@
   border-bottom: 1px solid #ededed;
   justify-content: center;
   height: $headerH;
+
+  &.postIdPage {
+    @media (max-width: $mobile-Max-width) {
+      display: none;
+    }
+  }
   position: fixed;
   top: 0;
   left: 0;
