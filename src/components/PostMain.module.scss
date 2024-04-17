@@ -16,6 +16,10 @@ label {
   margin-top: 60px;
   margin-bottom: 12px;
   @include Font24B;
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    margin-top: 20px;
+  }
 }
 
 .choose {
@@ -67,4 +71,12 @@ label {
 .btns {
   display: flex;
   gap: 12px;
+
+  @media (max-width: $tablet-Max-width) {
+    margin-top: 350px;
+  }
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    margin-bottom: 40px;
+  }
 }

@@ -64,7 +64,7 @@ function PostMain() {
   return (
     <main className={styles.PostMain}>
       <form>
-        <label className={styles.to}>To.</label>
+        <label className={`${styles.to} ${styles.label}`}>To.</label>
         <Input
           id='name'
           placeholder='받는 사람 이름을 입력해 주세요.'
