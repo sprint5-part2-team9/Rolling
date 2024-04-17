@@ -45,6 +45,22 @@
   overflow-y: scroll;
   @include Font18R;
 
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
   &.nanumMyeongjo {
     font-family: $NanumMyeongjo;
     & * {
