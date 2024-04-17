@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 import AddCard from "../Card/AddCard";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Cards = ({
   items,
@@ -14,9 +14,11 @@ const Cards = ({
   postId,
   setModalData,
   setIsModal,
+  rolling,
 }) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
+  const focus = useRef();
 
   const deleteRolling = async function () {
     setTryDel("trying");
@@ -34,34 +36,13 @@ const Cards = ({
     }
   };
 
+  useEffect(() => focus.current?.focus(), [edit]);
+
   return (
     <div className={`${styles.box} ${styles[tryDel]}`}>
-      {edit && (
-        <button
-          className={`${styles.btn} ${styles["-del"]}`}
-          type="button"
-          onClick={deleteRolling}
-        >
-          삭제하기
-        </button>
-      )}
-      {edit ? (
-        <Link
-          key={"edit-end"}
-          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
-          to="../"
-        >
-          수정끝내기
-        </Link>
-      ) : (
-        <Link
-          key={"edit-start"}
-          className={`${styles.btn} ${styles["-edit"]}`}
-          to="./edit"
-        >
-          수정하기
-        </Link>
-      )}
+      <button className={styles.focus} type="button" ref={focus}>
+        {edit ? "수정페이지" : rolling?.name}
+      </button>
       <ul className={styles.frame}>
         {edit || (
           <li className={styles.li} key={-1}>
@@ -82,6 +63,32 @@ const Cards = ({
           );
         })}
       </ul>
+      {edit ? (
+        <Link
+          key={"edit-end"}
+          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
+          to="../"
+        >
+          수정끝내기
+        </Link>
+      ) : (
+        <Link
+          key={"edit-start"}
+          className={`${styles.btn} ${styles["-edit"]}`}
+          to="./edit"
+        >
+          수정하기
+        </Link>
+      )}
+      {edit && (
+        <button
+          className={`${styles.btn} ${styles["-del"]}`}
+          type="button"
+          onClick={deleteRolling}
+        >
+          삭제하기
+        </button>
+      )}
     </div>
   );
 };

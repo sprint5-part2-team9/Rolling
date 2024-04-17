@@ -34,6 +34,13 @@ const Card = ({
 
   return (
     <>
+      <button type="button" className={styles.frame} onClick={handleModal}>
+        <CardFrom data={data} />
+        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+          <HtmlParser content={data?.content} />
+        </div>
+        <CreatedDay date={data?.createdAt} />
+      </button>
       {edit && (
         <button
           name={message?.id}
@@ -44,13 +51,6 @@ const Card = ({
           삭제
         </button>
       )}
-      <button type="button" className={styles.frame} onClick={handleModal}>
-        <CardFrom data={data} />
-        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-          <HtmlParser content={data?.content} />
-        </div>
-        <CreatedDay date={data?.createdAt} />
-      </button>
     </>
   );
 };

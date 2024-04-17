@@ -115,6 +115,7 @@ function PostId({ edit }) {
         <div>
           <Cards
             items={messages}
+            rolling={rolling}
             deleteClick={handleDelete}
             edit={edit}
             setModalData={setModalData}
