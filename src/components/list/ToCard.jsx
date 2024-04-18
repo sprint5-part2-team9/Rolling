@@ -93,7 +93,6 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
         <h3 className={styles.countText} style={{ color: bgImg !== null ? "#fff" : "#3A3A3A" }}>
           {count} <span>명이 작성했어요!</span>
         </h3>
-        <div className={styles.line} />
         <div className={styles.emojiItems}>{topReactions}</div>
       </section>
     </Link>
