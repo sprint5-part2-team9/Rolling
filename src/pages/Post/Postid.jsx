@@ -23,6 +23,7 @@ function PostId({ edit }) {
   const [isModal, setIsModal] = useState(false);
   const pageEnd = useRef(null);
   const offsets = useRef(FIRST_LIMIT);
+  const headerFocus = useRef(null);
   const counts = useRef(0);
 
   const getMessageData = useCallback(
@@ -106,7 +107,11 @@ function PostId({ edit }) {
 
   return (
     <>
-      <Header isbutton={false} postIdPage="postIdPage" />
+      <Header
+        isbutton={false}
+        postIdPage="postIdPage"
+        headerFocus={headerFocus}
+      />
       <Subheader rolling={rolling} postId={postId} />
       <PostIdMain
         bgColor={rolling?.backgroundColor}
@@ -115,7 +120,7 @@ function PostId({ edit }) {
         <div>
           <Cards
             items={messages}
-            name={rolling?.name}
+            headerFocus={headerFocus}
             deleteClick={handleDelete}
             edit={edit}
             setModalData={setModalData}

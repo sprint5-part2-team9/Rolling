@@ -66,25 +66,27 @@ function PostMain() {
       <form>
         <label className={styles.to}>To.</label>
         <Input
-          id='name'
-          placeholder='받는 사람 이름을 입력해 주세요.'
+          id="name"
+          placeholder="받는 사람 이름을 입력해 주세요."
           value={name}
           onChange={handleNameChange}
         />
         <label className={styles.choose}>배경화면을 선택해 주세요.</label>
-        <p className={styles.text}>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</p>
+        <p className={styles.text}>
+          컬러를 선택하거나, 이미지를 선택할 수 있습니다.
+        </p>
         <div className={styles.toggle}>
           <button
-            type='button'
-            name='color'
+            type="button"
+            name="color"
             className={`${styles.toggleButton} ${selectedButton === "color" ? styles.checked : styles.unchecked}`}
             onClick={() => handleToggleClick("color")}
           >
             컬러
           </button>
           <button
-            type='button'
-            name='image'
+            type="button"
+            name="image"
             className={`${styles.toggleButton} ${selectedButton === "image" ? styles.checked : styles.unchecked}`}
             onClick={() => handleToggleClick("image")}
           >
@@ -95,7 +97,10 @@ function PostMain() {
           <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
           <div className={styles.btns}>
             <CancelBtn onClick={handleCancel} />
-            <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
+            <CreateBtn
+              disabled={isCreateButtonDisabled}
+              onClick={handleCreatePost}
+            />
           </div>
         </div>
         <div>{pickedBackGround.backgroundColor}</div>
