@@ -85,7 +85,7 @@
     background-color: $purple7;
   }
 
-  &.focused {
+  &:focus {
     border-radius: 6px;
     outline: 1px solid $purple9;
     background-color: $purple8;

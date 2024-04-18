@@ -115,7 +115,7 @@ function PostId({ edit }) {
         <div>
           <Cards
             items={messages}
-            rolling={rolling}
+            name={rolling?.name}
             deleteClick={handleDelete}
             edit={edit}
             setModalData={setModalData}
@@ -127,7 +127,9 @@ function PostId({ edit }) {
           <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
       </PostIdMain>
-      {isModal && <Modal datas={modalData} setIsModal={setIsModal} />}
+      {isModal && (
+        <Modal datas={modalData} setIsModal={setIsModal} name={rolling?.name} />
+      )}
     </>
   );
 }

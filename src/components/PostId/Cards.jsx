@@ -14,11 +14,11 @@ const Cards = ({
   postId,
   setModalData,
   setIsModal,
-  rolling,
+  name,
 }) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
-  const focus = useRef();
+  const focusing = useRef();
 
   const deleteRolling = async function () {
     setTryDel("trying");
@@ -36,12 +36,19 @@ const Cards = ({
     }
   };
 
-  useEffect(() => focus.current?.focus(), [edit]);
+  const handleKeyDown = (e) => {
+    if (e.code === "Tab") {
+      e.preventDefault();
+      focusing.current?.focus();
+    }
+  };
+
+  useEffect(() => focusing.current?.focus(), [edit]);
 
   return (
     <div className={`${styles.box} ${styles[tryDel]}`}>
-      <button className={styles.focus} type="button" ref={focus}>
-        {edit ? "수정페이지" : rolling?.name}
+      <button className={styles.focus} type="button" ref={focusing}>
+        {edit ? "수정페이지" : name}
       </button>
       <ul className={styles.frame}>
         {edit || (
@@ -85,6 +92,7 @@ const Cards = ({
           className={`${styles.btn} ${styles["-del"]}`}
           type="button"
           onClick={deleteRolling}
+          onKeyDown={handleKeyDown}
         >
           삭제하기
         </button>

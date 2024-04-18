@@ -2,7 +2,7 @@ import CreatedDay from "../Card/CreatedDay";
 import CardFrom from "../Card/CardFrom";
 import styles from "./Modal.module.scss";
 import HtmlParser from "../Card/HtmlParser";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Portal from "../../Portal/Portal";
 
 const MODAL = "-modal";
@@ -10,8 +10,8 @@ const MODAL = "-modal";
 const Modal = ({ datas, setIsModal }) => {
   const focusing = useRef(null);
   const [data, thisCard] = datas;
-  const [focused, setFocused] = useState("");
   let prevCard = thisCard?.current;
+
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
     if (font === "나눔명조") return "nanumMyeongjo";
@@ -19,21 +19,19 @@ const Modal = ({ datas, setIsModal }) => {
     return "notoSans";
   };
 
-  const handleEnter = () => {
-    setIsModal(false);
-    prevCard.focus();
+  const handlekey = (e) => {
+    if (e.code === "Enter") {
+      e.preventDefault();
+      setIsModal(false);
+      prevCard.focus();
+    } else if (e.code === "Tab") {
+      e.preventDefault();
+      focusing?.current.focus();
+    }
   };
 
   const handleClick = () => {
     setIsModal(false);
-  };
-
-  const handleFocus = () => {
-    setFocused("focused");
-  };
-
-  const handleBlur = () => {
-    setFocused("");
   };
 
   const handleBubble = (e) => {
@@ -68,19 +66,11 @@ const Modal = ({ datas, setIsModal }) => {
           <div className={`${styles.content} ${styles[fontStyle(data?.font)]}`}>
             <HtmlParser content={data?.content} />
           </div>
-          <div
-            className={`${styles.button} ${styles[focused]}`}
-            onClick={handleClick}
-          >
-            확인
-          </div>
           <button
-            name="접근성"
             type="button"
-            className={styles.focus}
-            onClick={handleEnter}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            className={`${styles.button}`}
+            onClick={handleClick}
+            onKeyDown={handlekey}
           >
             확인
           </button>
