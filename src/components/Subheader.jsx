@@ -1,5 +1,6 @@
 import styles from "./Subheader.module.scss";
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ShareDropdown from "./ShareDropdown";
 import { ToastContainer } from "react-toastify";
 import EmojiPicker from "emoji-picker-react";
@@ -11,6 +12,7 @@ const Subheader = ({ rolling, postId }) => {
   const [moreReactions, setMoreReactions] = useState(false);
   const [extraReactions, setExtraReactions] = useState([]);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const navigate = useNavigate();
 
   const getExtraReactions = useCallback(async (asyncFunction, postId) => {
     try {
@@ -38,6 +40,10 @@ const Subheader = ({ rolling, postId }) => {
     setEmojiPick(false);
   };
 
+  const handleCancel = () => {
+    navigate("/list");
+  };
+
   useEffect(() => {
     getExtraReactions(getReaction, postId);
   }, [getExtraReactions, postId]);
@@ -60,7 +66,15 @@ const Subheader = ({ rolling, postId }) => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <h2 className={styles.toPerson}>To.{rolling?.name}</h2>
+        <div className={styles.back_to}>
+          <img
+            src='https://cdn-icons-png.flaticon.com/128/271/271220.png'
+            className={styles.backIcon}
+            alt='뒤로가기'
+            onClick={handleCancel}
+          />
+          <h2 className={styles.toPerson}>To.{rolling?.name}</h2>
+        </div>
         <div className={styles.menu}>
           {/* 프로필 이미지 및 메시지 수 */}
           <div className={styles.profiles}>
@@ -91,16 +105,18 @@ const Subheader = ({ rolling, postId }) => {
           </div>
           {/* 상위 반응 */}
           <div className={styles.mobile_border}>
-            {rolling?.topReactions?.length ? (
-              rolling.topReactions.map((item) => (
-                <span key={item.id} className={styles.emoji}>
-                  {item.emoji}
-                  {item.count}
-                </span>
-              ))
-            ) : (
-              <div>반응이 없어요...</div>
-            )}
+            <div className={styles.emoji_box}>
+              {rolling?.topReactions?.length ? (
+                rolling.topReactions.map((item) => (
+                  <span key={item.id} className={styles.emoji}>
+                    {item.emoji}
+                    {item.count}
+                  </span>
+                ))
+              ) : (
+                <div>반응이 없어요...</div>
+              )}
+            </div>
             {/* 추가 반응 버튼 */}
             <div type='button' className={styles.arrowButton} onClick={showReactions}>
               {moreReactions && (

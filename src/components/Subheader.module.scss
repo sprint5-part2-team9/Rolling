@@ -34,6 +34,22 @@ $mobile-height: 104px;
   }
 }
 
+.backIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.back_to {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  @media (max-width: $mobile-Max-width) {
+    gap: 10px;
+    margin-left: 15px;
+  }
+}
+
 .toPerson {
   width: 227px;
   color: $gray8;
@@ -44,7 +60,6 @@ $mobile-height: 104px;
 
   @media (max-width: $mobile-Max-width) {
     @include Font18B;
-    margin-left: 20px;
     height: $mobile-height/2;
     display: flex;
     align-items: center;
@@ -154,6 +169,13 @@ $mobile-height: 104px;
     height: 32px;
     margin: 2px;
     @include Font14R;
+  }
+}
+
+.emoji_box {
+  display: flex;
+  @media (max-width: $mobile-Max-width) {
+    min-width: 222px;
   }
 }
 
