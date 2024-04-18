@@ -2,11 +2,11 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-function Header({ isbutton = true, postIdPage = "" }) {
+function Header({ isbutton = true, postIdPage = "", headerFocus }) {
   return (
     <header className={`${styles.header} ${styles[postIdPage]}`}>
       <nav className={styles.frame}>
-        <Link to="/">
+        <Link to="/" ref={headerFocus}>
           <h1 className={`${styles.title}`}>Rolling</h1>
         </Link>
         {isbutton && (

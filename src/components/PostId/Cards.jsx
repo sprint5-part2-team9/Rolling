@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 import AddCard from "../Card/AddCard";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Cards = ({
   items,
@@ -14,9 +14,11 @@ const Cards = ({
   postId,
   setModalData,
   setIsModal,
+  headerFocus,
 }) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
+  const focusing = useRef(null);
 
   const deleteRolling = async function () {
     setTryDel("trying");
@@ -34,33 +36,30 @@ const Cards = ({
     }
   };
 
+  const toheaderKeyDown = (e) => {
+    if (e.code === "Tab") {
+      e.preventDefault();
+      headerFocus.current?.focus();
+    }
+  };
+
+  const toEditPageKeyDown = (e) => {
+    if (e.code === "Tab") {
+      e.preventDefault();
+      focusing.current?.focus();
+    }
+  };
+
+  useEffect(() => {
+    if (edit) focusing.current?.focus();
+  }, [edit]);
+
   return (
     <div className={`${styles.box} ${styles[tryDel]}`}>
       {edit && (
-        <button
-          className={`${styles.btn} ${styles["-del"]}`}
-          type="button"
-          onClick={deleteRolling}
-        >
-          삭제하기
-        </button>
-      )}
-      {edit ? (
-        <Link
-          key={"edit-end"}
-          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
-          to="../"
-        >
-          수정끝내기
-        </Link>
-      ) : (
-        <Link
-          key={"edit-start"}
-          className={`${styles.btn} ${styles["-edit"]}`}
-          to="./edit"
-        >
-          수정하기
-        </Link>
+        <h2 className={styles.focus} tabIndex={0} ref={focusing}>
+          수정 페이지
+        </h2>
       )}
       <ul className={styles.frame}>
         {edit || (
@@ -82,6 +81,34 @@ const Cards = ({
           );
         })}
       </ul>
+      {edit && (
+        <button
+          className={`${styles.btn} ${styles["-del"]}`}
+          type="button"
+          onClick={deleteRolling}
+        >
+          삭제하기
+        </button>
+      )}
+      {edit ? (
+        <Link
+          key={"edit-end"}
+          className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
+          to="../"
+          onKeyDown={toEditPageKeyDown}
+        >
+          수정끝내기
+        </Link>
+      ) : (
+        <Link
+          key={"edit-start"}
+          className={`${styles.btn} ${styles["-edit"]}`}
+          onKeyDown={toheaderKeyDown}
+          to="./edit"
+        >
+          수정하기
+        </Link>
+      )}
     </div>
   );
 };
