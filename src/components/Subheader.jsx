@@ -52,11 +52,11 @@ const Subheader = ({ rolling, postId }) => {
     if (selectedEmoji) {
       const addReaction = async () => {
         try {
-          await postReaction(postId, selectedEmoji.emoji, "increase");
+          await postReaction(postId, selectedEmoji.emoji, 'increase');
           getExtraReactions(getReaction, postId);
           window.location.reload();
         } catch (error) {
-          console.error("리액션 추가 에러:", error);
+          console.error('리액션 추가 에러:', error);
         }
       };
       addReaction();
