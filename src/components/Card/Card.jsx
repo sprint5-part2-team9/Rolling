@@ -4,13 +4,17 @@
 import { useEffect, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
-import { deleteMessage } from "../../Api/Api";
-import Modal from "../PostId/Modal";
 import CreatedDay from "./CreatedDay";
+import HtmlParser from "./HtmlParser";
 
-const Card = ({ edit = false, message, deleteClick }) => {
+const Card = ({
+  edit = false,
+  message,
+  deleteClick,
+  setModalData,
+  setIsModal,
+}) => {
   const [data, setData] = useState({});
-  const [isModal, setIsModal] = useState(false);
 
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
@@ -20,6 +24,7 @@ const Card = ({ edit = false, message, deleteClick }) => {
   };
 
   const handleModal = () => {
+    setModalData(() => data);
     setIsModal(true);
   };
 
@@ -29,10 +34,9 @@ const Card = ({ edit = false, message, deleteClick }) => {
 
   return (
     <>
-      {isModal && <Modal data={data} setIsModal={setIsModal} />}
       {edit && (
         <button
-          name={data?.id}
+          name={message?.id}
           className={styles.deleted}
           type="button"
           onClick={deleteClick}
@@ -42,9 +46,9 @@ const Card = ({ edit = false, message, deleteClick }) => {
       )}
       <button type="button" className={styles.frame} onClick={handleModal}>
         <CardFrom data={data} />
-        <p className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-          {data?.content}
-        </p>
+        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+          <HtmlParser content={data?.content} />
+        </div>
         <CreatedDay date={data?.createdAt} />
       </button>
     </>

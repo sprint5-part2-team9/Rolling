@@ -1,6 +1,6 @@
 import styles from "./ToCard.module.scss";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import colorsCardPurple from "../../assets/Type_colors=card_list_01.png";
 import colorsCardBeige from "../../assets/Type_colors=card_list_02.png";
 import colorsCardBlue from "../../assets/Type_colors=card_list_03.png";
@@ -18,13 +18,8 @@ import colorsCardGreen from "../../assets/Type_colors=card_list_05.png";
 const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
   const [background, setBackground] = useState(colorsCardPurple);
 
-  useEffect(() => {
-    const color = backgroundItem();
-    setBackground(color);
-  }, []);
-
   // 배경 색
-  const backgroundItem = () => {
+  const backgroundItem = useCallback(() => {
     let usingColor = "";
     if (bgImg !== null) {
       usingColor = bgImg;
@@ -47,7 +42,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
       }
     }
     return usingColor;
-  };
+  }, []);
 
   // from 프로필
   const fromUserImg =
@@ -60,6 +55,11 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
         alt="profileimg"
       />
     ));
+
+  useEffect(() => {
+    const color = backgroundItem();
+    setBackground(color);
+  }, [backgroundItem]);
 
   // 이모지
   const topReactions =

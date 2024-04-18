@@ -2,16 +2,16 @@
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-function Header({ isbutton = true }) {
+function Header({ isbutton = true, postIdPage = "" }) {
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${styles[postIdPage]}`}>
       <nav className={styles.frame}>
         <Link to="/">
           <h1 className={`${styles.title}`}>Rolling</h1>
         </Link>
         {isbutton && (
-          <Link to="/post">
-            <button type="button">롤링 페이퍼 만들기</button>
+          <Link className={styles.create_btn} to="/post">
+            롤링 페이퍼 만들기
           </Link>
         )}
       </nav>

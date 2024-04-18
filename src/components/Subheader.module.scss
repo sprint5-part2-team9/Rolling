@@ -1,3 +1,5 @@
+@import '../global.scss';
+
 .header {
   display: flex;
   padding: 13px 24px;
@@ -14,16 +16,62 @@
   width: 100%;
 }
 
+.toPerson {
+  width: 227px;
+  color: $gray8;
+  @include Font28B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.profile {
+.profiles {
+  display: flex;
   width: 76px;
+  margin-right: 11px;
+}
+
+.profileCase {
+  width: 28px;
   height: 28px;
-  margin: 11px;
+  margin-right: -12px;
+  border: 1.4px solid $white;
+  border-radius: 140px;
+  overflow: hidden;
+  &.rest {
+    background-color: $white;
+    border: 1px solid #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #484848;
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+}
+
+.profileImg {
+  object-fit: cover;
+}
+
+.howMany {
+  color: $gray9;
+  font-family: $font-family;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+
+  & .people {
+    font-weight: 700;
+  }
 }
 
 .bar {
@@ -39,6 +87,7 @@
 }
 
 .emoji {
+  display: inline;
   border-radius: 32px;
   width: 66px;
   height: 36px;
@@ -50,7 +99,7 @@
 }
 
 .arrowButton {
-  background-image: url("../assets/arrowButton.svg");
+  background-image: url('../assets/arrowButton.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -59,10 +108,25 @@
   height: 36px;
   margin-right: 8px;
   cursor: pointer;
+  position: relative;
+}
+
+.extraReactions {
+  padding: 18px;
+  width: 264px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #b6b6b6;
+  background-color: $white;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  top: 40px;
+  right: -12.5px;
+  z-index: 4;
 }
 
 .add {
-  background-image: url("../assets/emojiAdd.svg");
+  background-image: url('../assets/emojiAdd.svg');
   background-repeat: no-repeat;
   background-position: 15px;
   padding: 6px 16px;
@@ -84,7 +148,7 @@
 }
 
 .share {
-  background-image: url("../assets/share.svg");
+  background-image: url('../assets/share.svg');
   background-repeat: no-repeat;
   background-position: center;
   padding: 6px 16px;

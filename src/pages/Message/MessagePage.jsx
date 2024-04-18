@@ -6,7 +6,7 @@ import Message from "../../components/Message/Message";
 function MessagePage() {
   return (
     <>
-      <Header />
+      <Header isbutton={false} />
       <Message />
     </>
   );

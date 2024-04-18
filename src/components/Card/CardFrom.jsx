@@ -33,7 +33,7 @@ const CardFrom = ({ data, modal }) => {
         />
       </div>
       <div className={styles.from}>
-        <span className={styles.name}>{sender}</span>
+        <span className={`${styles.name} ${styles[modal]}`}>{sender}</span>
         <div>
           <Relation relationship={relationship} />
         </div>

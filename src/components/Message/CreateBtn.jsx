@@ -9,11 +9,9 @@ function CreateBtn({ disabled, onClick }) {
   const btnClasses = classNames(styles.createBtn, { [styles.disabled]: disabled });
 
   return (
-    <>
-      <button type="button" className={btnClasses} disabled={disabled} onClick={onClick}>
-        생성하기
-      </button>
-    </>
+    <button type='button' className={btnClasses} disabled={disabled} onClick={onClick}>
+      생성하기
+    </button>
   );
 }
 

@@ -8,6 +8,12 @@ $headerH: 65px;
   border-bottom: 1px solid #ededed;
   justify-content: center;
   height: $headerH;
+
+  &.postIdPage {
+    @media (max-width: $mobile-Max-width) {
+      display: none;
+    }
+  }
 }
 
 .frame {
@@ -32,5 +38,27 @@ $headerH: 65px;
     width: 27.818px;
     height: 27.658px;
     margin-right: 8px;
+  }
+}
+
+.create_btn {
+  width: 157px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border: 1px solid $gray3;
+  border-radius: 5px;
+  color: $gray9;
+  @include Font16B;
+
+  &:hover {
+    background-color: $gray1;
+  }
+
+  &:focus {
+    background-color: $white;
+    border: 1px solid $gray5;
   }
 }

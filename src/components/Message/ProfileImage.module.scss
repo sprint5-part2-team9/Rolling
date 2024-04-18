@@ -8,6 +8,11 @@
 .profileImgs {
   display: flex;
   gap: 10px;
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
 }
 
 .profileImg {
@@ -18,10 +23,29 @@
   border: 1px solid $gray2;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .default_btn {
-  margin-top: 10px;
+  background-color: $purple4;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple6;
+  }
+
+  &:focus {
+    background-color: $purple6;
+    border: 1px solid $purple8;
+  }
 }
 
 .selectedImg_container {
@@ -45,7 +69,15 @@
 .txt_container {
   display: flex;
   align-items: center;
+  margin-top: 10px;
   gap: 10px;
   color: $gray5;
   @include Font16R;
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    gap: 0px;
+    margin: 0 0 5px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

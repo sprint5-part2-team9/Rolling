@@ -14,6 +14,15 @@
   gap: 50px;
   width: 720px;
   margin: 40px 0;
+
+  @media (min-width: $tablet-Min-width) and (max-width: $tablet-Max-width) {
+    width: $tablet-Max-width;
+  }
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    width: $mobile-Min-width;
+    margin-top: 20px;
+  }
 }
 
 .section {
@@ -24,5 +33,25 @@
   label {
     @include Font24B;
     color: $gray9;
+  }
+
+  @media (min-width: $tablet-Min-width) and (max-width: $tablet-Max-width) {
+    margin: 0 24px;
+  }
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    margin: 0px 20px;
+  }
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  @media (min-width: $tablet-Min-width) and (max-width: $tablet-Max-width) {
+    margin: 0 24px;
+  }
+
+  @media (min-width: $mobile-Min-width) and (max-width: $mobile-Max-width) {
+    margin: 0px 20px;
   }
 }

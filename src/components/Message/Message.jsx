@@ -6,7 +6,7 @@ sender: 메세지 작성자의 이름
 profileImageURL: ProfileImage 컴포넌트에서 선택한 작성자 프로필 이미지
 relationship: 대상과 작성자의 관계, 지인이 기본값
 content: 메세지의 내용으로, Editor 컴포넌트에서 내용을 전달받음
-font: 메세지에 사용할 폰트. font.css 파일에 import 되어있음. value 이름 달라서 수정 要
+font: 메세지에 사용할 폰트
 createdAt: 객체 생성 시점
 */
 
@@ -20,13 +20,16 @@ import Editor from "./Editor";
 import ProfileImage from "./ProfileImage";
 import CreateBtn from "./CreateBtn";
 import { useParams } from "react-router-dom";
+import CancelBtn from "./CancelBtn";
 
 function Message() {
   const [name, setName] = useState("");
   const [relationship, setRelationship] = useState("지인");
   const [content, setContent] = useState("");
   const [font, setFont] = useState("Noto Sans");
-  const [profileImageURL, setProfileImageURL] = useState("");
+  const [profileImageURL, setProfileImageURL] = useState(
+    "https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png"
+  );
   const [recipientId, setRecipientId] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,23 +69,19 @@ function Message() {
     setFont(value);
   };
 
-
   const handleCreateMessage = async () => {
     try {
       console.log(`메시지 생성 중 id : ${recipientId}`);
-      await postMessages(
-        recipientId,
-        name,
-        relationship,
-        content,
-        font,
-        profileImageURL
-      );
+      await postMessages(recipientId, name, relationship, content, font, profileImageURL);
       console.log("메시지 생성 완료");
       navigate(`/post/${recipientId}`);
     } catch (error) {
       console.error("메시지 생성 중 오류 발생:", error);
     }
+  };
+
+  const handleCancel = () => {
+    navigate(-1);
   };
 
   // 생성하기 버튼 활성화
@@ -121,10 +120,10 @@ function Message() {
           <label htmlFor='font'>폰트 선택</label>
           <Dropdown id='font' options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
-        <CreateBtn
-          disabled={isCreateButtonDisabled}
-          onClick={handleCreateMessage}
-        />
+        <div className={styles.btns}>
+          <CancelBtn onClick={handleCancel} />
+          <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreateMessage} />
+        </div>
       </div>
     </div>
   );
