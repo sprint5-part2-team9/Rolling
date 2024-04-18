@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 const AddCard = () => {
   return (
     <Link className={`${styles.frame} ${styles.add}`} to="./message">
-      <span className={styles.circle}>롤링 페이퍼 작성</span>
+      <span className={styles.circle}></span>
+      <span className={styles.hide}>롤링 페이퍼 작성</span>
     </Link>
   );
 };

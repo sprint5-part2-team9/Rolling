@@ -54,7 +54,7 @@ const Card = ({
           type="button"
           onClick={deleteClick}
         >
-          삭제
+          <span className={styles.hide}>삭제</span>
         </button>
       )}
     </>

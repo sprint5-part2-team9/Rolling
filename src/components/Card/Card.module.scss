@@ -81,6 +81,9 @@
     outline: none;
   }
 }
+.hide {
+  @include hide;
+}
 
 .circle {
   $W_H: 56px;
