@@ -1,11 +1,17 @@
-@import '../global.scss';
+@import "../global.scss";
 
 .header {
   display: flex;
   padding: 13px 24px;
   justify-content: center;
-  height: 69px;
+  height: $subheaderH;
   border-bottom: 1px solid #ededed;
+  background-color: $white;
+  position: fixed;
+  top: $headerH;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .nav {
@@ -99,7 +105,7 @@
 }
 
 .arrowButton {
-  background-image: url('../assets/arrowButton.svg');
+  background-image: url("../assets/arrowButton.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;
@@ -126,7 +132,7 @@
 }
 
 .add {
-  background-image: url('../assets/emojiAdd.svg');
+  background-image: url("../assets/emojiAdd.svg");
   background-repeat: no-repeat;
   background-position: 15px;
   padding: 6px 16px;
@@ -143,12 +149,12 @@
 .emojiPickerContainer {
   position: absolute;
   left: 1300px;
-  top: 130px;
+  top: $headerH;
   z-index: 1;
 }
 
 .share {
-  background-image: url('../assets/share.svg');
+  background-image: url("../assets/share.svg");
   background-repeat: no-repeat;
   background-position: center;
   padding: 6px 16px;

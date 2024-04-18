@@ -3,7 +3,7 @@ import styles from "./Option.module.scss";
 import selectedImg from "../assets/check.svg";
 import useFetch from "../Hooks/useFetch";
 
-function BackImg({ imgurl, onclick, isSelected }) {
+function BackImg({ imgurl, onclick, isSelected,}) {
   return (
     <div
       className={styles.Option__backImg__container}
@@ -21,9 +21,9 @@ function BackImg({ imgurl, onclick, isSelected }) {
   );
 }
 
+
 function Option({ ColorOrImg, setBackGround }) {
   const imgData = useFetch("https://rolling-api.vercel.app/background-images/");
-
   const [selectedColor, setSelectedColor] = useState("beige"); //선택된 컬러 state
   const [selectedBackImg, setSelectedBackImg] = useState(null); //선택된 배경이미지 state
 
@@ -49,8 +49,7 @@ function Option({ ColorOrImg, setBackGround }) {
   useEffect(() => {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
       setBackGround("beige", imgData.data.imageUrls[0]);
-    }
-    else if(ColorOrImg === "color") {
+    } else if (ColorOrImg === "color") {
       setSelectedBackImg(null);
       setSelectedColor("beige");
       setBackGround("beige", null);
