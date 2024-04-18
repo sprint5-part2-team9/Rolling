@@ -44,11 +44,12 @@ function Main() {
         </div>
       </section>
       <footer>
-        <button className={styles.linkButton}>
-          <Link to="/list" className={styles.linkToList}>
-            구경해보기
-          </Link>
-        </button>
+        <Link
+          to="/list"
+          className={`${styles.linkToList} ${styles.linkButton}`}
+        >
+          구경해보기
+        </Link>
       </footer>
     </div>
   );

@@ -6,6 +6,7 @@ import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import CreatedDay from "./CreatedDay";
 import HtmlParser from "./HtmlParser";
+import DivToButton from "../DivToButton";
 
 const Card = ({
   edit = false,
@@ -35,18 +36,17 @@ const Card = ({
 
   return (
     <>
-      <button
-        type="button"
-        className={styles.frame}
+      <DivToButton
         onClick={handleModal}
-        ref={thisCard}
+        Ref={thisCard}
+        className={styles.frame}
       >
         <CardFrom data={data} />
         <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
           <HtmlParser content={data?.content} />
         </div>
         <CreatedDay date={data?.createdAt} />
-      </button>
+      </DivToButton>
       {edit && (
         <button
           name={message?.id}
