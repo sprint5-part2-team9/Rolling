@@ -1,6 +1,5 @@
 @import "../../global.scss";
 
-
 .tocard {
   width: 275px;
   height: 260px;
@@ -10,27 +9,48 @@
   background-size: cover;
   background-position: center;
   box-shadow: 0px 2px 12px 0px #00000014;
+  cursor: pointer;
+
+  @media (max-width: $tablet-Max-width) {
+    display: inline-block;
+  }
+
+  @media (max-width: $mobile-Max-width) {
+    width: 208px;
+    height: 232px;
+  }
 }
 
 .toCardTitle {
   @include Font24B;
+  width: 100%;
   line-height: 36px;
   letter-spacing: -0.01em;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: $mobile-Max-width) {
+    @include Font18B;
+  }
 }
 
 .countText {
   @include Font16B;
   line-height: 26px;
-  letter-spacing: -0.01em;
-  text-align: left;
-}
 
-.countText span {
-  @include Font16R;
-  line-height: 26px;
-  letter-spacing: -0.01em;
-  text-align: left;
+  @media (max-width: $mobile-Max-width) {
+    @include Font14B;
+  }
+
+  span {
+    @include Font16R;
+
+    @media (max-width: $mobile-Max-width) {
+      @include Font14R;
+    }
+  }
 }
 
 .profileImgs {
@@ -41,7 +61,7 @@
 }
 
 // 첫번째 자식요소를 제외하고
-.profileImgs img:not(:first-of-type){
+.profileImgs img:not(:first-of-type) {
   margin: 0 0 0 -8px;
 }
 
@@ -62,26 +82,42 @@
 }
 
 .line {
-  width: 227px;
+  width: 100%;
   height: 1px;
   margin: 43px 0 16px;
   background: rgba(0, 0, 0, 0.12);
+
+  @media (max-width: $mobile-Max-width) {
+    margin: 33px 0 16px;
+  }
 }
 
 .emojiItems {
   display: flex;
   gap: 8px;
   color: #fff;
+  bottom: 20px;
+  @include Font16R;
+
+  @media (max-width: $mobile-Max-width) {
+    gap: 4px;
+  }
 }
 
 .emoji {
-  padding: 8px 12px;
-  flex-direction: column;
+  width: 65px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 32px;
   background: rgba(0, 0, 0, 0.54);
   color: #fff;
-}
 
-.emoji div{
-  @include Font16R;
+  @media (max-width: $mobile-Max-width) {
+    width: 55px;
+    height: 32px;
+    padding: 6px 8px;
+    @include Font14R;
+  }
 }

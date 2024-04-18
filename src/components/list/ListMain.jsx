@@ -5,8 +5,6 @@ import { getRecipientsList } from "../../Api/Api";
 
 import { useState, createContext, useEffect } from "react";
 
-// import Data from "./Data.json";
-
 
 export const RollingPaperContext = createContext();
 
@@ -27,11 +25,15 @@ const ListMain = () => {
 
   return (
     <RollingPaperContext.Provider value={rollingPaperData}>
-      <h1 className={styles.rollingPaperTitle}>인기 롤링 페이퍼🔥</h1>
-      <ToCardListBest />
-      <h1 className={styles.rollingPaperTitle}>최근 만든 롤링 페이퍼⭐</h1>
-      <ToCardListNew />
-      <button>나도 만들어보기</button>
+      <section className={styles.listMain}>
+        <h1 className={styles.rollingPaperTitle}>인기 롤링 페이퍼🔥</h1>
+        <ToCardListBest />
+        <h1 className={styles.rollingPaperTitle}>최근 만든 롤링 페이퍼 ⭐</h1>
+        <ToCardListNew />
+        <div className={styles.wrapBtn}>
+          <button className={styles.createBtn}>나도 만들어보기</button>
+        </div>
+      </section>
     </RollingPaperContext.Provider>
   );
 };
