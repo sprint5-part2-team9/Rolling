@@ -46,11 +46,11 @@ const Subheader = ({ rolling, postId }) => {
     if (selectedEmoji) {
       const addReaction = async () => {
         try {
-          await postReaction(postId, selectedEmoji.emoji, "increase");
+          await postReaction(postId, selectedEmoji.emoji, 'increase');
           getExtraReactions(getReaction, postId);
           window.location.reload();
         } catch (error) {
-          console.error("리액션 추가 에러:", error);
+          console.error('리액션 추가 에러:', error);
         }
       };
       addReaction();
@@ -92,37 +92,44 @@ const Subheader = ({ rolling, postId }) => {
           {/* 상위 반응 */}
           {rolling?.topReactions?.length ? (
             rolling.topReactions.map((item) => (
-              <button key={item.id} type='button' className={styles.emoji}>
+              <span key={item.id} className={styles.emoji}>
                 {item.emoji}
                 {item.count}
-              </button>
+              </span>
             ))
           ) : (
             <div>반응이 없어요...</div>
           )}
           {/* 추가 반응 버튼 */}
-          <button type='button' className={styles.arrowButton} onClick={showReactions}>
+          <div
+            type='button'
+            className={styles.arrowButton}
+            onClick={showReactions}
+          >
             {moreReactions && (
               <div className={styles.extraReactions}>
                 {extraReactions.length
                   ? extraReactions.map((extra) => (
-                      <button key={extra.id} className={styles.emoji}>
+                      <span key={extra.id} className={styles.emoji}>
                         {extra.emoji}
                         {extra.count}
-                      </button>
+                      </span>
                     ))
-                  : "추가적인 반응은 없어요"}
+                  : '추가적인 반응은 없어요'}
               </div>
             )}
-          </button>
+          </div>
           {/* 이모지 추가 버튼 */}
           <button type='button' className={styles.add} onClick={addEmoji}>
-            추가
+            <span className={styles.addTitle}>추가</span>
           </button>
           {/* 이모지 피커 */}
           {emojiPick && (
             <div className={styles.emojiPickerContainer}>
-              <EmojiPicker className={styles.emojiPick} onEmojiClick={emojiClick} />
+              <EmojiPicker
+                className={styles.emojiPick}
+                onEmojiClick={emojiClick}
+              />
             </div>
           )}
           <div className={styles.bar2}>|</div>
@@ -130,7 +137,7 @@ const Subheader = ({ rolling, postId }) => {
           <button className={styles.share} onClick={moreShare}>
             {moreShareView && <ShareDropdown />}
           </button>
-          <ToastContainer style={{ fontSize: "12px" }} />
+          <ToastContainer style={{ fontSize: '12px' }} />
         </div>
       </nav>
     </header>
