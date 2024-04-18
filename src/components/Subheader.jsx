@@ -101,7 +101,7 @@ const Subheader = ({ rolling, postId }) => {
             <div>반응이 없어요...</div>
           )}
           {/* 추가 반응 버튼 */}
-          <button
+          <div
             type='button'
             className={styles.arrowButton}
             onClick={showReactions}
@@ -118,7 +118,7 @@ const Subheader = ({ rolling, postId }) => {
                   : '추가적인 반응은 없어요'}
               </div>
             )}
-          </button>
+          </div>
           {/* 이모지 추가 버튼 */}
           <button type='button' className={styles.add} onClick={addEmoji}>
             <span className={styles.addTitle}>추가</span>
