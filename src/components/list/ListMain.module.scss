@@ -1,6 +1,63 @@
 @import "../../global.scss";
 
+.listMain {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: $headerH;
+
+  @media (max-width: $tablet-Max-width) {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
 .rollingPaperTitle {
   @include Font24B;
-  margin: 50px 0 16px 0;
+  width: 100%;
+  margin: 50px 0 16px;
+  text-align: left;
+
+  @media (max-width: $tablet-Max-width) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: $mobile-Max-width) {
+    padding: 0 20px;
+  }
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  margin: 64px 0;
+  height: 56px;
+  background-color: $purple6;
+  color: $white;
+  border: none;
+  border-radius: 12px;
+  @include Font18B;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $purple7;
+  }
+
+  &:focus {
+    background-color: $purple8;
+    border: 2px solid $purple9;
+  }
+
+  @media (max-width: $tablet-Max-width) {
+    width: calc(100% - 48px);
+    margin: 40px 24px;
+  }
+
+  @media (max-width: $mobile-Max-width) {
+    width: calc(100% - 40px);
+    margin: 40px 20px;
+  }
 }
