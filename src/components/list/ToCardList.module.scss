@@ -2,15 +2,26 @@
 
 .listwrap {
   display: flex;
-  flex-direction: row;
   align-items: center;
   position: relative;
+  
+  @media (max-width: $tablet-Max-width) {
+    width: 100%;
+  }
 }
 
 .cardList {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  @media (max-width: $tablet-Max-width) {
+    overflow-x: auto;
+    padding: 24px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 .listBtn {
@@ -26,20 +37,24 @@
   background-color: rgba(255, 255, 255, 0.9);
   stroke-width: 1px;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 
-}
+  @media (max-width: $tablet-Max-width) {
+    display: none;
+  }
 
-.listBtn img {
-  width: 16px;
-  height: 16px;
+  @media (max-width: $mobile-Max-width) {
+    display: none;
+  }
 }
 
 .listBtnL {
-  margin: 0 -20px 0 0;
-  position: relative;
+  margin: 0 0 0 -20px;
+  position: absolute;
   z-index: 1;
 }
 
 .listBtnR {
-  margin: 0 0 0 -20px;
+  position: absolute;
+  left: 100%;
 }

@@ -1,10 +1,9 @@
 @import "../global.scss";
 
-$headerH: 65px;
-
 .header {
   display: flex;
   padding: 12px 24px;
+  background-color: $white;
   border-bottom: 1px solid #ededed;
   justify-content: center;
   height: $headerH;
@@ -14,6 +13,11 @@ $headerH: 65px;
       display: none;
     }
   }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .frame {
