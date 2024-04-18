@@ -36,7 +36,7 @@ function ProfileImage({ onChange }) {
     }
   };
 
-  const handleImageKeyPress = (event, image) => {
+  const handleKeyPress = (event, image) => {
     if (event.key === "Enter" || event.key === " ") {
       setSelectedImage(image);
       if (onChange) {
@@ -67,7 +67,7 @@ function ProfileImage({ onChange }) {
               key={index}
               tabIndex={0}
               onClick={() => handleImageClick(image)}
-              onKeyDown={(event) => handleImageKeyPress(event, image)}
+              onKeyDown={(event) => handleKeyPress(event, image)}
             >
               <img src={image} alt={`Profile ${index}`} className={styles.profileImg} />
             </div>
