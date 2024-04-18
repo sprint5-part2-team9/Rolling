@@ -5,7 +5,8 @@ import useFetch from "../Hooks/useFetch";
 
 function BackImg({ imgurl, onclick, isSelected }) {
   return (
-    <div
+    <button
+      type="button"
       className={styles.Option__backImg__container}
       onClick={() => onclick(imgurl)}
     >
@@ -17,13 +18,12 @@ function BackImg({ imgurl, onclick, isSelected }) {
       {isSelected && (
         <img src={selectedImg} alt="selected" className={styles.selectedImg} />
       )}
-    </div>
+    </button>
   );
 }
 
 function Option({ ColorOrImg, setBackGround }) {
   const imgData = useFetch("https://rolling-api.vercel.app/background-images/");
-
   const [selectedColor, setSelectedColor] = useState("beige"); //선택된 컬러 state
   const [selectedBackImg, setSelectedBackImg] = useState(null); //선택된 배경이미지 state
 
@@ -49,8 +49,7 @@ function Option({ ColorOrImg, setBackGround }) {
   useEffect(() => {
     if (ColorOrImg === "image" && imgData.data && imgData.data.imageUrls) {
       setBackGround("beige", imgData.data.imageUrls[0]);
-    }
-    else if(ColorOrImg === "color") {
+    } else if (ColorOrImg === "color") {
       setSelectedBackImg(null);
       setSelectedColor("beige");
       setBackGround("beige", null);
@@ -82,7 +81,8 @@ function Option({ ColorOrImg, setBackGround }) {
   return (
     <div className={styles.Options}>
       {colorOptions.map((colorOption) => (
-        <div
+        <button
+          type="button"
           key={colorOption.color}
           className={`${styles.Option} ${styles[colorOption.color]}`}
           onClick={() => handleColorClick(colorOption.color)}
@@ -94,7 +94,7 @@ function Option({ ColorOrImg, setBackGround }) {
               alt="selected"
             />
           )}
-        </div>
+        </button>
       ))}
     </div>
   );
