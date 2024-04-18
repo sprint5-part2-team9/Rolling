@@ -103,9 +103,10 @@ $Handletter: "Handletter", serif;
 $tablet-Max-width: 1199px;
 $mobile-Max-width: 767px;
 $tablet-Min-width: 768px;
-$mobile-Min-width: 375px;
+$headerH: 65px;
+$subheaderH: 69px;
 
-//특정 대상을 눈으로는 안보이게 하지만 tap키로는 포커스 할 수 있도록 합니다.
+//특정 대상을 눈으로는 안보이지 안도록 합니다
 @mixin hide {
   position: absolute;
   width: 1px;
