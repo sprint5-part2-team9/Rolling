@@ -9,7 +9,6 @@ const ToCardList = () => {
   const data = useContext(RollingPaperContext);
   const [isMobileView, setIsMobileView] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
-  const [slicedNewToCards, setSlicedNewToCards] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {

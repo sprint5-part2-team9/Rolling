@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function Editor({ onChange }) {
+function Editor({ id, onChange, onTabPress }) {
   const [content, setContent] = useState("");
 
   const handleQuillChange = (content) => {
@@ -17,8 +17,6 @@ function Editor({ onChange }) {
   };
 
   useEffect(() => {
-    // content 작성했다가 지웠을때 사용
-    // !content.trim 인식 안 됨 수정 要
     if (!content.trim()) {
       onChange("");
     }
@@ -45,7 +43,8 @@ function Editor({ onChange }) {
 
   return (
     <ReactQuill
-      style={{ height: "260px" }}
+      id={id}
+      style={{ height: "260px", marginBottom: "50px" }}
       theme='snow'
       modules={modules}
       formats={formats}

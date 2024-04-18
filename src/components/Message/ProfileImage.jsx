@@ -36,9 +36,18 @@ function ProfileImage({ onChange }) {
     }
   };
 
+  const handleImageKeyPress = (event, image) => {
+    if (event.key === "Enter" || event.key === " ") {
+      setSelectedImage(image);
+      if (onChange) {
+        onChange(image);
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.selectedImg_container}>
+      <div className={styles.selectedImg_container} tabIndex={0} onClick={handleDefaultImageClick}>
         <img
           src={selectedImage || defaultImage}
           alt='ProfileImage'
@@ -54,7 +63,12 @@ function ProfileImage({ onChange }) {
         </div>
         <div className={styles.profileImgs}>
           {profileImages.map((image, index) => (
-            <div key={index} onClick={() => handleImageClick(image)}>
+            <div
+              key={index}
+              tabIndex={0}
+              onClick={() => handleImageClick(image)}
+              onKeyDown={(event) => handleImageKeyPress(event, image)}
+            >
               <img src={image} alt={`Profile ${index}`} className={styles.profileImg} />
             </div>
           ))}
