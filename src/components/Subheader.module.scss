@@ -176,6 +176,7 @@ $mobile-height: 104px;
   display: flex;
   @media (max-width: $mobile-Max-width) {
     min-width: 222px;
+    justify-content: flex-end;
   }
 }
 
