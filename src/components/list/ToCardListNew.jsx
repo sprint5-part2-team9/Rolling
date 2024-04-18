@@ -1,6 +1,6 @@
 import styles from "./ToCardList.module.scss";
 import ToCard from "./ToCard";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { RollingPaperContext } from "./ListMain";
 import arrowLeft from "../../assets/arrow_left.svg";
 import arrowRight from "../../assets/arrow_right.svg";
@@ -8,6 +8,7 @@ import arrowRight from "../../assets/arrow_right.svg";
 const ToCardList = () => {
   const data = useContext(RollingPaperContext);
   const [startIndex, setStartIndex] = useState(0);
+  const [slicedNewToCards, setSlicedNewToCards] = useState([]);
 
   const ToCards =
     data &&
@@ -30,8 +31,19 @@ const ToCardList = () => {
     return new Date(b.props.date) - new Date(a.props.date);
   });
 
-  // 버튼
-  const slicedNewToCards = newToCards.slice(startIndex, startIndex + 4);
+  // 화면 크기에 따른 버튼, 스크롤 변경
+  useEffect(() => {
+    const slicedToCards = () => {
+      if (window.matchMedia("(max-width: 1199px)").matches) {
+        setSlicedNewToCards(ToCards);
+      } else {
+        setSlicedNewToCards(ToCards.slice(startIndex, startIndex + 4));
+      }
+    };
+
+    slicedToCards();
+  }, [startIndex, ToCards]);
+
   const handleNext = () => {
     if (startIndex + 4 < newToCards.length) {
       setStartIndex(startIndex + 1);

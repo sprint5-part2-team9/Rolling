@@ -98,8 +98,6 @@ function PostMain() {
             <CreateBtn disabled={isCreateButtonDisabled} onClick={handleCreatePost} />
           </div>
         </div>
-        <div>{pickedBackGround.backgroundColor}</div>
-        <div>{pickedBackGround.backgroundImageURL}</div>
       </form>
     </main>
   );
