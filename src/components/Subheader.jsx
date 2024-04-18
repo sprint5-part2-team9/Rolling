@@ -92,10 +92,10 @@ const Subheader = ({ rolling, postId }) => {
           {/* 상위 반응 */}
           {rolling?.topReactions?.length ? (
             rolling.topReactions.map((item) => (
-              <button key={item.id} type='button' className={styles.emoji}>
+              <span key={item.id} className={styles.emoji}>
                 {item.emoji}
                 {item.count}
-              </button>
+              </span>
             ))
           ) : (
             <div>반응이 없어요...</div>
@@ -110,10 +110,10 @@ const Subheader = ({ rolling, postId }) => {
               <div className={styles.extraReactions}>
                 {extraReactions.length
                   ? extraReactions.map((extra) => (
-                      <button key={extra.id} className={styles.emoji}>
+                      <span key={extra.id} className={styles.emoji}>
                         {extra.emoji}
                         {extra.count}
-                      </button>
+                      </span>
                     ))
                   : '추가적인 반응은 없어요'}
               </div>

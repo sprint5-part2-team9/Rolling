@@ -87,9 +87,9 @@
 }
 
 .emoji {
-  display: inline;
+  display: inline-block;
   border-radius: 32px;
-  width: 66px;
+  min-width: 66px;
   height: 36px;
   padding: 8px 12px;
   color: $white;
