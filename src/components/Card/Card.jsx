@@ -1,11 +1,12 @@
 //Card.jsx
 //카드 컴포넌트, 메세지 추가하는 카드는 EmptyCard.jsx입니다.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import CreatedDay from "./CreatedDay";
 import HtmlParser from "./HtmlParser";
+import DivToButton from "../DivToButton";
 
 const Card = ({
   edit = false,
@@ -15,6 +16,7 @@ const Card = ({
   setIsModal,
 }) => {
   const [data, setData] = useState({});
+  const thisCard = useRef(null);
 
   const fontStyle = function (font) {
     if (font === "Pretendard") return "pretendard";
@@ -24,7 +26,7 @@ const Card = ({
   };
 
   const handleModal = () => {
-    setModalData(() => data);
+    setModalData(() => [data, thisCard]);
     setIsModal(true);
   };
 
@@ -34,6 +36,17 @@ const Card = ({
 
   return (
     <>
+      <DivToButton
+        onClick={handleModal}
+        Ref={thisCard}
+        className={styles.frame}
+      >
+        <CardFrom data={data} />
+        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
+          <HtmlParser content={data?.content} />
+        </div>
+        <CreatedDay date={data?.createdAt} />
+      </DivToButton>
       {edit && (
         <button
           name={message?.id}
@@ -41,16 +54,9 @@ const Card = ({
           type="button"
           onClick={deleteClick}
         >
-          삭제
+          <span className={styles.hide}>삭제</span>
         </button>
       )}
-      <button type="button" className={styles.frame} onClick={handleModal}>
-        <CardFrom data={data} />
-        <div className={`${styles.message} ${styles[fontStyle(data?.font)]}`}>
-          <HtmlParser content={data?.content} />
-        </div>
-        <CreatedDay date={data?.createdAt} />
-      </button>
     </>
   );
 };

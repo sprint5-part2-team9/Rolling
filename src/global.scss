@@ -61,9 +61,12 @@ $surface: #f6f8ff;
   src:
     url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.eot?#iefix")
       format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff") format("woff"),
-    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.ttf") format("truetype");
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/webfontworld/Noto/NotoSansKR-Medium.ttf")
+      format("truetype");
   font-display: swap;
 }
 
@@ -102,6 +105,19 @@ $mobile-Max-width: 767px;
 $tablet-Min-width: 768px;
 $headerH: 65px;
 $subheaderH: 69px;
+
+//특정 대상을 눈으로는 안보이지 안도록 합니다
+@mixin hide {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  clip: rect(0 0 0 0);
+}
 
 @mixin font_bold {
   font-family: $font-family;

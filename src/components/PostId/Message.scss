@@ -1,0 +1,54 @@
+@import "../../global.scss";
+
+@mixin messageText {
+  u {
+    text-decoration: underline;
+  }
+  s {
+    text-decoration: line-through;
+  }
+
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  &.nanumMyeongjo {
+    font-family: $NanumMyeongjo;
+    & * {
+      font-family: $NanumMyeongjo;
+    }
+  }
+
+  &.notoSans {
+    font-family: $NotoSansKR;
+    & * {
+      font-family: $NotoSansKR;
+    }
+  }
+
+  &.pretendard {
+    font-family: $font-family;
+    & * {
+      font-family: $font-family;
+    }
+  }
+
+  &.nanumSonPyeonJiCe {
+    font-family: $Handletter;
+    & * {
+      font-family: $Handletter;
+    }
+  }
+}
