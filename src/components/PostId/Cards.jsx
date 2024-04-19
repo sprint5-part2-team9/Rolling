@@ -7,15 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
 import { useEffect, useState, useRef } from "react";
 
-const Cards = ({
-  items,
-  deleteClick,
-  edit,
-  postId,
-  setModalData,
-  setIsModal,
-  headerFocus,
-}) => {
+const Cards = ({ items, deleteClick, edit, postId, setModalData, setIsModal, headerFocus }) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
   const focusing = useRef(null);
@@ -82,31 +74,27 @@ const Cards = ({
         })}
       </ul>
       {edit && (
-        <button
-          className={`${styles.btn} ${styles["-del"]}`}
-          type="button"
-          onClick={deleteRolling}
-        >
-          삭제하기
+        <button className={`${styles.btn} ${styles["-del"]}`} type='button' onClick={deleteRolling}>
+          포스트 삭제
         </button>
       )}
       {edit ? (
         <Link
           key={"edit-end"}
           className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
-          to="../"
+          to='../'
           onKeyDown={toEditPageKeyDown}
         >
-          수정끝내기
+          삭제 끝내기
         </Link>
       ) : (
         <Link
           key={"edit-start"}
           className={`${styles.btn} ${styles["-edit"]}`}
           onKeyDown={toheaderKeyDown}
-          to="./edit"
+          to='./edit'
         >
-          수정하기
+          삭제하기
         </Link>
       )}
     </div>
