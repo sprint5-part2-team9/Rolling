@@ -91,7 +91,9 @@ function Message() {
     <div className={styles.message}>
       <div className={styles.container}>
         <section className={styles.section}>
-          <label htmlFor='name'>From.</label>
+          <label htmlFor='name' className={styles.label}>
+            From.
+          </label>
           <Input
             id='name'
             placeholder='이름을 입력해 주세요.'
@@ -100,11 +102,15 @@ function Message() {
           />
         </section>
         <section className={styles.section}>
-          <label htmlFor='profile_img'>프로필 이미지</label>
+          <label htmlFor='profile_img' className={styles.label}>
+            프로필 이미지
+          </label>
           <ProfileImage id='profile_img' onChange={setProfileImageURL} />
         </section>
         <section className={styles.section}>
-          <label htmlFor='relationship'>상대와의 관계</label>
+          <label htmlFor='relationship' className={styles.label}>
+            상대와의 관계
+          </label>
           <Dropdown
             id='relationship'
             options={relationshipOptions}
@@ -113,11 +119,15 @@ function Message() {
           />
         </section>
         <section className={styles.section}>
-          <label htmlFor='content'>내용을 입력해 주세요</label>
+          <label htmlFor='content' className={styles.label}>
+            내용을 입력해 주세요
+          </label>
           <Editor id='content' onChange={handleContentChange} />
         </section>
         <section className={styles.section}>
-          <label htmlFor='font'>폰트 선택</label>
+          <label htmlFor='font' className={styles.label}>
+            폰트 선택
+          </label>
           <Dropdown id='font' options={fontOptions} value={font} onChange={handleFontChange} />
         </section>
         <div className={styles.btns}>

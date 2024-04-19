@@ -1,5 +1,7 @@
 @import '../global.scss';
 
+$mobile-height: 104px;
+
 .header {
   display: flex;
   padding: 13px 24px;
@@ -12,6 +14,12 @@
   left: 0;
   width: 100%;
   z-index: 10;
+
+  @media (max-width: $mobile-Max-width) {
+    top: 0;
+    height: $mobile-height;
+    padding: 0;
+  }
 }
 
 .nav {
@@ -20,6 +28,26 @@
   align-items: center;
   max-width: 1200px;
   width: 100%;
+
+  @media (max-width: $mobile-Max-width) {
+    flex-wrap: wrap;
+  }
+}
+
+.backIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.back_to {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  @media (max-width: $mobile-Max-width) {
+    gap: 10px;
+    margin-left: 15px;
+  }
 }
 
 .toPerson {
@@ -29,21 +57,54 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media (max-width: $mobile-Max-width) {
+    @include Font18B;
+    height: $mobile-height/2;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: $mobile-Max-width) {
+    height: $mobile-height/2;
+    width: 100%;
+    border-top: 1px solid $gray2;
+  }
+}
+
+.mobile_border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $mobile-Max-width) {
+    margin-left: 15px;
+  }
 }
 
 .profiles {
   display: flex;
-  width: 76px;
-  margin-right: 11px;
+  align-items: center;
+
+  @media (max-width: $tablet-Max-width) {
+    display: none;
+  }
+}
+
+.profileImgs {
+  display: flex;
+  margin-right: 25px;
 }
 
 .profileCase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 28px;
   height: 28px;
   margin-right: -12px;
@@ -53,9 +114,6 @@
   &.rest {
     background-color: $white;
     border: 1px solid #e3e3e3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #484848;
     font-family: $font-family;
     font-size: 12px;
@@ -84,7 +142,7 @@
   display: flex;
   align-items: center;
   color: $gray2;
-  margin: 13px;
+  margin: 10px;
 }
 
 .bar2 {
@@ -95,15 +153,31 @@
 }
 
 .emoji {
-  display: inline-block;
   border-radius: 32px;
   min-width: 66px;
   height: 36px;
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
   color: $white;
   background-color: rgba($color: $black, $alpha: 0.54);
-  border: 1px solid rgba($color: $black, $alpha: 0.54);
   margin: 4px;
+
+  @media (max-width: $mobile-Max-width) {
+    width: 55px;
+    height: 32px;
+    margin: 2px;
+    @include Font14R;
+  }
+}
+
+.emoji_box {
+  display: flex;
+  @media (max-width: $mobile-Max-width) {
+    min-width: 222px;
+    justify-content: flex-end;
+  }
 }
 
 .arrowButton {
@@ -114,15 +188,14 @@
   border: none;
   width: 36px;
   height: 36px;
-  margin-right: 8px;
   cursor: pointer;
   position: relative;
+  margin-right: 4px;
 }
 
 .extraReactions {
   padding: 18px;
   width: 264px;
-  gap: 10px;
   border-radius: 8px;
   border: 1px solid #b6b6b6;
   background-color: $white;
@@ -131,108 +204,73 @@
   top: 40px;
   right: -12.5px;
   z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.addIcon {
+  background-image: url("../assets/emojiAdd.svg");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  width: 22px;
+  height: 21px;
 }
 
 .add {
-  background-image: url('../assets/emojiAdd.svg');
-  background-repeat: no-repeat;
-  background-position: 15px;
-  padding: 6px 16px;
   border-radius: 6px;
   border: 1px solid $gray3;
   width: 88px;
   height: 36px;
+  gap: 5px;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    background-color: $gray1;
+  }
+
+  @media (max-width: $mobile-Max-width) {
+    width: 36px;
+    height: 32px;
+  }
+}
+
+.addTitle {
+  @media (max-width: $mobile-Max-width) {
+    display: none;
+  }
 }
 
 .emojiPickerContainer {
   position: absolute;
-  left: 1300px;
   top: $headerH;
   z-index: 1;
+
+  @media (max-width: $mobile-Max-width) {
+    top: $mobile-height;
+  }
 }
 
 .share {
   background-image: url('../assets/share.svg');
   background-repeat: no-repeat;
   background-position: center;
+  background-color: $white;
   padding: 6px 16px;
   border-radius: 6px;
   border: 1px solid $gray3;
   width: 56px;
   height: 36px;
+
   cursor: pointer;
-}
-
-//tablet
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .header {
-    height: 68px;
+  &:hover {
+    background-color: $gray1;
   }
 
-  .nav {
-    max-width: 768px;
-    width: 100%;
-  }
-
-  .profiles,
-  .bar,
-  .howMany {
-    display: none;
-  }
-
-  .emojiPickerContainer {
-    position: absolute;
-    left: 310px;
-    top: 130px;
-    z-index: 1;
-  }
-}
-
-//mobile
-@media (min-width: 375px) and (max-width: 767px) {
-  .header {
-    height: auto;
-  }
-
-  .nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .toPerson {
-    @include Font18B;
-  }
-
-  .add {
+  @media (max-width: $mobile-Max-width) {
     width: 36px;
     height: 32px;
-    background-position: center;
-  }
-  .addTitle {
-    display: none;
-  }
-
-  .emojiPickerContainer {
-    position: absolute;
-    left: 10px;
-    top: 170px;
-    z-index: 1;
-  }
-
-  .share {
-    width: 36px;
-    height: 32px;
-  }
-
-  .profiles,
-  .bar,
-  .howMany {
-    display: none;
   }
 }

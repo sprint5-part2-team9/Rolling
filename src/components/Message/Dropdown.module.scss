@@ -21,8 +21,8 @@
   cursor: pointer;
 
   &:focus {
-    border: 2px solid $gray5;
     color: $gray9;
+    outline: 1px solid $gray5;
   }
 
   &:not(:placeholder-shown) {
@@ -39,9 +39,12 @@
 }
 
 .options {
+  position: absolute;
+  background-color: $white;
+  z-index: 10;
   margin-top: 10px;
   padding: 15px 0;
-  width: 100%;
+  width: 320px;
   height: auto;
   border-radius: 8px;
   border: 1px solid $gray3;

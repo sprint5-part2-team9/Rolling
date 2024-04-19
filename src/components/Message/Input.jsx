@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import styles from "./Input.module.scss";
 
-function Input({ placeholder, value, onChange }) {
+function Input({ id, placeholder, value, onChange }) {
   const [inputValue, setInputValue] = useState(value);
   const [error, setError] = useState(false);
 
@@ -30,6 +30,7 @@ function Input({ placeholder, value, onChange }) {
   return (
     <>
       <input
+        id={id}
         className={inputClass}
         placeholder={placeholder}
         value={inputValue}
