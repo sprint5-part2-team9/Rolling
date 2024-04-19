@@ -6,15 +6,6 @@ import colorsCardBeige from "../../assets/Type_colors=card_list_02.png";
 import colorsCardBlue from "../../assets/Type_colors=card_list_03.png";
 import colorsCardGreen from "../../assets/Type_colors=card_list_05.png";
 
-/*
-  {
-    "id": 2,
-    "name": "강영훈",
-    "backgroundColor": "green",
-    "backgroundImageURL": null,
-    "createdAt": "2023-10-26T13:19:31.401765Z",
-    "messageCount": 3}
-*/
 const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
   const [background, setBackground] = useState(colorsCardPurple);
 
@@ -42,7 +33,7 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
       }
     }
     return usingColor;
-  }, []);
+  }, [bgColor, bgImg]);
 
   // from 프로필
   const fromUserImg =
@@ -71,7 +62,6 @@ const ToCard = ({ id, count, bgColor, bgImg, name, messages, reactions }) => {
       </div>
     ));
 
-  //
   return (
     <Link to={`/post/${id}`} style={{ color: "inherit" }}>
       <section
