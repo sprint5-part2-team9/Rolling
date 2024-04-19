@@ -62,14 +62,14 @@ const Subheader = ({ rolling, postId }) => {
         try {
           await postReaction(postId, selectedEmoji.emoji, "increase");
           getExtraReactions(getReaction, postId);
-          window.location.reload();
+          navigate(0);
         } catch (error) {
           console.error("리액션 추가 에러:", error);
         }
       };
       addReaction();
     }
-  }, [selectedEmoji, postId, getExtraReactions]);
+  }, [selectedEmoji, postId, getExtraReactions, navigate]);
 
   return (
     <header className={styles.header}>
