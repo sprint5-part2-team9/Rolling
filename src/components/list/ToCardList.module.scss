@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  
+
   @media (max-width: $tablet-Max-width) {
     width: 100%;
   }
@@ -28,6 +28,7 @@
   width: 40px;
   height: 40px;
   padding: 12px;
+  position: absolute;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -50,11 +51,9 @@
 
 .listBtnL {
   margin: 0 0 0 -20px;
-  position: absolute;
   z-index: 1;
 }
 
 .listBtnR {
-  position: absolute;
   left: 100%;
 }

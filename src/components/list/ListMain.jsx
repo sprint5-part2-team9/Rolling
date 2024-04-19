@@ -1,6 +1,5 @@
 import styles from "./ListMain.module.scss";
-import ToCardListBest from "./ToCardListBest";
-import ToCardListNew from "./ToCardListNew";
+import ToCardList from "./ToCardList";
 import { getRecipientsList } from "../../Api/Api";
 import { Link } from "react-router-dom";
 import { useState, createContext, useEffect } from "react";
@@ -22,18 +21,28 @@ const ListMain = () => {
     fetchData();
   }, []);
 
+  const sortedData = Array.isArray(rollingPaperData)
+    ? rollingPaperData
+        .slice()
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    : [];
+
   return (
-    <RollingPaperContext.Provider value={rollingPaperData}>
-      <section className={styles.listMain}>
-        <h1 className={styles.rollingPaperTitle}>인기 롤링 페이퍼🔥</h1>
-        <ToCardListBest />
-        <h1 className={styles.rollingPaperTitle}>최근 만든 롤링 페이퍼 ⭐</h1>
-        <ToCardListNew />
-        <Link to='/post' className={styles.createBtn}>
-          나도 만들어보기
-        </Link>
-      </section>
-    </RollingPaperContext.Provider>
+    <section className={styles.listMain}>
+      <h1 className={styles.rollingPaperTitle}>인기 롤링 페이퍼🔥</h1>
+      <RollingPaperContext.Provider value={rollingPaperData}>
+        <ToCardList />
+      </RollingPaperContext.Provider>
+      <h1 className={styles.rollingPaperTitle}>최근 만든 롤링 페이퍼 ⭐</h1>
+      <RollingPaperContext.Provider value={sortedData}>
+        <ToCardList />
+      </RollingPaperContext.Provider>
+      <div className={styles.createBtnWrap}>
+      <Link to="/post" className={styles.createBtn}>
+        나도 만들어보기
+      </Link>
+      </div>
+    </section>
   );
 };
 
