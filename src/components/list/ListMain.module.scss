@@ -5,7 +5,7 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-top: $headerH;
 
   @media (max-width: $tablet-Max-width) {
@@ -13,6 +13,10 @@
     align-items: flex-start;
   }
 }
+.createBtnWrap{
+  width: 100%;
+}
+
 .rollingPaperTitle {
   @include Font24B;
   width: 100%;
@@ -33,7 +37,7 @@
   align-items: center;
   justify-content: center;
   width: 280px;
-  margin: 64px 0;
+  margin: 64px auto;
   height: 56px;
   background-color: $purple6;
   color: $white;

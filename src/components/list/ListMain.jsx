@@ -37,9 +37,11 @@ const ListMain = () => {
       <RollingPaperContext.Provider value={sortedData}>
         <ToCardList />
       </RollingPaperContext.Provider>
+      <div className={styles.createBtnWrap}>
       <Link to="/post" className={styles.createBtn}>
         나도 만들어보기
       </Link>
+      </div>
     </section>
   );
 };
