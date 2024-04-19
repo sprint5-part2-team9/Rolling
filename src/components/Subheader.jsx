@@ -1,10 +1,10 @@
-import styles from "./Subheader.module.scss";
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import ShareDropdown from "./ShareDropdown";
-import { ToastContainer } from "react-toastify";
-import EmojiPicker from "emoji-picker-react";
-import { getReaction, postReaction } from "../Api/Api";
+import styles from './Subheader.module.scss';
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ShareDropdown from './ShareDropdown';
+import { ToastContainer } from 'react-toastify';
+import EmojiPicker from 'emoji-picker-react';
+import { getReaction, postReaction } from '../Api/Api';
 
 const Subheader = ({ rolling, postId }) => {
   const [moreShareView, setMoreShareView] = useState(false);
@@ -25,6 +25,7 @@ const Subheader = ({ rolling, postId }) => {
 
   const moreShare = () => {
     setMoreShareView(!moreShareView);
+    setEmojiPick(false);
   };
 
   const showReactions = () => {
@@ -33,6 +34,7 @@ const Subheader = ({ rolling, postId }) => {
 
   const addEmoji = () => {
     setEmojiPick(!emojiPick);
+    setMoreShareView(false);
   };
 
   const emojiClick = (emojiObject) => {
@@ -41,7 +43,7 @@ const Subheader = ({ rolling, postId }) => {
   };
 
   const handleCancel = () => {
-    navigate("/list");
+    navigate('/list');
   };
 
   useEffect(() => {
@@ -52,11 +54,11 @@ const Subheader = ({ rolling, postId }) => {
     if (selectedEmoji) {
       const addReaction = async () => {
         try {
-          await postReaction(postId, selectedEmoji.emoji, "increase");
+          await postReaction(postId, selectedEmoji.emoji, 'increase');
           getExtraReactions(getReaction, postId);
           window.location.reload();
         } catch (error) {
-          console.error("리액션 추가 에러:", error);
+          console.error('리액션 추가 에러:', error);
         }
       };
       addReaction();
@@ -118,7 +120,11 @@ const Subheader = ({ rolling, postId }) => {
               )}
             </div>
             {/* 추가 반응 버튼 */}
-            <div type='button' className={styles.arrowButton} onClick={showReactions}>
+            <div
+              type='button'
+              className={styles.arrowButton}
+              onClick={showReactions}
+            >
               {moreReactions && (
                 <div className={styles.extraReactions}>
                   {extraReactions.length
@@ -128,7 +134,7 @@ const Subheader = ({ rolling, postId }) => {
                           {extra.count}
                         </span>
                       ))
-                    : "추가적인 반응은 없어요"}
+                    : '추가적인 반응은 없어요'}
                 </div>
               )}
             </div>
@@ -140,7 +146,10 @@ const Subheader = ({ rolling, postId }) => {
             {/* 이모지 피커 */}
             {emojiPick && (
               <div className={styles.emojiPickerContainer}>
-                <EmojiPicker className={styles.emojiPick} onEmojiClick={emojiClick} />
+                <EmojiPicker
+                  className={styles.emojiPick}
+                  onEmojiClick={emojiClick}
+                />
               </div>
             )}
             <div className={styles.bar2}>|</div>
@@ -148,7 +157,7 @@ const Subheader = ({ rolling, postId }) => {
             <button className={styles.share} onClick={moreShare}>
               {moreShareView && <ShareDropdown />}
             </button>
-            <ToastContainer style={{ fontSize: "12px" }} />
+            <ToastContainer style={{ fontSize: '12px' }} />
           </div>
         </div>
       </nav>
