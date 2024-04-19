@@ -94,6 +94,7 @@
   @include Font16R;
 
   @media (max-width: $mobile-Max-width) {
+    height: 49px;
     gap: 4px;
   }
 }
