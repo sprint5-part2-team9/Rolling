@@ -22,7 +22,7 @@ const ToCardList = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   const handleNext = () => {
     if (!isMobileView && startIndex + 4 < data.length) {
       setStartIndex(startIndex + 4);

@@ -4,7 +4,7 @@ import styles from "./Dropdown.module.scss";
 import topIcon from "../../assets/dropdown_top.png";
 import downIcon from "../../assets/dropdown_down.png";
 
-function Dropdown({ options, value, onChange }) {
+function Dropdown({ id, options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -17,19 +17,19 @@ function Dropdown({ options, value, onChange }) {
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === " ") {
       toggleDropdown();
     }
   };
 
   return (
-    <div className={styles.dropdown_wrapper}>
+    <div id={id} className={styles.dropdown_wrapper}>
       <div
         className={styles.dropdown}
-        role="button"
+        role='button'
         tabIndex={0}
         onClick={toggleDropdown}
-        onKeyDown={handleKeyPress}
+        onKeyDown={(event) => handleKeyPress(event)}
       >
         <span>{value}</span>
         <img
@@ -37,7 +37,7 @@ function Dropdown({ options, value, onChange }) {
           className={styles.dropdown_icon}
           width={15}
           height={15}
-          alt=""
+          alt=''
         />
       </div>
       {isOpen && (
@@ -46,9 +46,15 @@ function Dropdown({ options, value, onChange }) {
             <li
               key={index}
               className={styles.option}
+              tabIndex={0}
               onClick={() => handleOptionClick(option.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  handleOptionClick(option.value);
+                }
+              }}
             >
-              <button type="button">{option.label}</button>
+              <span>{option.label}</span>
             </li>
           ))}
         </ul>
