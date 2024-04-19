@@ -74,7 +74,11 @@ const Cards = ({ items, deleteClick, edit, postId, setModalData, setIsModal, hea
         })}
       </ul>
       {edit && (
-        <button className={`${styles.btn} ${styles["-del"]}`} type='button' onClick={deleteRolling}>
+        <button
+          className={`${styles.btn} ${styles["-del"]}`}
+          type="button"
+          onClick={deleteRolling}
+        >
           포스트 삭제
         </button>
       )}

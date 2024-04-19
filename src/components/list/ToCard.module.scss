@@ -9,11 +9,9 @@
   background-size: cover;
   background-position: center;
   box-shadow: 0px 2px 12px 0px #00000014;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
-
-  @media (max-width: $tablet-Max-width) {
-    display: inline-block;
-  }
 
   @media (max-width: $mobile-Max-width) {
     width: 208px;
@@ -54,6 +52,7 @@
 }
 
 .profileImgs {
+  height: 28px;
   display: flex;
   align-items: center;
   color: #000;
@@ -81,25 +80,22 @@
   text-align: center;
 }
 
-.line {
-  width: 100%;
-  height: 1px;
-  margin: 43px 0 16px;
-  background: rgba(0, 0, 0, 0.12);
-
-  @media (max-width: $mobile-Max-width) {
-    margin: 33px 0 16px;
-  }
-}
-
 .emojiItems {
+  width: 100%;
+  height: 53px;
   display: flex;
+  margin-top: auto;
+  padding: 16px 0 0;
+  border-top-color: rgba(0, 0, 0, 0.12);
+  border-top-style: solid;
+  border-top-width: 1px;
   gap: 8px;
   color: #fff;
-  bottom: 20px;
+
   @include Font16R;
 
   @media (max-width: $mobile-Max-width) {
+    height: 49px;
     gap: 4px;
   }
 }
@@ -117,7 +113,6 @@
   @media (max-width: $mobile-Max-width) {
     width: 55px;
     height: 32px;
-    padding: 6px 8px;
     @include Font14R;
   }
 }
