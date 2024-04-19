@@ -87,7 +87,7 @@ const Cards = ({
           type="button"
           onClick={deleteRolling}
         >
-          삭제하기
+          포스트 삭제
         </button>
       )}
       {edit ? (
@@ -97,7 +97,7 @@ const Cards = ({
           to="../"
           onKeyDown={toEditPageKeyDown}
         >
-          수정끝내기
+          삭제 끝내기
         </Link>
       ) : (
         <Link
@@ -106,7 +106,7 @@ const Cards = ({
           onKeyDown={toheaderKeyDown}
           to="./edit"
         >
-          수정하기
+          삭제하기
         </Link>
       )}
     </div>
