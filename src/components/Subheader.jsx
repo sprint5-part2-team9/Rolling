@@ -1,6 +1,6 @@
 import styles from "./Subheader.module.scss";
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ShareDropdown from "./ShareDropdown";
 import { ToastContainer } from "react-toastify";
 import EmojiPicker from "emoji-picker-react";
@@ -13,6 +13,7 @@ const Subheader = ({ rolling, postId }) => {
   const [extraReactions, setExtraReactions] = useState([]);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getExtraReactions = useCallback(async (asyncFunction, postId) => {
     try {
@@ -157,7 +158,7 @@ const Subheader = ({ rolling, postId }) => {
             <div className={styles.bar2}>|</div>
             {/* 공유 드롭다운 버튼 */}
             <button className={styles.share} onClick={moreShare}>
-              {moreShareView && <ShareDropdown />}
+              {moreShareView && <ShareDropdown url={location.pathname} />}
             </button>
             <ToastContainer style={{ fontSize: "12px" }} />
           </div>
