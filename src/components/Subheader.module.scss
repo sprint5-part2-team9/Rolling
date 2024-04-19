@@ -1,4 +1,4 @@
-@import '../global.scss';
+@import "../global.scss";
 
 $mobile-height: 104px;
 
@@ -60,7 +60,7 @@ $mobile-height: 104px;
 
   @media (max-width: $mobile-Max-width) {
     @include Font18B;
-    height: $mobile-height/2;
+    height: calc(#{$mobile-height} / 2);
     display: flex;
     align-items: center;
   }
@@ -72,7 +72,7 @@ $mobile-height: 104px;
   align-items: center;
 
   @media (max-width: $mobile-Max-width) {
-    height: $mobile-height/2;
+    height: calc(#{$mobile-height} / 2);
     width: 100%;
     border-top: 1px solid $gray2;
   }
@@ -181,7 +181,7 @@ $mobile-height: 104px;
 }
 
 .arrowButton {
-  background-image: url('../assets/arrowButton.svg');
+  background-image: url("../assets/arrowButton.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: $white;
@@ -254,7 +254,7 @@ $mobile-height: 104px;
 }
 
 .share {
-  background-image: url('../assets/share.svg');
+  background-image: url("../assets/share.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: $white;
