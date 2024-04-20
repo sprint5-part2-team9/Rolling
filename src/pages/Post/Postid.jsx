@@ -56,12 +56,11 @@ function PostId({ edit }) {
         try {
           observer.unobserve(entry.target);
           await getMessageData(getMessages, postId, LIMIT, offsets.current);
+        } catch (err) {
+        } finally {
           setTimeout(() => {
             observer.observe(entry.target);
           }, 1000);
-        } catch (err) {
-        } finally {
-          setIsLoading(false);
         }
       }
     },
@@ -100,7 +99,9 @@ function PostId({ edit }) {
     if (didMount) {
       getMessageData(getMessages, postId, FIRST_LIMIT, 0);
       getRollingData(getRecipient, postId);
-      const observer = new IntersectionObserver(onIntersect, { threshold: 0 });
+      const observer = new IntersectionObserver(onIntersect, {
+        threshold: 0,
+      });
       if (pageEnd.current) observer.observe(pageEnd.current);
     }
   }, [getMessageData, getRollingData, postId, onIntersect, didMount]);
@@ -129,8 +130,8 @@ function PostId({ edit }) {
           />
           {isLoading && <div>로딩중...</div>}
           {isError && <div>에러 에러!</div>}
-          <div style={{ height: "10px" }} ref={pageEnd}></div>
         </div>
+        <div style={{ height: "0.5vh" }} ref={pageEnd}></div>
       </PostIdMain>
       {isModal && (
         <Modal datas={modalData} setIsModal={setIsModal} name={rolling?.name} />
