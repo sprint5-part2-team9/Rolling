@@ -169,6 +169,9 @@ const Subheader = ({ rolling, postId }) => {
                 className={styles.emojiPickerContainer}
                 onKeyDown={escapeEmojipicker}
               >
+                <div className={styles.hide}>
+                  왼쪽 컨트롤 키로 나올 수 있습니다.
+                </div>
                 <EmojiPicker
                   className={styles.emojiPick}
                   onEmojiClick={emojiClick}
