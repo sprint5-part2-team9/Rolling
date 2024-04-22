@@ -1,7 +1,8 @@
 import styles from "./ShareDropdown.module.scss";
 import CopyClipboard from "./CopyClipboard";
+import DivToButton from "./DivToButton";
 
-const ShareDropdown = ({ url }) => {
+const ShareDropdown = ({ url, origin }) => {
   const initKakaoSDK = () => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init("192f6ca4e27f947eea0d110faa86eb84");
@@ -34,13 +35,29 @@ const ShareDropdown = ({ url }) => {
     });
   };
 
+  const handleCancel = (e) => {
+    if (e.code === "Enter") {
+      origin.current?.focus();
+    }
+  };
+
   return (
-    <div className={styles.dropdown}>
-      <li role='button' className={styles.kakao} onClick={() => shareKakaoLink(url)}>
-        카카오톡 공유
+    <ul className={styles.dropdown}>
+      <li className={styles.kakao} onClick={() => shareKakaoLink(url)}>
+        <DivToButton>카카오톡 공유</DivToButton>
       </li>
       <CopyClipboard className={styles.url} />
-    </div>
+      <li>
+        <div
+          role="button"
+          tabIndex={0}
+          className={styles.hide}
+          onKeyDown={handleCancel}
+        >
+          취소
+        </div>
+      </li>
+    </ul>
   );
 };
 

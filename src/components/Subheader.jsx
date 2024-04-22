@@ -1,10 +1,11 @@
 import styles from "./Subheader.module.scss";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ShareDropdown from "./ShareDropdown";
 import { ToastContainer } from "react-toastify";
 import EmojiPicker from "emoji-picker-react";
 import { getReaction, postReaction } from "../Api/Api";
+import DivToButton from "./DivToButton";
 
 const Subheader = ({ rolling, postId }) => {
   const [moreShareView, setMoreShareView] = useState(false);
@@ -12,6 +13,7 @@ const Subheader = ({ rolling, postId }) => {
   const [moreReactions, setMoreReactions] = useState(false);
   const [extraReactions, setExtraReactions] = useState([]);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const origin = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -77,12 +79,12 @@ const Subheader = ({ rolling, postId }) => {
       <nav className={styles.nav}>
         <div className={styles.back_to}>
           <img
-            src='https://cdn-icons-png.flaticon.com/128/271/271220.png'
+            src="https://cdn-icons-png.flaticon.com/128/271/271220.png"
             className={styles.backIcon}
-            alt='뒤로가기'
+            alt="뒤로가기"
             onClick={handleCancel}
             onKeyDown={(event) => handleKeyPress(event)}
-            role='button'
+            role="button"
             tabIndex={0}
           />
           <h2 className={styles.toPerson}>To.{rolling?.name}</h2>
@@ -130,7 +132,7 @@ const Subheader = ({ rolling, postId }) => {
               )}
             </div>
             {/* 추가 반응 버튼 */}
-            <div type='button' className={styles.arrowButton} onClick={showReactions}>
+            <DivToButton className={styles.arrowButton} onClick={showReactions}>
               {moreReactions && (
                 <div className={styles.extraReactions}>
                   {extraReactions.length
@@ -143,22 +145,32 @@ const Subheader = ({ rolling, postId }) => {
                     : "추가적인 반응은 없어요"}
                 </div>
               )}
-            </div>
+            </DivToButton>
             {/* 이모지 추가 버튼 */}
-            <div role='button' className={styles.add} onClick={addEmoji}>
+            <DivToButton className={styles.add} onClick={addEmoji}>
               <div className={styles.addIcon}></div>
               <span className={styles.addTitle}>추가</span>
-            </div>
+            </DivToButton>
             {/* 이모지 피커 */}
             {emojiPick && (
               <div className={styles.emojiPickerContainer}>
-                <EmojiPicker className={styles.emojiPick} onEmojiClick={emojiClick} />
+                <EmojiPicker
+                  className={styles.emojiPick}
+                  onEmojiClick={emojiClick}
+                />
               </div>
             )}
             <div className={styles.bar2}>|</div>
             {/* 공유 드롭다운 버튼 */}
-            <button className={styles.share} onClick={moreShare}>
-              {moreShareView && <ShareDropdown url={location.pathname} />}
+            <button
+              type="button"
+              className={styles.share}
+              onClick={moreShare}
+              ref={origin}
+            >
+              {moreShareView && (
+                <ShareDropdown url={location.pathname} origin={origin} />
+              )}
             </button>
             <ToastContainer style={{ fontSize: "12px" }} />
           </div>
