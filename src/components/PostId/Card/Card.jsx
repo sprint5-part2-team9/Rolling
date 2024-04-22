@@ -6,7 +6,7 @@ import styles from "./Card.module.scss";
 import CardFrom from "./CardFrom";
 import CreatedDay from "./CreatedDay";
 import HtmlParser from "./HtmlParser";
-import DivToButton from "../DivToButton";
+import DivToButton from "../../DivToButton";
 
 const Card = ({
   edit = false,

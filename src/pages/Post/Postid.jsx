@@ -100,7 +100,7 @@ function PostId({ edit }) {
       getMessageData(getMessages, postId, FIRST_LIMIT, 0);
       getRollingData(getRecipient, postId);
       const observer = new IntersectionObserver(onIntersect, {
-        threshold: 0,
+        threshold: 0.9,
       });
       if (pageEnd.current) observer.observe(pageEnd.current);
     }
@@ -131,7 +131,11 @@ function PostId({ edit }) {
           {isLoading && <div>로딩중...</div>}
           {isError && <div>에러 에러!</div>}
         </div>
-        <div style={{ height: "0.5vh" }} ref={pageEnd}></div>
+        <div
+          style={{ height: "0.5vh", marginTop: "35px" }}
+          ref={pageEnd}
+          tabIndex={0}
+        ></div>
       </PostIdMain>
       {isModal && (
         <Modal datas={modalData} setIsModal={setIsModal} name={rolling?.name} />

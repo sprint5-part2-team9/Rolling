@@ -1,13 +1,21 @@
 //Cards.jsx
 /*PostId 페이지에 나오는 카드들을 렌더링하는 컴포넌트입니다.*/
 import styles from "./Cards.module.scss";
-import Card from "../Card/Card";
-import AddCard from "../Card/AddCard";
+import Card from "./Card/Card";
+import AddCard from "./Card/AddCard";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteRecipient } from "../../Api/Api";
 import { useEffect, useState, useRef } from "react";
 
-const Cards = ({ items, deleteClick, edit, postId, setModalData, setIsModal, headerFocus }) => {
+const Cards = ({
+  items,
+  deleteClick,
+  edit,
+  postId,
+  setModalData,
+  setIsModal,
+  headerFocus,
+}) => {
   const [tryDel, setTryDel] = useState("");
   const navigate = useNavigate();
   const focusing = useRef(null);
@@ -86,7 +94,7 @@ const Cards = ({ items, deleteClick, edit, postId, setModalData, setIsModal, hea
         <Link
           key={"edit-end"}
           className={`${styles.btn} ${styles["-edit"]} ${styles["-trying"]} `}
-          to='../'
+          to="../"
           onKeyDown={toEditPageKeyDown}
         >
           삭제 끝내기
@@ -96,7 +104,7 @@ const Cards = ({ items, deleteClick, edit, postId, setModalData, setIsModal, hea
           key={"edit-start"}
           className={`${styles.btn} ${styles["-edit"]}`}
           onKeyDown={toheaderKeyDown}
-          to='./edit'
+          to="./edit"
         >
           삭제하기
         </Link>
