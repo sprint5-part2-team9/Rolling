@@ -121,8 +121,7 @@ const Subheader = ({ rolling, postId }) => {
               {rolling?.topReactions?.length ? (
                 rolling.topReactions.map((item) => (
                   <span key={item.id} className={styles.emoji}>
-                    {item.emoji}
-                    {item.count}
+                    {item.emoji} {item.count}
                   </span>
                 ))
               ) : (
@@ -136,8 +135,7 @@ const Subheader = ({ rolling, postId }) => {
                   {extraReactions.length
                     ? extraReactions.map((extra) => (
                         <span key={extra.id} className={styles.emoji}>
-                          {extra.emoji}
-                          {extra.count}
+                          {extra.emoji} {extra.count}
                         </span>
                       ))
                     : "추가적인 반응은 없어요"}

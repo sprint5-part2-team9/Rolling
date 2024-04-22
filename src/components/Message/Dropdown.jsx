@@ -1,10 +1,11 @@
 // Dropdown.jsx
 import { useState } from "react";
+import classNames from "classnames";
 import styles from "./Dropdown.module.scss";
 import topIcon from "../../assets/dropdown_top.png";
 import downIcon from "../../assets/dropdown_down.png";
 
-function Dropdown({ id, options, value, onChange }) {
+function Dropdown({ id, options, value, onChange, direction }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -21,6 +22,10 @@ function Dropdown({ id, options, value, onChange }) {
       toggleDropdown();
     }
   };
+
+  const dropdownClass = classNames(styles.options, {
+    [styles.up]: direction === "up",
+  });
 
   return (
     <div id={id} className={styles.dropdown_wrapper}>
@@ -41,7 +46,7 @@ function Dropdown({ id, options, value, onChange }) {
         />
       </div>
       {isOpen && (
-        <ul className={styles.options}>
+        <ul className={dropdownClass}>
           {options.map((option, index) => (
             <li
               key={index}

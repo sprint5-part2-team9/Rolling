@@ -128,7 +128,13 @@ function Message() {
           <label htmlFor='font' className={styles.label}>
             폰트 선택
           </label>
-          <Dropdown id='font' options={fontOptions} value={font} onChange={handleFontChange} />
+          <Dropdown
+            id='font'
+            options={fontOptions}
+            value={font}
+            onChange={handleFontChange}
+            direction={"up"}
+          />
         </section>
         <div className={styles.btns}>
           <CancelBtn onClick={handleCancel} />
