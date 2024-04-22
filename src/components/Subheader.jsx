@@ -14,6 +14,7 @@ const Subheader = ({ rolling, postId }) => {
   const [extraReactions, setExtraReactions] = useState([]);
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const origin = useRef(null);
+  const addEmojiButton = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -52,6 +53,13 @@ const Subheader = ({ rolling, postId }) => {
   const handleKeyPress = (event) => {
     if (event.key === "Enter" || event.key === " ") {
       handleCancel();
+    }
+  };
+
+  const escapeEmojipicker = (e) => {
+    if (e.code === "ControlLeft") {
+      addEmojiButton.current?.click();
+      addEmojiButton.current?.focus();
     }
   };
 
@@ -147,13 +155,20 @@ const Subheader = ({ rolling, postId }) => {
               )}
             </DivToButton>
             {/* 이모지 추가 버튼 */}
-            <DivToButton className={styles.add} onClick={addEmoji}>
+            <DivToButton
+              className={styles.add}
+              onClick={addEmoji}
+              Ref={addEmojiButton}
+            >
               <div className={styles.addIcon}></div>
               <span className={styles.addTitle}>추가</span>
             </DivToButton>
             {/* 이모지 피커 */}
             {emojiPick && (
-              <div className={styles.emojiPickerContainer}>
+              <div
+                className={styles.emojiPickerContainer}
+                onKeyDown={escapeEmojipicker}
+              >
                 <EmojiPicker
                   className={styles.emojiPick}
                   onEmojiClick={emojiClick}
