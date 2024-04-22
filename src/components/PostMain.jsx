@@ -27,7 +27,7 @@ function PostMain() {
     setName(value);
   };
 
-  const pickBackgorund = useCallback((color, url) => {
+  const pickBackground = useCallback((color, url) => {
     setPickedBackGround((prev) => ({
       ...prev,
       backgroundColor: color,
@@ -100,7 +100,7 @@ function PostMain() {
           </div>
         </section>
         <div className={styles.btn__container}>
-          <Option ColorOrImg={selectedButton} setBackGround={pickBackgorund} />
+          <Option ColorOrImg={selectedButton} setBackGround={pickBackground} />
           <div className={styles.btns}>
             <CancelBtn onClick={handleCancel} />
             <CreateBtn
