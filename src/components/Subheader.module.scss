@@ -274,3 +274,7 @@ $mobile-height: 104px;
     height: 32px;
   }
 }
+
+.hide {
+  @include hide;
+}

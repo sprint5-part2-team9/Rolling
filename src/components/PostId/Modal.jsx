@@ -1,7 +1,7 @@
-import CreatedDay from "../Card/CreatedDay";
-import CardFrom from "../Card/CardFrom";
+import CreatedDay from "./Card/CreatedDay";
+import CardFrom from "./Card/CardFrom";
 import styles from "./Modal.module.scss";
-import HtmlParser from "../Card/HtmlParser";
+import HtmlParser from "./Card/HtmlParser";
 import { useEffect, useRef } from "react";
 import Portal from "../../Portal/Portal";
 

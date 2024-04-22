@@ -31,3 +31,7 @@ li.kakao {
 .kakao:hover {
   background-color: $gray1;
 }
+
+.hide {
+  @include hide;
+}

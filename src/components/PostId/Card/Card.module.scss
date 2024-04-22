@@ -1,5 +1,5 @@
-@import "../../global.scss";
-@import "../PostId/Message.scss";
+@import "../../../global.scss";
+@import "../Message.scss";
 
 .frame {
   width: 384px;
@@ -67,7 +67,7 @@
   right: 24px;
   width: 42px;
   height: 42px;
-  background: $white url("../../assets/deleted.png") 50% 50% no-repeat;
+  background: $white url("../../../assets/deleted.png") 50% 50% no-repeat;
   color: transparent;
   z-index: 1;
   cursor: pointer;
@@ -87,7 +87,7 @@
 
 .circle {
   $W_H: 56px;
-  background: $gray5 url("../../assets/plus.svg") 50% 50% no-repeat;
+  background: $gray5 url("../../../assets/plus.svg") 50% 50% no-repeat;
   color: transparent;
   width: $W_H;
   height: $W_H;
